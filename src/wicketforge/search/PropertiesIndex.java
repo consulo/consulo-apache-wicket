@@ -15,10 +15,16 @@
  */
 package wicketforge.search;
 
+import java.util.Collections;
+import java.util.Map;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.properties.PropertiesUtil;
 import com.intellij.lang.properties.psi.PropertiesFile;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.StdFileTypes;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiFile;
@@ -27,11 +33,6 @@ import com.intellij.util.indexing.ID;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.xml.NanoXmlUtil;
 import com.intellij.util.xml.XmlFileHeader;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Collections;
-import java.util.Map;
 
 public class PropertiesIndex extends WicketResourceIndexExtension {
     private static final ID<String, Void> NAME = ID.create("WicketPropertiesIndex");
@@ -47,7 +48,7 @@ public class PropertiesIndex extends WicketResourceIndexExtension {
     }
 
     @Override
-    public boolean acceptInput(VirtualFile file) {
+    public boolean acceptInput(Project project, VirtualFile file) {
         FileType fileType = file.getFileType();
         return StdFileTypes.PROPERTIES.equals(fileType) || StdFileTypes.XML.equals(fileType);
     }

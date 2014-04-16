@@ -15,21 +15,27 @@
  */
 package wicketforge.action;
 
+import org.consulo.psi.PsiPackage;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtil;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.*;
+import com.intellij.psi.JavaDirectoryService;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiDirectory;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.util.PsiNavigateUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.ClassIndex;
 import wicketforge.search.MarkupIndex;
@@ -43,19 +49,19 @@ import wicketforge.util.WicketPsiUtil;
 public class ToggleAction extends AnAction {
     @Override
     public void update(AnActionEvent e) {
-        final PsiFile psiFile = e.getData(DataKeys.PSI_FILE);
+        final PsiFile psiFile = e.getData(LangDataKeys.PSI_FILE);
         // let user toggle when we have a wicket facet or we are in a lib (could be wicket lib)
         e.getPresentation().setEnabled(WicketForgeFacet.hasFacetOrIsFromLibrary(psiFile));
     }
 
     @Override
     public void actionPerformed(AnActionEvent event) {
-        Editor editor = event.getData(DataKeys.EDITOR);
+        Editor editor = event.getData(LangDataKeys.EDITOR);
         if (editor == null) {
             return;
         }
 
-        PsiFile psiFile = event.getData(DataKeys.PSI_FILE);
+        PsiFile psiFile = event.getData(LangDataKeys.PSI_FILE);
         if (psiFile == null) {
             return;
         }

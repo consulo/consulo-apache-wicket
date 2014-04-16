@@ -15,6 +15,15 @@
  */
 package wicketforge.util;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension;
+import org.mustbe.consulo.roots.ContentFolderScopes;
+import org.mustbe.consulo.roots.impl.WebResourcesFolderTypeProvider;
 import com.intellij.CommonBundle;
 import com.intellij.codeInsight.CodeInsightBundle;
 import com.intellij.ide.fileTemplates.FileTemplate;
@@ -25,13 +34,13 @@ import com.intellij.openapi.application.ReadAction;
 import com.intellij.openapi.application.Result;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.pointers.VirtualFilePointer;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiManager;
@@ -41,14 +50,7 @@ import com.intellij.refactoring.util.RefactoringMessageUtil;
 import com.intellij.refactoring.util.RefactoringUtil;
 import com.intellij.util.IncorrectOperationException;
 import com.intellij.util.SmartList;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import wicketforge.Constants;
-import wicketforge.facet.WicketForgeFacet;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
 
 public final class WicketFileUtil {
     private WicketFileUtil() {
@@ -59,12 +61,13 @@ public final class WicketFileUtil {
         // all module source roots
         VirtualFile[] result = ModuleRootManager.getInstance(module).getSourceRoots();
         // alternate paths
-        WicketForgeFacet wicketForgeFacet = WicketForgeFacet.getInstance(module);
+		WicketModuleExtension wicketForgeFacet = ModuleUtilCore.getExtension(module, WicketModuleExtension.class);
         if (wicketForgeFacet != null) {
             List<VirtualFile> alternateFiles = new SmartList<VirtualFile>();
             // add all valid alternate paths to list
-            for (VirtualFilePointer virtualFilePointer : wicketForgeFacet.getResourcePaths()) {
-                VirtualFile virtualFile = virtualFilePointer.getFile();
+			VirtualFile[] webFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of
+					(WebResourcesFolderTypeProvider.getInstance()));
+			for (VirtualFile virtualFile : webFiles) {
                 if (virtualFile != null && virtualFile.isValid()) {
                     alternateFiles.add(virtualFile);
                 }
@@ -100,7 +103,7 @@ public final class WicketFileUtil {
                     result.setResult(roots[0]);
                 } else {
                     PsiDirectory defaultDir = PackageUtil.findPossiblePackageDirectoryInModule(module, packageName);
-                    result.setResult(MoveClassesOrPackagesUtil.chooseSourceRoot(targetPackage, new SmartList<VirtualFile>(roots), defaultDir));
+                    result.setResult(MoveClassesOrPackagesUtil.chooseSourceRoot(targetPackage, roots, defaultDir));
                 }
             }
         }.execute().getResultObject();

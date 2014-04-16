@@ -15,14 +15,15 @@
  */
 package wicketforge.search;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.fileTypes.StdFileTypes;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.indexing.ID;
 import com.intellij.util.messages.MessageBus;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class MarkupIndex extends WicketResourceIndexExtension {
     private static final ID<String, Void> NAME = ID.create("WicketMarkupIndex");
@@ -38,7 +39,7 @@ public class MarkupIndex extends WicketResourceIndexExtension {
     }
 
     @Override
-    public boolean acceptInput(VirtualFile file) {
+    public boolean acceptInput(Project project, VirtualFile file) {
         return StdFileTypes.HTML.equals(file.getFileType());
     }
 

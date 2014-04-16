@@ -15,6 +15,13 @@
  */
 package wicketforge.search;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -24,27 +31,27 @@ import com.intellij.psi.PsiManager;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.ProjectScope;
 import com.intellij.psi.util.PsiUtilCore;
-import com.intellij.util.indexing.*;
+import com.intellij.util.indexing.DataIndexer;
+import com.intellij.util.indexing.FileBasedIndex;
+import com.intellij.util.indexing.FileContent;
+import com.intellij.util.indexing.ID;
+import com.intellij.util.indexing.ScalarIndexExtension;
 import com.intellij.util.io.EnumeratorStringDescriptor;
 import com.intellij.util.io.KeyDescriptor;
 import com.intellij.util.messages.MessageBus;
-import org.jetbrains.annotations.NotNull;
-import wicketforge.facet.WicketForgeFacetConfiguration;
 import wicketforge.util.WicketPsiUtil;
-
-import java.util.*;
 
 abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String> implements FileBasedIndex.InputFilter, DataIndexer<String, Void, FileContent>  {
     private final EnumeratorStringDescriptor keyDescriptor = new EnumeratorStringDescriptor();
     private static final char LOCALIZEDFILE_INDEXMARKER = '#';
 
     protected WicketResourceIndexExtension(@NotNull MessageBus messageBus) {
-        messageBus.connect().subscribe(WicketForgeFacetConfiguration.ADDITIONAL_PATHS_CHANGED, new Runnable() {
+       /* messageBus.connect().subscribe(WicketForgeFacetConfiguration.ADDITIONAL_PATHS_CHANGED, new Runnable() {
             @Override
             public void run() {
                 FileBasedIndex.getInstance().requestRebuild(getName());
             }
-        });
+        }); */
     }
 
     @NotNull

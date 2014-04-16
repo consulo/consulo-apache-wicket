@@ -15,10 +15,12 @@
  */
 package wicketforge.action;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.properties.PropertiesUtil;
 import com.intellij.lang.properties.psi.PropertiesFile;
 import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Editor;
@@ -31,10 +33,15 @@ import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Computable;
-import com.intellij.psi.*;
+import com.intellij.psi.JavaPsiFacade;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiDirectory;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiExpression;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiJavaFile;
+import com.intellij.psi.PsiLiteralExpression;
 import com.intellij.psi.xml.XmlFile;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import wicketforge.action.ui.ExtractPropertiesDialog;
 import wicketforge.search.ClassIndex;
 import wicketforge.util.WicketFileUtil;
@@ -56,7 +63,7 @@ public class ExtractPropertiesAction extends EditorAction {
             if (project == null) {
                 return;
             }
-            final PsiFile psiFile = DataKeys.PSI_FILE.getData(dataContext);
+            final PsiFile psiFile = LangDataKeys.PSI_FILE.getData(dataContext);
             if (psiFile == null) {
                 return;
             }

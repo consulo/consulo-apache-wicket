@@ -15,13 +15,16 @@
  */
 package wicketforge.search;
 
+import org.jetbrains.annotations.NotNull;
+import org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension;
+import org.mustbe.consulo.roots.ContentFolderScopes;
+import org.mustbe.consulo.roots.impl.WebResourcesFolderTypeProvider;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleUtilCore;
+import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.pointers.VirtualFilePointer;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.GlobalSearchScopes;
-import org.jetbrains.annotations.NotNull;
-import wicketforge.facet.WicketForgeFacet;
 
 public final class WicketSearchScope {
     private WicketSearchScope() {
@@ -31,13 +34,12 @@ public final class WicketSearchScope {
     public static GlobalSearchScope resourcesInModuleWithDependenciesAndLibraries(@NotNull Module module) {
         GlobalSearchScope scope = GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module, true);
         // add all additional resource paths
-        WicketForgeFacet facet = WicketForgeFacet.getInstance(module);
+		WicketModuleExtension facet = ModuleUtilCore.getExtension(module, WicketModuleExtension.class);
         if (facet != null) {
-            for (VirtualFilePointer filePointer : facet.getResourcePaths()) {
-                VirtualFile virtualFile = filePointer.getFile();
-                if (virtualFile != null) {
-                    scope = scope.uniteWith(GlobalSearchScopes.directoryScope(module.getProject(), virtualFile, true));
-                }
+			VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of
+					(WebResourcesFolderTypeProvider.getInstance()));
+			for (VirtualFile virtualFile : contentFolderFiles) {
+                scope = scope.uniteWith(GlobalSearchScopes.directoryScope(module.getProject(), virtualFile, true));
             }
         }
         return scope;
