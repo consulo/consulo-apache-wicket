@@ -15,11 +15,16 @@
  */
 package wicketforge.action;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.ide.structureView.StructureView;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.newStructureView.StructureViewComponent;
 import com.intellij.ide.util.FileStructurePopup;
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.project.Project;
@@ -29,7 +34,6 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.xml.XmlFile;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.psi.hierarchy.ClassStructureTreeModel;
 import wicketforge.psi.hierarchy.MarkupStructureTreeModel;
 
@@ -71,7 +75,7 @@ public class ViewWicketStructureAction extends AnAction {
         if (fileEditor == null) {
             return;
         }
-        StructureView structureView = new StructureViewComponent(fileEditor, viewModel, project);
+        StructureView structureView = new StructureViewComponent(fileEditor, viewModel, project, true);
 
         FileStructurePopup popup = createStructureViewPopup(project, fileEditor, structureView);
         popup.setTitle(psiFile.getName());
