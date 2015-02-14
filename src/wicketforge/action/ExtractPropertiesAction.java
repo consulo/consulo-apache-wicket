@@ -17,6 +17,8 @@ package wicketforge.action;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.highlighter.HtmlFileType;
+import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.lang.properties.PropertiesUtil;
 import com.intellij.lang.properties.psi.PropertiesFile;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -29,7 +31,6 @@ import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
 import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
 import com.intellij.openapi.editor.actionSystem.EditorWriteActionHandler;
-import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Computable;
@@ -82,7 +83,7 @@ public class ExtractPropertiesAction extends EditorAction {
 
             final PsiClass psiClass;
             String selectedText = null;
-            if (StdFileTypes.JAVA.equals(psiFile.getFileType())) {
+            if (JavaFileType.INSTANCE.equals(psiFile.getFileType())) {
                 psiClass = WicketPsiUtil.getParentWicketClass(psiElement);
                 // text to extract from String
                 if (psiElement.getParent() instanceof PsiLiteralExpression) {
@@ -92,7 +93,7 @@ public class ExtractPropertiesAction extends EditorAction {
                     Messages.showErrorDialog(project, "No string to extract", "Extract Text");
                     return;
                 }
-            } else if (StdFileTypes.HTML.equals(psiFile.getFileType())) {
+            } else if (HtmlFileType.INSTANCE.equals(psiFile.getFileType())) {
                 psiClass = ClassIndex.getAssociatedClass(psiFile);
                 // text to extract from selection
                 selectedText = editor.getSelectionModel().getSelectedText();

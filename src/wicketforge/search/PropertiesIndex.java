@@ -20,10 +20,11 @@ import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.highlighter.XmlFileType;
+import com.intellij.lang.properties.PropertiesFileType;
 import com.intellij.lang.properties.PropertiesUtil;
 import com.intellij.lang.properties.psi.PropertiesFile;
 import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
@@ -50,13 +51,13 @@ public class PropertiesIndex extends WicketResourceIndexExtension {
     @Override
     public boolean acceptInput(Project project, VirtualFile file) {
         FileType fileType = file.getFileType();
-        return StdFileTypes.PROPERTIES.equals(fileType) || StdFileTypes.XML.equals(fileType);
+        return PropertiesFileType.INSTANCE.equals(fileType) || XmlFileType.INSTANCE.equals(fileType);
     }
 
     @NotNull
     @Override
     public Map<String, Void> map(FileContent inputData) {
-        if (StdFileTypes.XML.equals(inputData.getFileType())) {
+        if (XmlFileType.INSTANCE.equals(inputData.getFileType())) {
             // check if its a properties xml
             XmlFileHeader fileHeader = NanoXmlUtil.parseHeader(inputData.getFile());
             if (!"properties".equals(fileHeader.getRootTagLocalName())) {

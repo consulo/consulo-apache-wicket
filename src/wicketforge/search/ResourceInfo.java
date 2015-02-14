@@ -23,8 +23,10 @@ import org.jetbrains.annotations.Nullable;
 import org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension;
 import org.mustbe.consulo.roots.ContentFolderScopes;
 import org.mustbe.consulo.roots.impl.WebResourcesFolderTypeProvider;
+import com.intellij.ide.highlighter.HtmlFileType;
+import com.intellij.ide.highlighter.XmlFileType;
+import com.intellij.lang.properties.PropertiesFileType;
 import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.module.ModuleUtil;
@@ -61,11 +63,11 @@ final class ResourceInfo
 	public static ResourceInfo from(@NotNull PsiFile file)
 	{
 		FileType fileType = file.getFileType();
-		if(StdFileTypes.HTML.equals(fileType))
+		if(HtmlFileType.INSTANCE.equals(fileType))
 		{
 			return fromMarkup(file.getVirtualFile(), file.getProject(), file.getText());
 		}
-		else if(StdFileTypes.PROPERTIES.equals(fileType) || StdFileTypes.XML.equals(fileType))
+		else if(PropertiesFileType.INSTANCE.equals(fileType) || XmlFileType.INSTANCE.equals(fileType))
 		{
 			return fromProperties(file.getVirtualFile(), file.getProject());
 		}
@@ -79,11 +81,11 @@ final class ResourceInfo
 	public static ResourceInfo from(@NotNull FileContent fileContent)
 	{
 		FileType fileType = fileContent.getFileType();
-		if(StdFileTypes.HTML.equals(fileType))
+		if(HtmlFileType.INSTANCE.equals(fileType))
 		{
 			return fromMarkup(fileContent.getFile(), fileContent.getProject(), fileContent.getContentAsText().toString());
 		}
-		else if(StdFileTypes.PROPERTIES.equals(fileType) || StdFileTypes.XML.equals(fileType))
+		else if(PropertiesFileType.INSTANCE.equals(fileType) || XmlFileType.INSTANCE.equals(fileType))
 		{
 			return fromProperties(fileContent.getFile(), fileContent.getProject());
 		}
