@@ -29,7 +29,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import org.consulo.psi.PsiPackage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.properties.IProperty;
@@ -44,6 +43,7 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.ui.ColoredListCellRenderer;
 import com.intellij.ui.SimpleTextAttributes;
+import consulo.psi.PsiPackage;
 import wicketforge.Constants;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.util.WicketFileUtil;

@@ -21,9 +21,7 @@ import java.util.Set;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension;
-import org.mustbe.consulo.roots.ContentFolderScopes;
-import org.mustbe.consulo.roots.impl.WebResourcesFolderTypeProvider;
+import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.module.ModuleUtilCore;
@@ -31,30 +29,38 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.IndexableSetContributor;
+import consulo.roots.ContentFolderScopes;
+import consulo.roots.impl.WebResourcesFolderTypeProvider;
 
-public class AdditionalResourcePathsIndexProvider extends IndexableSetContributor {
-    @NotNull
-    @Override
-    public Set<VirtualFile> getAdditionalProjectRootsToIndex(@Nullable Project project) {
-        if (project != null) {
-            Set<VirtualFile> files = new HashSet<VirtualFile>();
-            for (Module module : ModuleManager.getInstance(project).getModules()) {
+public class AdditionalResourcePathsIndexProvider extends IndexableSetContributor
+{
+	@NotNull
+	@Override
+	public Set<VirtualFile> getAdditionalProjectRootsToIndex(@Nullable Project project)
+	{
+		if(project != null)
+		{
+			Set<VirtualFile> files = new HashSet<VirtualFile>();
+			for(Module module : ModuleManager.getInstance(project).getModules())
+			{
 				WicketModuleExtension facet = ModuleUtilCore.getExtension(module, WicketModuleExtension.class);
-                if (facet != null) {
-					VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of
-							(WebResourcesFolderTypeProvider.getInstance()));
-					for (VirtualFile file : contentFolderFiles) {
-                        files.add(file);
-                    }
-                }
-            }
-            return files;
-        }
-        return Collections.emptySet();
-    }
+				if(facet != null)
+				{
+					VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
+					for(VirtualFile file : contentFolderFiles)
+					{
+						files.add(file);
+					}
+				}
+			}
+			return files;
+		}
+		return Collections.emptySet();
+	}
 
-    @Override
-    public Set<VirtualFile> getAdditionalRootsToIndex() {
-        return Collections.emptySet();
-    }
+	@Override
+	public Set<VirtualFile> getAdditionalRootsToIndex()
+	{
+		return Collections.emptySet();
+	}
 }

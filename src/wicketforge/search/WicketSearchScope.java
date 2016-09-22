@@ -16,37 +16,42 @@
 package wicketforge.search;
 
 import org.jetbrains.annotations.NotNull;
-import org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension;
-import org.mustbe.consulo.roots.ContentFolderScopes;
-import org.mustbe.consulo.roots.impl.WebResourcesFolderTypeProvider;
+import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.GlobalSearchScopes;
+import consulo.roots.ContentFolderScopes;
+import consulo.roots.impl.WebResourcesFolderTypeProvider;
 
-public final class WicketSearchScope {
-    private WicketSearchScope() {
-    }
+public final class WicketSearchScope
+{
+	private WicketSearchScope()
+	{
+	}
 
-    @NotNull
-    public static GlobalSearchScope resourcesInModuleWithDependenciesAndLibraries(@NotNull Module module) {
-        GlobalSearchScope scope = GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module, true);
-        // add all additional resource paths
+	@NotNull
+	public static GlobalSearchScope resourcesInModuleWithDependenciesAndLibraries(@NotNull Module module)
+	{
+		GlobalSearchScope scope = GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module, true);
+		// add all additional resource paths
 		WicketModuleExtension facet = ModuleUtilCore.getExtension(module, WicketModuleExtension.class);
-        if (facet != null) {
-			VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of
-					(WebResourcesFolderTypeProvider.getInstance()));
-			for (VirtualFile virtualFile : contentFolderFiles) {
-                scope = scope.uniteWith(GlobalSearchScopes.directoryScope(module.getProject(), virtualFile, true));
-            }
-        }
-        return scope;
-    }
+		if(facet != null)
+		{
+			VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
+			for(VirtualFile virtualFile : contentFolderFiles)
+			{
+				scope = scope.uniteWith(GlobalSearchScopes.directoryScope(module.getProject(), virtualFile, true));
+			}
+		}
+		return scope;
+	}
 
-    @NotNull
-    public static GlobalSearchScope classInModuleWithDependenciesAndLibraries(@NotNull Module module) {
-        return GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module, true);
-    }
+	@NotNull
+	public static GlobalSearchScope classInModuleWithDependenciesAndLibraries(@NotNull Module module)
+	{
+		return GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module, true);
+	}
 }

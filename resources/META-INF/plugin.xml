@@ -1,19 +1,19 @@
 <idea-plugin>
-	<id>org.mustbe.apache.wicket</id>
+	<id>consulo.apache.wicket</id>
 	<name>WicketForge</name>
 	<version>SNAPSHOT</version>
 	<vendor>Minas Manthos</vendor>
 	<depends>com.intellij.properties</depends>
-	<depends>org.consulo.java</depends>
-	<depends>org.mustbe.consulo.javaee</depends>
+	<depends>consulo.java</depends>
+	<depends>consulo.javaee</depends>
 
 	<extensions defaultExtensionNs="com.intellij">
 		<moduleExtensionProvider key="apache-wicket"
 								 parentKey="java-web"
 								 name="Apache Wicket"
 								 icon="/icons/wicket.png"
-								 immutableClass="org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension"
-								 mutableClass="org.mustbe.consulo.apache.wicket.module.extension.WicketMutableModuleExtension"/>
+								 immutableClass="consulo.apache.wicket.module.extension.WicketModuleExtension"
+								 mutableClass="consulo.apache.wicket.module.extension.WicketMutableModuleExtension"/>
 		<fileTemplateGroup implementation="wicketforge.templates.WicketFileTemplateGroupFactory"/>
 
 		<completion.contributor language="JAVA" implementationClass="wicketforge.completion.ClassWicketIdCompletionContributor"/>

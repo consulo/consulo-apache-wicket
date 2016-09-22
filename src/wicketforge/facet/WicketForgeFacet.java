@@ -16,7 +16,7 @@
 package wicketforge.facet;
 
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension;
+import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtil;
 import com.intellij.openapi.module.ModuleUtilCore;

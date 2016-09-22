@@ -20,9 +20,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.apache.wicket.module.extension.WicketModuleExtension;
-import org.mustbe.consulo.roots.ContentFolderScopes;
-import org.mustbe.consulo.roots.impl.WebResourcesFolderTypeProvider;
+import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.ide.highlighter.HtmlFileType;
 import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.lang.properties.PropertiesFileType;
@@ -40,6 +38,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.SmartList;
 import com.intellij.util.indexing.FileContent;
+import consulo.roots.ContentFolderScopes;
+import consulo.roots.impl.WebResourcesFolderTypeProvider;
 import wicketforge.util.FilenameConstants;
 import wicketforge.util.WicketFilenameUtil;
 
