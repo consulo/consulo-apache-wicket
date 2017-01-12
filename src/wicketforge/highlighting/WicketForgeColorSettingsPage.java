@@ -15,14 +15,6 @@
  */
 package wicketforge.highlighting;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.Icon;
-
-import org.jetbrains.annotations.NotNull;
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType;
 import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
@@ -34,7 +26,13 @@ import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.intellij.psi.PsiElement;
 import com.intellij.ui.JBColor;
+import org.jetbrains.annotations.NotNull;
 import wicketforge.Constants;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  */
@@ -122,11 +120,5 @@ public class WicketForgeColorSettingsPage implements ColorSettingsPage {
         public TextAttributesKey getAttributesKey() {
             return textAttributesKey;
         }
-
-		@Override
-		public boolean needUpdateOnTyping()
-		{
-			return true;
-		}
 	}
 }
