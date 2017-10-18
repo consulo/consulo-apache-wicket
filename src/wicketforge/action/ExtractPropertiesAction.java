@@ -64,7 +64,7 @@ public class ExtractPropertiesAction extends EditorAction {
             if (project == null) {
                 return;
             }
-            final PsiFile psiFile = LangDataKeys.PSI_FILE.getData(dataContext);
+            final PsiFile psiFile = dataContext.getData(LangDataKeys.PSI_FILE);
             if (psiFile == null) {
                 return;
             }

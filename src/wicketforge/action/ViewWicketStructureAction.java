@@ -42,12 +42,11 @@ import wicketforge.psi.hierarchy.MarkupStructureTreeModel;
 public class ViewWicketStructureAction extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent e) {
-        DataContext dataContext = e.getDataContext();
-        Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+        Project project = e.getProject();
         if (project == null) {
             return;
         }
-        Editor editor = PlatformDataKeys.EDITOR.getData(dataContext);
+        Editor editor = e.getData(PlatformDataKeys.EDITOR);
         if (editor == null) {
             return;
         }
@@ -71,7 +70,7 @@ public class ViewWicketStructureAction extends AnAction {
         } else {
             return;
         }
-        FileEditor fileEditor = PlatformDataKeys.FILE_EDITOR.getData(dataContext);
+        FileEditor fileEditor = e.getData(PlatformDataKeys.FILE_EDITOR);
         if (fileEditor == null) {
             return;
         }
@@ -91,12 +90,12 @@ public class ViewWicketStructureAction extends AnAction {
     public void update(AnActionEvent e) {
         Presentation presentation = e.getPresentation();
         DataContext dataContext = e.getDataContext();
-        Project project = PlatformDataKeys.PROJECT.getData(dataContext);
+        Project project = e.getProject();
         if (project == null) {
             presentation.setEnabled(false);
             return;
         }
-        Editor editor = PlatformDataKeys.EDITOR.getData(dataContext);
+        Editor editor = e.getData(PlatformDataKeys.EDITOR);
         if (editor == null) {
             presentation.setEnabled(false);
             return;
