@@ -61,11 +61,6 @@ public class WicketForgeColorSettingsPage implements ColorSettingsPage {
     }
 
     @Override
-    public Icon getIcon() {
-        return Constants.WICKET_ICON;
-    }
-
-    @Override
     @NotNull
     public AttributesDescriptor[] getAttributeDescriptors() {
         return ATTRIBUTESDESC;

@@ -15,11 +15,12 @@
  */
 package wicketforge;
 
-import com.intellij.openapi.util.IconLoader;
-import org.jetbrains.annotations.NotNull;
-import wicketforge.templates.WicketTemplates;
+import javax.swing.Icon;
 
-import javax.swing.*;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.util.IconLoader;
+import consulo.ui.image.Image;
+import wicketforge.templates.WicketTemplates;
 
 /**
  * A collection of constants used by the plugin.
@@ -48,7 +49,7 @@ public interface Constants {
     public static final String PROP_WICKET_NS = "WICKET_NS";
 
     // icons
-    public static final Icon WICKET_ICON = IconLoader.findIcon("/icons/wicket.png");
+    public static final Image WICKET_ICON = IconLoader.findIcon("/icons/wicket.png");
     public static final Icon WICKET_COMPONENT_ICON = IconLoader.findIcon("/icons/wicket_component.png");
     public static final Icon TOJAVAREF = IconLoader.findIcon("/icons/wicket_form.png");
     public static final Icon TOMARKUPREF = IconLoader.findIcon("/icons/wicket_form.png");

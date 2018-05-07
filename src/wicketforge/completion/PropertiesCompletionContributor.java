@@ -37,6 +37,7 @@ import com.intellij.psi.PsiNewExpression;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlToken;
+import consulo.awt.TargetAWT;
 import wicketforge.search.ClassIndex;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.util.WicketPsiUtil;
@@ -87,7 +88,7 @@ public class PropertiesCompletionContributor extends CompletionContributor {
                 if (propertyKey != null) {
                     LookupElementBuilder lookupElementBuilder =
                             LookupElementBuilder.create(propertyKey)
-                                    .withIcon(PropertiesFileType.INSTANCE.getIcon())
+                                    .withIcon(TargetAWT.to(PropertiesFileType.INSTANCE.getIcon()))
                                     .withTypeText(".properties")
                                     .withTailText("  " + property.getValue(), true);
                     rs.addElement(lookupElementBuilder);
