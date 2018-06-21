@@ -15,12 +15,13 @@
  */
 package wicketforge.action.ui;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.search.GlobalSearchScope;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.Constants;
 
 /**
@@ -28,12 +29,12 @@ import wicketforge.Constants;
  */
 public class CreatePageDialog extends AbstractCreateDialog {
 
-    public CreatePageDialog(@NotNull Project project, @NotNull ActionRunnable actionRunnable, @NotNull String title, @NotNull PsiDirectory directory) {
+    public CreatePageDialog(@Nonnull Project project, @Nonnull ActionRunnable actionRunnable, @Nonnull String title, @Nonnull PsiDirectory directory) {
         super(project, actionRunnable, title, directory);
     }
 
     @Override
-    protected PsiClass getDefaultClass(@NotNull Project project) {
+    protected PsiClass getDefaultClass(@Nonnull Project project) {
         return JavaPsiFacade.getInstance(project).findClass(Constants.WICKET_PAGE, GlobalSearchScope.allScope(project));
     }
 }

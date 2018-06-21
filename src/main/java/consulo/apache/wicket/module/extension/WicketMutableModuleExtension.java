@@ -1,9 +1,9 @@
 package consulo.apache.wicket.module.extension;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JComponent;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import consulo.module.extension.MutableModuleExtension;
 import consulo.roots.ModuleRootLayer;
 
@@ -13,14 +13,14 @@ import consulo.roots.ModuleRootLayer;
  */
 public class WicketMutableModuleExtension extends WicketModuleExtension implements MutableModuleExtension<WicketModuleExtension>
 {
-	public WicketMutableModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
+	public WicketMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{
 		super(id, moduleRootLayer);
 	}
 
 	@Nullable
 	@Override
-	public JComponent createConfigurablePanel(@NotNull Runnable updateOnCheck)
+	public JComponent createConfigurablePanel(@Nonnull Runnable updateOnCheck)
 	{
 		return null;
 	}
@@ -32,7 +32,7 @@ public class WicketMutableModuleExtension extends WicketModuleExtension implemen
 	}
 
 	@Override
-	public boolean isModified(@NotNull WicketModuleExtension originalExtension)
+	public boolean isModified(@Nonnull WicketModuleExtension originalExtension)
 	{
 		return myIsEnabled != originalExtension.isEnabled();
 	}

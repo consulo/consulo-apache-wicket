@@ -23,7 +23,7 @@ import com.intellij.psi.XmlRecursiveElementVisitor;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import wicketforge.Constants;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ import java.util.List;
 public class EmptySrcAttributeInspection extends XmlSuppressableInspectionTool {
 
     @Override
-    public ProblemDescriptor[] checkFile(@NotNull PsiFile psiFile, @NotNull InspectionManager manager, boolean b) {
+    public ProblemDescriptor[] checkFile(@Nonnull PsiFile psiFile, @Nonnull InspectionManager manager, boolean b) {
         EmptySrcAttributeVisitor visitor = new EmptySrcAttributeVisitor(manager);
         psiFile.accept(visitor);
         return visitor.getProblemDescriptors();
@@ -42,26 +42,26 @@ public class EmptySrcAttributeInspection extends XmlSuppressableInspectionTool {
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Wicket Empty Src Attribute Inspection";
     }
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return Constants.INTENSION_INSPECTION_GROUPNAME;
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getShortName() {
         return "WicketForgeEmptySrcAttributeInspection";
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.ERROR;
     }

@@ -24,8 +24,8 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.compiled.ClsClassImpl;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.ProjectScope;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import wicketforge.util.WicketPsiUtil;
 
 public class ClassIndex {
@@ -40,7 +40,7 @@ public class ClassIndex {
      * @return the associated PsiClass or null if no such class exists.
      */
     @Nullable
-    public static PsiClass getAssociatedClass(@NotNull PsiFile psiFile) {
+    public static PsiClass getAssociatedClass(@Nonnull PsiFile psiFile) {
         ResourceInfo resourceInfo = ResourceInfo.from(psiFile);
         if (resourceInfo == null) {
             return null;

@@ -19,8 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.CommonBundle;
 import com.intellij.codeInsight.CodeInsightBundle;
@@ -58,8 +58,8 @@ public final class WicketFileUtil
 	{
 	}
 
-	@NotNull
-	public static VirtualFile[] getResourceRoots(@NotNull Module module)
+	@Nonnull
+	public static VirtualFile[] getResourceRoots(@Nonnull Module module)
 	{
 		// all module source roots
 		VirtualFile[] result = ModuleRootManager.getInstance(module).getSourceRoots();
@@ -96,7 +96,7 @@ public final class WicketFileUtil
 	 * @return Selected Directory or null if canceled/error
 	 */
 	@Nullable
-	public static PsiDirectory selectTargetDirectory(@NotNull final String packageName, @NotNull final Project project, @NotNull final Module module)
+	public static PsiDirectory selectTargetDirectory(@Nonnull final String packageName, @Nonnull final Project project, @Nonnull final Module module)
 	{
 		final PackageWrapper targetPackage = new PackageWrapper(PsiManager.getInstance(project), packageName);
 
@@ -155,7 +155,7 @@ public final class WicketFileUtil
 	 * @return the created Element from Template
 	 */
 	@Nullable
-	public static PsiElement createFileFromTemplate(@NotNull String fileName, @NotNull PsiDirectory directory, @NotNull String templateName)
+	public static PsiElement createFileFromTemplate(@Nonnull String fileName, @Nonnull PsiDirectory directory, @Nonnull String templateName)
 	{
 		String errorMessage = RefactoringMessageUtil.checkCanCreateFile(directory, fileName);
 		if(errorMessage != null)
@@ -182,7 +182,7 @@ public final class WicketFileUtil
 	 * @param vf
 	 * @return true if file is in library
 	 */
-	public static boolean isInLibrary(@NotNull VirtualFile vf, @NotNull Project project)
+	public static boolean isInLibrary(@Nonnull VirtualFile vf, @Nonnull Project project)
 	{
 		ProjectFileIndex projectFileIndex = ProjectRootManager.getInstance(project).getFileIndex();
 		return projectFileIndex.isInLibrarySource(vf) || projectFileIndex.isInLibraryClasses(vf);

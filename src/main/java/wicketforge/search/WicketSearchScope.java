@@ -15,7 +15,8 @@
  */
 package wicketforge.search;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
@@ -32,8 +33,8 @@ public final class WicketSearchScope
 	{
 	}
 
-	@NotNull
-	public static GlobalSearchScope resourcesInModuleWithDependenciesAndLibraries(@NotNull Module module)
+	@Nonnull
+	public static GlobalSearchScope resourcesInModuleWithDependenciesAndLibraries(@Nonnull Module module)
 	{
 		GlobalSearchScope scope = GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module, true);
 		// add all additional resource paths
@@ -49,8 +50,8 @@ public final class WicketSearchScope
 		return scope;
 	}
 
-	@NotNull
-	public static GlobalSearchScope classInModuleWithDependenciesAndLibraries(@NotNull Module module)
+	@Nonnull
+	public static GlobalSearchScope classInModuleWithDependenciesAndLibraries(@Nonnull Module module)
 	{
 		return GlobalSearchScope.moduleWithDependenciesAndLibrariesScope(module, true);
 	}

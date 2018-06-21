@@ -27,8 +27,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import consulo.psi.PsiPackage;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.ide.util.TreeClassChooser;
@@ -65,7 +65,7 @@ public abstract class AbstractCreateDialog extends DialogWrapper {
     private final static String CREATE_MARKUP_KEY = "CREATE_MARKUP_KEY";
     private final static String CHOOSE_DIFFERENT_DESTINATION_KEY = "CHOOSE_DIFFERENT_DESTINATION_KEY";
 
-    AbstractCreateDialog(@NotNull Project project, @NotNull ActionRunnable actionRunnable, @NotNull String title, @NotNull PsiDirectory directory) {
+    AbstractCreateDialog(@Nonnull Project project, @Nonnull ActionRunnable actionRunnable, @Nonnull String title, @Nonnull PsiDirectory directory) {
         super(project, false);
 
         this.storeKey = "wicketforge." + getClass().getSimpleName() + ".";
@@ -80,8 +80,8 @@ public abstract class AbstractCreateDialog extends DialogWrapper {
         setTitle(title);
     }
 
-    @NotNull
-    private String getStoreKey(@NotNull String key) {
+    @Nonnull
+    private String getStoreKey(@Nonnull String key) {
         return storeKey + key;
     }
 
@@ -169,7 +169,7 @@ public abstract class AbstractCreateDialog extends DialogWrapper {
         }
     }
 
-    private boolean validateInput(@NotNull String inputString, @NotNull String extendsClass) {
+    private boolean validateInput(@Nonnull String inputString, @Nonnull String extendsClass) {
         if (inputString.length() == 0) {
             setErrorText(IdeBundle.message("error.name.should.be.specified"));
             return false;
@@ -189,9 +189,9 @@ public abstract class AbstractCreateDialog extends DialogWrapper {
     }
 
     @Nullable
-    protected abstract PsiClass getDefaultClass(@NotNull final Project project);
+    protected abstract PsiClass getDefaultClass(@Nonnull final Project project);
 
     public static interface ActionRunnable {
-        boolean run(@NotNull String inputString, @NotNull String extendsClass, boolean hasMarkup, @NotNull PsiDirectory markupDirectory);
+        boolean run(@Nonnull String inputString, @Nonnull String extendsClass, boolean hasMarkup, @Nonnull PsiDirectory markupDirectory);
     }
 }

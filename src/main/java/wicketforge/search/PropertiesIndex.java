@@ -18,8 +18,8 @@ package wicketforge.search;
 import java.util.Collections;
 import java.util.Map;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.highlighter.XmlFileType;
 import com.intellij.lang.properties.PropertiesFileType;
 import com.intellij.lang.properties.PropertiesUtil;
@@ -38,11 +38,11 @@ import com.intellij.util.xml.XmlFileHeader;
 public class PropertiesIndex extends WicketResourceIndexExtension {
     private static final ID<String, Void> NAME = ID.create("WicketPropertiesIndex");
 
-    public PropertiesIndex(@NotNull MessageBus messageBus) {
+    public PropertiesIndex(@Nonnull MessageBus messageBus) {
         super(messageBus);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public ID<String, Void> getName() {
         return NAME;
@@ -54,7 +54,7 @@ public class PropertiesIndex extends WicketResourceIndexExtension {
         return PropertiesFileType.INSTANCE.equals(fileType) || XmlFileType.INSTANCE.equals(fileType);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Map<String, Void> map(FileContent inputData) {
         if (XmlFileType.INSTANCE.equals(inputData.getFileType())) {
@@ -73,8 +73,8 @@ public class PropertiesIndex extends WicketResourceIndexExtension {
      * @param psiClass PsiClass
      * @return all properties or empty array if no such file exists.
      */
-    @NotNull
-    public static PsiFile[] getAllFiles(@NotNull final PsiClass psiClass) {
+    @Nonnull
+    public static PsiFile[] getAllFiles(@Nonnull final PsiClass psiClass) {
         return getFilesByClass(NAME, psiClass, true);
     }
 
@@ -85,7 +85,7 @@ public class PropertiesIndex extends WicketResourceIndexExtension {
      * @return the base properties or null if no such file exists.
      */
     @Nullable
-    public static PropertiesFile getBaseFile(@NotNull final PsiClass psiClass) {
+    public static PropertiesFile getBaseFile(@Nonnull final PsiClass psiClass) {
         PsiFile[] files = getFilesByClass(NAME, psiClass, false);
         return files.length > 0 ? PropertiesUtil.getPropertiesFile(files[0]) : null;
     }

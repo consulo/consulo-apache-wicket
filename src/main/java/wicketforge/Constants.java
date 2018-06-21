@@ -17,7 +17,7 @@ package wicketforge;
 
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.openapi.util.IconLoader;
 import consulo.ui.image.Image;
 import wicketforge.templates.WicketTemplates;
@@ -103,7 +103,7 @@ public interface Constants {
             this.templateName = templateName;
         }
 
-        @NotNull
+        @Nonnull
         public String getTemplateName() {
             return templateName;
         }

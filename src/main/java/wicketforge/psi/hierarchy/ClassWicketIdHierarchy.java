@@ -19,8 +19,8 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNewExpression;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import wicketforge.Constants;
 
 import java.util.HashMap;
@@ -34,12 +34,12 @@ public class ClassWicketIdHierarchy {
 
     private Map<String, ClassWicketIdItem> wicketIdPathMap;
 
-    @NotNull
-    public static ClassWicketIdHierarchy create(@NotNull PsiClass psiClass) {
+    @Nonnull
+    public static ClassWicketIdHierarchy create(@Nonnull PsiClass psiClass) {
         return new ClassWicketIdHierarchy(psiClass);
     }
 
-    private ClassWicketIdHierarchy(@NotNull final PsiClass psiClass) {
+    private ClassWicketIdHierarchy(@Nonnull final PsiClass psiClass) {
         this.wicketIdPathMap = new HashMap<String, ClassWicketIdItem>();
 
         ClassWicketIdItem root = new ClassWicketIdItem("", null);
@@ -53,10 +53,10 @@ public class ClassWicketIdHierarchy {
         }
     }
 
-    private void addRecursive(@NotNull ClassWicketIdReferences classWicketIdReferences,
-                              @NotNull StringBuilder path,
-                              @NotNull ClassWicketIdItem parent,
-                              @NotNull PsiElement parentElement,
+    private void addRecursive(@Nonnull ClassWicketIdReferences classWicketIdReferences,
+                              @Nonnull StringBuilder path,
+                              @Nonnull ClassWicketIdItem parent,
+                              @Nonnull PsiElement parentElement,
                               @Nullable List<PsiNewExpression> addedComponents,
                               int depth) {
         if (depth++ > 50) {
@@ -106,8 +106,8 @@ public class ClassWicketIdHierarchy {
         }
     }
 
-    @NotNull
-    private ClassWicketIdItem findOrCreateChild(@NotNull StringBuilder path, @NotNull ClassWicketIdItem parent, @NotNull String wicketId) {
+    @Nonnull
+    private ClassWicketIdItem findOrCreateChild(@Nonnull StringBuilder path, @Nonnull ClassWicketIdItem parent, @Nonnull String wicketId) {
         ClassWicketIdItem child = parent.findChild(wicketId);
         if (child == null) {
             child = new ClassWicketIdItem(wicketId, parent);
@@ -116,7 +116,7 @@ public class ClassWicketIdHierarchy {
         return child;
     }
 
-    @NotNull
+    @Nonnull
     public Map<String, ClassWicketIdItem> getWicketIdPathMap() {
         return wicketIdPathMap;
     }

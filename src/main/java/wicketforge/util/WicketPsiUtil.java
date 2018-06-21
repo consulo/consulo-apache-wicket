@@ -24,8 +24,8 @@ import com.intellij.psi.search.searches.ClassInheritorsSearch;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.util.PsiUtil;
 import com.intellij.util.Query;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import wicketforge.Constants;
 
 import java.util.Collection;
@@ -44,7 +44,7 @@ public final class WicketPsiUtil {
      * @param clazz PsiClass
      * @return boolean
      */
-    public static boolean isWicketComponent(@NotNull PsiClass clazz) {
+    public static boolean isWicketComponent(@Nonnull PsiClass clazz) {
         return isInheritor(clazz, Constants.WICKET_COMPONENT);
     }
 
@@ -55,7 +55,7 @@ public final class WicketPsiUtil {
      * @param clazz PsiClass
      * @return boolean
      */
-    public static boolean isWicketResourceModel(@NotNull PsiClass clazz) {
+    public static boolean isWicketResourceModel(@Nonnull PsiClass clazz) {
         return isInheritor(clazz, Constants.WICKET_RESOURCEMODEL, Constants.WICKET_STRINGRESOURCEMODEL);
     }
 
@@ -65,7 +65,7 @@ public final class WicketPsiUtil {
      * @param clazz PsiClass
      * @return true if instance of a wicket page
      */
-    public static boolean isWicketPage(@NotNull final PsiClass clazz) {
+    public static boolean isWicketPage(@Nonnull final PsiClass clazz) {
         return isInheritor(clazz, Constants.WICKET_PAGE);
     }
 
@@ -75,7 +75,7 @@ public final class WicketPsiUtil {
      * @param clazz PsiClass
      * @return true if instance of a wicket panel
      */
-    public static boolean isWicketPanel(@NotNull final PsiClass clazz) {
+    public static boolean isWicketPanel(@Nonnull final PsiClass clazz) {
         return isInheritor(clazz, Constants.WICKET_PANEL, Constants.WICKET_FORMCOMPONENTPANEL);
     }
 
@@ -85,7 +85,7 @@ public final class WicketPsiUtil {
      * @param clazz PsiClass
      * @return true if instance of a wicket border
      */
-    public static boolean isWicketBorder(@NotNull final PsiClass clazz) {
+    public static boolean isWicketBorder(@Nonnull final PsiClass clazz) {
         return isInheritor(clazz, Constants.WICKET_BORDER);
     }
 
@@ -95,7 +95,7 @@ public final class WicketPsiUtil {
      * @param clazz PsiClass
      * @return true if instance of a wicket Page or WebMarkupContainerWithAssociatedMarkup
      */
-    public static boolean isWicketComponentWithAssociatedMarkup(@NotNull final PsiClass clazz) {
+    public static boolean isWicketComponentWithAssociatedMarkup(@Nonnull final PsiClass clazz) {
         return isInheritor(clazz, Constants.WICKET_PAGE, Constants.WICKET_PANEL, Constants.WICKET_FORMCOMPONENTPANEL, Constants.WICKET_BORDER);
     }
 
@@ -105,11 +105,11 @@ public final class WicketPsiUtil {
      * @param clazz PsiClass
      * @return true if instance of a MarkupContainer
      */
-    public static boolean isMarkupContainer(@NotNull final PsiClass clazz) {
+    public static boolean isMarkupContainer(@Nonnull final PsiClass clazz) {
         return isInheritor(clazz, "org.apache.wicket.MarkupContainer");
     }
 
-    private static boolean isInheritor(@NotNull PsiClass candidateClass, @NotNull String... baseClassQualifiedNames) {
+    private static boolean isInheritor(@Nonnull PsiClass candidateClass, @Nonnull String... baseClassQualifiedNames) {
         PsiClass workClass = candidateClass;
         while (workClass != null) {
             String candidateClassQualifiedName = workClass.getQualifiedName();
@@ -141,7 +141,7 @@ public final class WicketPsiUtil {
      * @return          PsiClass of Page/Pane from element
      */
     @Nullable
-    public static PsiClass getParentWicketClass(@NotNull PsiElement element) {
+    public static PsiClass getParentWicketClass(@Nonnull PsiElement element) {
         PsiClass psiClass = PsiTreeUtil.getParentOfType(element, PsiClass.class, false);
         while (psiClass != null) {
             if (WicketPsiUtil.isWicketComponentWithAssociatedMarkup(psiClass)) {
@@ -161,7 +161,7 @@ public final class WicketPsiUtil {
     }
 
     @Nullable
-    public static PsiClass findWicketApplicationClass(@NotNull Project project) {
+    public static PsiClass findWicketApplicationClass(@Nonnull Project project) {
         PsiClass wicketApplicationClass =
             JavaPsiFacade.getInstance(project).findClass(Constants.WICKET_APPLICATION, GlobalSearchScope.allScope(project));
 
@@ -187,7 +187,7 @@ public final class WicketPsiUtil {
 
     @Nullable
     // todo mm -> check if we can deprecate this -> i think this one should be like wicketforge.psi.hierarchy.ClassWicketIdReferences -> resolveClassFromNewExpression
-    public static PsiClass getClassFromNewExpression(@NotNull PsiNewExpression expression) {
+    public static PsiClass getClassFromNewExpression(@Nonnull PsiNewExpression expression) {
         PsiMethod constructor = expression.resolveConstructor();
         if (constructor == null || !constructor.getContainingFile().isPhysical()) {
             return null;
@@ -196,7 +196,7 @@ public final class WicketPsiUtil {
     }
 
     @Nullable
-    public static PsiExpression getWicketIdExpressionFromArguments(@NotNull PsiNewExpression expression) {
+    public static PsiExpression getWicketIdExpressionFromArguments(@Nonnull PsiNewExpression expression) {
         PsiExpressionList expressionList = expression.getArgumentList();
         if (expressionList != null) {
             PsiExpression[] psiExpressions = expressionList.getExpressions();
@@ -208,7 +208,7 @@ public final class WicketPsiUtil {
     }
 
     @Nullable
-    public static String getWicketIdFromExpression(@NotNull PsiExpression expression) {
+    public static String getWicketIdFromExpression(@Nonnull PsiExpression expression) {
         Object object = JavaConstantExpressionEvaluator.computeConstantExpression(expression, false);
         return object instanceof String ? (String) object : null;
     }

@@ -21,8 +21,8 @@ import com.intellij.psi.PsiExpression;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlFile;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import wicketforge.Constants;
 import wicketforge.util.WicketPsiUtil;
 
@@ -33,7 +33,7 @@ public final class HierarchyUtil {
     }
 
     @Nullable
-    public static String findPathOf(@NotNull PsiClass psiClass, @NotNull PsiExpression wicketIdExpression, boolean parent, boolean incomplete) {
+    public static String findPathOf(@Nonnull PsiClass psiClass, @Nonnull PsiExpression wicketIdExpression, boolean parent, boolean incomplete) {
         ClassWicketIdHierarchy hierarchy = ClassWicketIdHierarchy.create(psiClass);
         for (Map.Entry<String, ClassWicketIdItem> entry : hierarchy.getWicketIdPathMap().entrySet()) {
             for (ClassWicketIdNewComponentItem newComponentItem : entry.getValue().getNewComponentItems()) {
@@ -68,7 +68,7 @@ public final class HierarchyUtil {
     }
 
     @Nullable
-    public static String findPathOf(@NotNull XmlAttributeValue attributeValue, boolean parent) {
+    public static String findPathOf(@Nonnull XmlAttributeValue attributeValue, boolean parent) {
         PsiFile psiFile = attributeValue.getContainingFile();
         if (psiFile instanceof XmlFile) {
             MarkupWicketIdHierarchy hierarchy = MarkupWicketIdHierarchy.create((XmlFile) psiFile);

@@ -15,9 +15,10 @@
  */
 package wicketforge.refactoring;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.search.MarkupIndex;
 import wicketforge.util.FilenameConstants;
 
@@ -26,9 +27,9 @@ public class MarkupRenamerFactory extends ResourceRenamerFactory {
         super("Markup", FilenameConstants.MARKUP_EXTENSIONS);
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    protected PsiFile[] getAllFiles(@NotNull PsiClass psiClass) {
+    protected PsiFile[] getAllFiles(@Nonnull PsiClass psiClass) {
         return MarkupIndex.getAllFiles(psiClass);
     }
 }

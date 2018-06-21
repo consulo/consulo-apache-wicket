@@ -15,9 +15,10 @@
  */
 package wicketforge.psi.references;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.*;
 import com.intellij.util.ProcessingContext;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.MarkupIndex;
 import wicketforge.util.WicketPsiUtil;
@@ -25,9 +26,9 @@ import wicketforge.util.WicketPsiUtil;
 /**
  */
 public class ClassWicketIdReferenceProvider extends PsiReferenceProvider {
-    @NotNull
+    @Nonnull
     @Override
-    public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext context) {
+    public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext context) {
         PsiExpressionList expressionList = (PsiExpressionList) element.getParent();
         PsiExpression[] expressions = expressionList.getExpressions();
         if (expressions.length > 0 && expressions[0].equals(element)) {

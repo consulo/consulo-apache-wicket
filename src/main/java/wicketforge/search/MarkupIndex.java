@@ -15,8 +15,8 @@
  */
 package wicketforge.search;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.highlighter.HtmlFileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -28,11 +28,11 @@ import com.intellij.util.messages.MessageBus;
 public class MarkupIndex extends WicketResourceIndexExtension {
     private static final ID<String, Void> NAME = ID.create("WicketMarkupIndex");
 
-    public MarkupIndex(@NotNull MessageBus messageBus) {
+    public MarkupIndex(@Nonnull MessageBus messageBus) {
         super(messageBus);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public ID<String, Void> getName() {
         return NAME;
@@ -49,8 +49,8 @@ public class MarkupIndex extends WicketResourceIndexExtension {
      * @param psiClass PsiClass
      * @return all markups or empty array if no such file exists.
      */
-    @NotNull
-    public static PsiFile[] getAllFiles(@NotNull final PsiClass psiClass) {
+    @Nonnull
+    public static PsiFile[] getAllFiles(@Nonnull final PsiClass psiClass) {
         return getFilesByClass(NAME, psiClass, true);
     }
 
@@ -61,7 +61,7 @@ public class MarkupIndex extends WicketResourceIndexExtension {
      * @return the base markup or null if no such file exists.
      */
     @Nullable
-    public static PsiFile getBaseFile(@NotNull final PsiClass psiClass) {
+    public static PsiFile getBaseFile(@Nonnull final PsiClass psiClass) {
         PsiFile[] files = getFilesByClass(NAME, psiClass, false);
         return files.length > 0 ? files[0] : null;
     }

@@ -23,7 +23,7 @@ import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  */
@@ -33,14 +33,14 @@ public class WicketForgeHighlightingPassFactory extends AbstractProjectComponent
         highlightingPassRegistrar.registerTextEditorHighlightingPass(this, null, new int[]{Pass.UPDATE_ALL}, false, -1);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getComponentName() {
         return "WicketForgeHighlightingPassFactory";
     }
 
     @Override
-    public TextEditorHighlightingPass createHighlightingPass(@NotNull PsiFile file, @NotNull Editor editor) {
+    public TextEditorHighlightingPass createHighlightingPass(@Nonnull PsiFile file, @Nonnull Editor editor) {
         return new WicketForgeHighlightingPass(file, editor);
     }
 }

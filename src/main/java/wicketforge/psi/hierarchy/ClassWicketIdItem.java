@@ -17,8 +17,8 @@ package wicketforge.psi.hierarchy;
 
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.util.SmartList;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import wicketforge.Constants;
 
 import javax.swing.*;
@@ -32,7 +32,7 @@ public final class ClassWicketIdItem implements ItemPresentation {
     private List<ClassWicketIdItem> children;
     private ClassWicketIdItem parent;
 
-    ClassWicketIdItem(@NotNull String wicketId, @Nullable ClassWicketIdItem parent) {
+    ClassWicketIdItem(@Nonnull String wicketId, @Nullable ClassWicketIdItem parent) {
         this.wicketId = wicketId;
         this.newComponentItems = new SmartList<ClassWicketIdNewComponentItem>();
         if (parent != null) {
@@ -42,7 +42,7 @@ public final class ClassWicketIdItem implements ItemPresentation {
     }
 
     @Nullable
-    ClassWicketIdItem findChild(@NotNull String wicketId) {
+    ClassWicketIdItem findChild(@Nonnull String wicketId) {
         if (children != null) {
             for (ClassWicketIdItem child : children) {
                 if (wicketId.equals(child.wicketId)) {
@@ -53,28 +53,28 @@ public final class ClassWicketIdItem implements ItemPresentation {
         return null;
     }
 
-    boolean contains(@NotNull ClassWicketIdNewComponentItem newComponentItem) {
+    boolean contains(@Nonnull ClassWicketIdNewComponentItem newComponentItem) {
         return newComponentItems.contains(newComponentItem) || (parent != null && parent.contains(newComponentItem));
     }
 
-    private void addChild(@NotNull ClassWicketIdItem child) {
+    private void addChild(@Nonnull ClassWicketIdItem child) {
         if (children == null) {
             children = new ArrayList<ClassWicketIdItem>();
         }
         children.add(child);
     }
 
-    @NotNull
+    @Nonnull
     public String getWicketId() {
         return wicketId;
     }
 
-    @NotNull
+    @Nonnull
     public List<ClassWicketIdNewComponentItem> getNewComponentItems() {
         return newComponentItems;
     }
 
-    @NotNull
+    @Nonnull
     public List<ClassWicketIdItem> getChildren() {
         return children == null ? Collections.<ClassWicketIdItem>emptyList() : children;
     }

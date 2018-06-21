@@ -15,6 +15,8 @@
  */
 package wicketforge.inspection;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemHighlightType;
@@ -27,16 +29,15 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.Constants;
 import wicketforge.psi.references.MarkupWicketIdReference;
 
 /**
  */
 public class MarkupWicketIdInspection extends XmlSuppressableInspectionTool {
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new XmlElementVisitor() {
             @Override
             public void visitXmlAttribute(XmlAttribute attribute) {
@@ -58,27 +59,27 @@ public class MarkupWicketIdInspection extends XmlSuppressableInspectionTool {
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return Constants.INTENSION_INSPECTION_GROUPNAME;
     }
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Wicket HTML ID Inspection";
     }
 
     @Override
     @NonNls
-    @NotNull
+    @Nonnull
     public String getShortName() {
         return "WicketForgeHtmlIdInspection";
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
     }

@@ -15,8 +15,9 @@
  */
 package wicketforge.intention;
 
+import javax.annotation.Nonnull;
+
 import consulo.psi.PsiPackage;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.module.Module;
@@ -44,7 +45,7 @@ abstract class AddMarkupIntention implements IntentionAction {
     }
 
     @Override
-    public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile file) {
         if (!(file instanceof PsiJavaFile)) {
             return false;
         }
@@ -74,7 +75,7 @@ abstract class AddMarkupIntention implements IntentionAction {
     }
 
     @Override
-    public void invoke(@NotNull final Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
+    public void invoke(@Nonnull final Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
         int offset = editor.getCaretModel().getOffset();
         PsiElement element = file.findElementAt(offset);
         if (element != null) {
@@ -102,13 +103,13 @@ abstract class AddMarkupIntention implements IntentionAction {
         }
     }
 
-    protected abstract boolean hasResourceFile(@NotNull PsiClass psiClass);
+    protected abstract boolean hasResourceFile(@Nonnull PsiClass psiClass);
 
-    @NotNull
-    protected abstract String getResourceFileName(@NotNull PsiClass psiClass);
+    @Nonnull
+    protected abstract String getResourceFileName(@Nonnull PsiClass psiClass);
 
-    @NotNull
+    @Nonnull
     protected abstract String getTemplateName();
 
-    protected abstract boolean isApplicableForClass(@NotNull PsiClass psiClass);
+    protected abstract boolean isApplicableForClass(@Nonnull PsiClass psiClass);
 }

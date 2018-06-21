@@ -26,10 +26,8 @@ import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.intellij.psi.PsiElement;
 import com.intellij.ui.JBColor;
-import org.jetbrains.annotations.NotNull;
-import wicketforge.Constants;
+import javax.annotation.Nonnull;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,31 +53,31 @@ public class WicketForgeColorSettingsPage implements ColorSettingsPage {
     };
 
     @Override
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Wicket";
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public AttributesDescriptor[] getAttributeDescriptors() {
         return ATTRIBUTESDESC;
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public ColorDescriptor[] getColorDescriptors() {
         return ColorDescriptor.EMPTY_ARRAY;
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public SyntaxHighlighter getHighlighter() {
         return new PlainSyntaxHighlighter();
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getDemoText() {
         return "-- java\n" +
                 "new Label(<javaWicketId>\"someWicketId\"</javaWicketId>, \"Hello World!\")\n" +
@@ -106,7 +104,7 @@ public class WicketForgeColorSettingsPage implements ColorSettingsPage {
         }
 
         @Override
-        @NotNull
+        @Nonnull
         public HighlightSeverity getSeverity(PsiElement psiElement) {
             return HighlightSeverity.INFORMATION;
         }

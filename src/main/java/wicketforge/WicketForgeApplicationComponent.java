@@ -18,7 +18,7 @@ package wicketforge;
 import com.intellij.codeInspection.InspectionToolProvider;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.ServiceManager;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import wicketforge.inspection.ClassWicketIdInspection;
 import wicketforge.inspection.EmptySrcAttributeInspection;
 import wicketforge.inspection.MarkupWicketIdInspection;
@@ -44,7 +44,7 @@ public class WicketForgeApplicationComponent implements ApplicationComponent, In
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getComponentName() {
         return "WicketForgeApplicationComponent";
     }

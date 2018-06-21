@@ -15,9 +15,11 @@
  */
 package wicketforge.util;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiClass;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import wicketforge.Constants;
 
 public final class WicketFilenameUtil {
@@ -30,8 +32,8 @@ public final class WicketFilenameUtil {
      * @param clazz the PsiClass
      * @return the markup file name
      */
-    @NotNull
-    public static String getMarkupFilename(@NotNull PsiClass clazz) {
+    @Nonnull
+    public static String getMarkupFilename(@Nonnull PsiClass clazz) {
         return getResourceFilename(clazz) + FilenameConstants.EXT_HTML;
     }
 
@@ -41,8 +43,8 @@ public final class WicketFilenameUtil {
      * @param clazz the PsiClass
      * @return the markup file name
      */
-    @NotNull
-    public static String getPropertiesFilename(@NotNull PsiClass clazz, @NotNull Constants.PropertiesType propertiesType) {
+    @Nonnull
+    public static String getPropertiesFilename(@Nonnull PsiClass clazz, @Nonnull Constants.PropertiesType propertiesType) {
         switch (propertiesType) {
             case PROPERTIES:
                 return getResourceFilename(clazz) + FilenameConstants.EXT_PROPERTIES;
@@ -59,8 +61,8 @@ public final class WicketFilenameUtil {
      * @param clazz The PsiClass
      * @return      ResourceFileName ex 'MyClass' or 'MyClass$MyInnerClass'
      */
-    @NotNull
-    private static String getResourceFilename(@NotNull PsiClass clazz) {
+    @Nonnull
+    private static String getResourceFilename(@Nonnull PsiClass clazz) {
         StringBuilder sb = new StringBuilder(clazz.getName());
 
         PsiClass workPsiClass = clazz;
@@ -74,8 +76,8 @@ public final class WicketFilenameUtil {
     /**
      * @return filename with removed extension (first match from fileExtensions)
      */
-    @NotNull
-    public static String removeExtension(@NotNull String filename, @NotNull String[] fileExtensions) {
+    @Nonnull
+    public static String removeExtension(@Nonnull String filename, @Nonnull String[] fileExtensions) {
         for (String fileExtension : fileExtensions) {
             if (filename.endsWith(fileExtension)) {
                 return filename.substring(0, filename.length() - fileExtension.length());
@@ -88,7 +90,7 @@ public final class WicketFilenameUtil {
      * @return extension from filename (first match from fileExtensions)
      */
     @Nullable
-    public static String extractExtension(@NotNull String filename, @NotNull String[] fileExtensions) {
+    public static String extractExtension(@Nonnull String filename, @Nonnull String[] fileExtensions) {
         for (String fileExtension : fileExtensions) {
             if (filename.endsWith(fileExtension)) {
                 return fileExtension;
@@ -104,7 +106,7 @@ public final class WicketFilenameUtil {
      * </pre>
      */
     @Nullable
-    public static String extractLocale(@NotNull String filenameWithoutExtension) {
+    public static String extractLocale(@Nonnull String filenameWithoutExtension) {
         int indexOfLocale = indexOfLocale(filenameWithoutExtension);
         return indexOfLocale > 0 ? filenameWithoutExtension.substring(indexOfLocale + 1) : null;
     }
@@ -115,13 +117,13 @@ public final class WicketFilenameUtil {
      *     HomePage_en   ->  HomePage
      * </pre>
      */
-    @NotNull
-    public static String extractBasename(@NotNull String filenameWithoutExtension) {
+    @Nonnull
+    public static String extractBasename(@Nonnull String filenameWithoutExtension) {
         int indexOfLocale = indexOfLocale(filenameWithoutExtension);
         return indexOfLocale > 0 ? filenameWithoutExtension.substring(0, indexOfLocale) : filenameWithoutExtension;
     }
 
-    private static int indexOfLocale(@NotNull String filenameWithoutExtension) {
+    private static int indexOfLocale(@Nonnull String filenameWithoutExtension) {
         return filenameWithoutExtension.indexOf('_'); // find '_' should be enought for the moment, we want a filename without extension for future improvement (if needed)
     }
 }

@@ -15,13 +15,14 @@
  */
 package wicketforge.psi.references;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.*;
 import com.intellij.psi.impl.source.resolve.reference.impl.manipulators.StringLiteralManipulator;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.psi.hierarchy.HierarchyUtil;
 import wicketforge.psi.hierarchy.MarkupWicketIdHierarchy;
 import wicketforge.psi.hierarchy.MarkupWicketIdItem;
@@ -34,7 +35,7 @@ public class ClassWicketIdReference implements PsiReference {
     private PsiClass psiClass;
     private TextRange textRange;
 
-    public ClassWicketIdReference(@NotNull PsiLiteralExpression wicketIdExpression, @NotNull PsiClass psiClass) {
+    public ClassWicketIdReference(@Nonnull PsiLiteralExpression wicketIdExpression, @Nonnull PsiClass psiClass) {
         this.wicketIdExpression = wicketIdExpression;
         this.psiClass = psiClass;
         textRange = new TextRange(0, wicketIdExpression.getTextLength()); // issue 62: text range from 0 -> need also parentheses 
@@ -67,7 +68,7 @@ public class ClassWicketIdReference implements PsiReference {
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         return textRange.substring(wicketIdExpression.getText());
     }
@@ -82,7 +83,7 @@ public class ClassWicketIdReference implements PsiReference {
     }
 
     @Override
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         return null;
     }
 
@@ -92,7 +93,7 @@ public class ClassWicketIdReference implements PsiReference {
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public Object[] getVariants() {
         return ArrayUtil.EMPTY_OBJECT_ARRAY;
     }

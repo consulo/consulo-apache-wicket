@@ -1,6 +1,7 @@
 package consulo.apache.wicket.module.extension;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.module.extension.impl.ModuleExtensionImpl;
 import consulo.roots.ModuleRootLayer;
 
@@ -10,7 +11,7 @@ import consulo.roots.ModuleRootLayer;
  */
 public class WicketModuleExtension extends ModuleExtensionImpl<WicketModuleExtension>
 {
-	public WicketModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
+	public WicketModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{
 		super(id, moduleRootLayer);
 	}

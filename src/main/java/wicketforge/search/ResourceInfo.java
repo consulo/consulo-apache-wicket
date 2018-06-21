@@ -18,8 +18,8 @@ package wicketforge.search;
 import java.util.Collections;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.ide.highlighter.HtmlFileType;
 import com.intellij.ide.highlighter.XmlFileType;
@@ -45,12 +45,12 @@ import wicketforge.util.WicketFilenameUtil;
 
 final class ResourceInfo
 {
-	@NotNull
+	@Nonnull
 	public final String qualifiedName;
 	@Nullable
 	public final String locale;
 
-	private ResourceInfo(@Nullable String packageName, @NotNull String className, @Nullable String locale)
+	private ResourceInfo(@Nullable String packageName, @Nonnull String className, @Nullable String locale)
 	{
 		this.qualifiedName = packageName == null ? className : packageName + '.' + className; // currently we only need full qualified name
 		this.locale = locale;
@@ -60,7 +60,7 @@ final class ResourceInfo
 	 * get ResourceInfo from PsiFile
 	 */
 	@Nullable
-	public static ResourceInfo from(@NotNull PsiFile file)
+	public static ResourceInfo from(@Nonnull PsiFile file)
 	{
 		FileType fileType = file.getFileType();
 		if(HtmlFileType.INSTANCE.equals(fileType))
@@ -78,7 +78,7 @@ final class ResourceInfo
 	 * get ResourceInfo from FileContent
 	 */
 	@Nullable
-	public static ResourceInfo from(@NotNull FileContent fileContent)
+	public static ResourceInfo from(@Nonnull FileContent fileContent)
 	{
 		FileType fileType = fileContent.getFileType();
 		if(HtmlFileType.INSTANCE.equals(fileType))
@@ -93,7 +93,7 @@ final class ResourceInfo
 	}
 
 	@Nullable
-	private static ResourceInfo fromMarkup(@Nullable VirtualFile file, @NotNull Project project, @Nullable String content)
+	private static ResourceInfo fromMarkup(@Nullable VirtualFile file, @Nonnull Project project, @Nullable String content)
 	{
 		if(file == null)
 		{
@@ -114,7 +114,7 @@ final class ResourceInfo
 	}
 
 	@Nullable
-	private static ResourceInfo fromProperties(@Nullable VirtualFile file, @NotNull Project project)
+	private static ResourceInfo fromProperties(@Nullable VirtualFile file, @Nonnull Project project)
 	{
 		if(file == null)
 		{
@@ -124,7 +124,7 @@ final class ResourceInfo
 	}
 
 	@Nullable
-	private static ResourceInfo fromResource(@NotNull VirtualFile file, @NotNull Project project, @NotNull String[] fileExtensions)
+	private static ResourceInfo fromResource(@Nonnull VirtualFile file, @Nonnull Project project, @Nonnull String[] fileExtensions)
 	{
 		VirtualFile dir = file.getParent();
 		if(dir == null || !dir.isDirectory())
@@ -147,7 +147,7 @@ final class ResourceInfo
 	}
 
 	@Nullable
-	private static String getPackageNameFromAdditionalResourcePaths(@NotNull VirtualFile file, @NotNull VirtualFile dir, @NotNull Project project)
+	private static String getPackageNameFromAdditionalResourcePaths(@Nonnull VirtualFile file, @Nonnull VirtualFile dir, @Nonnull Project project)
 	{
 		List<Module> modules = new SmartList<Module>();
 		Module module = ModuleUtil.findModuleForFile(file, project);

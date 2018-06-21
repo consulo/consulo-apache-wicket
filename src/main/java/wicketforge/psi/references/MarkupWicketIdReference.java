@@ -15,19 +15,27 @@
  */
 package wicketforge.psi.references;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.*;
+import com.intellij.psi.ElementManipulators;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiElementResolveResult;
+import com.intellij.psi.PsiManager;
+import com.intellij.psi.PsiPolyVariantReference;
+import com.intellij.psi.PsiReference;
+import com.intellij.psi.ResolveResult;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.IncorrectOperationException;
 import com.intellij.util.SmartList;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.psi.hierarchy.ClassWicketIdHierarchy;
 import wicketforge.psi.hierarchy.ClassWicketIdItem;
 import wicketforge.psi.hierarchy.ClassWicketIdNewComponentItem;
 import wicketforge.psi.hierarchy.HierarchyUtil;
-
-import java.util.List;
 
 /**
  */
@@ -36,7 +44,7 @@ public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantRefe
     private PsiClass psiClass;
     private TextRange textRange;
 
-    public MarkupWicketIdReference(@NotNull XmlAttributeValue attributeValue, @NotNull PsiClass psiClass) {
+    public MarkupWicketIdReference(@Nonnull XmlAttributeValue attributeValue, @Nonnull PsiClass psiClass) {
         this.attributeValue = attributeValue;
 
         this.psiClass = psiClass;
@@ -44,7 +52,7 @@ public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantRefe
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public ResolveResult[] multiResolve(boolean incompleteCode) {
         String path = HierarchyUtil.findPathOf(attributeValue, false);
         if (path != null) {
@@ -80,7 +88,7 @@ public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantRefe
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         return textRange.substring(attributeValue.getText());
     }
@@ -93,7 +101,7 @@ public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantRefe
     }
 
     @Override
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         return null;
     }
 
@@ -107,7 +115,7 @@ public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantRefe
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public Object[] getVariants() {
         return ArrayUtil.EMPTY_OBJECT_ARRAY;
     }

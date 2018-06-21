@@ -21,7 +21,7 @@ import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiMethod;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import wicketforge.search.WicketSearchScope;
 
 import java.util.ArrayList;
@@ -39,23 +39,23 @@ enum WicketVersion {
     private String ns;
     private String xmlPropertiesFileExtension;
 
-    private WicketVersion(@NotNull String ns, @NotNull String xmlPropertiesFileExtension) {
+    private WicketVersion(@Nonnull String ns, @Nonnull String xmlPropertiesFileExtension) {
         this.ns = ns;
         this.xmlPropertiesFileExtension = xmlPropertiesFileExtension;
     }
 
-    @NotNull
+    @Nonnull
     public String getXmlPropertiesFileExtension() {
         return xmlPropertiesFileExtension;
     }
 
-    @NotNull
+    @Nonnull
     public String getNS() {
         return ns;
     }
 
-    @NotNull
-    public static WicketVersion getVersion(@NotNull PsiElement element) {
+    @Nonnull
+    public static WicketVersion getVersion(@Nonnull PsiElement element) {
         Module module = ModuleUtil.findModuleForPsiElement(element);
         if (module == null) {
             return WICKET_1_5;

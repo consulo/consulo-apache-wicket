@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -45,7 +45,7 @@ abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String>
     private final EnumeratorStringDescriptor keyDescriptor = new EnumeratorStringDescriptor();
     private static final char LOCALIZEDFILE_INDEXMARKER = '#';
 
-    protected WicketResourceIndexExtension(@NotNull MessageBus messageBus) {
+    protected WicketResourceIndexExtension(@Nonnull MessageBus messageBus) {
        /* messageBus.connect().subscribe(WicketForgeFacetConfiguration.ADDITIONAL_PATHS_CHANGED, new Runnable() {
             @Override
             public void run() {
@@ -54,7 +54,7 @@ abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String>
         }); */
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Map<String, Void> map(FileContent inputData) {
         ResourceInfo resourceInfo = ResourceInfo.from(inputData);
@@ -67,7 +67,7 @@ abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String>
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public DataIndexer<String, Void, FileContent> getIndexer() {
         return this;
@@ -93,8 +93,8 @@ abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String>
         return 0;
     }
 
-    @NotNull
-    protected static PsiFile[] getFilesByClass(@NotNull ID<String, Void> indexId, @NotNull final PsiClass psiClass, boolean all) {
+    @Nonnull
+    protected static PsiFile[] getFilesByClass(@Nonnull ID<String, Void> indexId, @Nonnull final PsiClass psiClass, boolean all) {
         String name = psiClass.getQualifiedName();
         if (name == null) {
             return PsiFile.EMPTY_ARRAY;

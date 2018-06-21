@@ -15,7 +15,7 @@
  */
 package wicketforge.search;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 final class SearchUtils {
     private SearchUtils() {

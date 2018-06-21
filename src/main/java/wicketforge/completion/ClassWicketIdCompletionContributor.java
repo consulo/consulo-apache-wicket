@@ -15,8 +15,9 @@
  */
 package wicketforge.completion;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.codeInsight.completion.CompletionContributor;
 import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionResultSet;
@@ -94,7 +95,7 @@ public class ClassWicketIdCompletionContributor extends CompletionContributor {
      * @return          possible candidate for wicketId (psiExpression) of position or null if not matches
      */
     @Nullable
-    private PsiExpression getWicketIdExpression(@NotNull PsiJavaToken position) {
+    private PsiExpression getWicketIdExpression(@Nonnull PsiJavaToken position) {
         PsiElement element = position.getParent();
         if (!(element instanceof PsiLiteralExpression)) {
             return null;
@@ -104,7 +105,7 @@ public class ClassWicketIdCompletionContributor extends CompletionContributor {
     }
 
     @Nullable
-    private PsiNewExpression getWicketNewExpression(@NotNull PsiExpression wicketIdExpression) {
+    private PsiNewExpression getWicketNewExpression(@Nonnull PsiExpression wicketIdExpression) {
         PsiExpressionList expressionList = (PsiExpressionList) wicketIdExpression.getParent();
         PsiElement parent = expressionList.getParent();
         if (parent instanceof PsiAnonymousClass) {

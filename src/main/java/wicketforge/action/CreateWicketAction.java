@@ -18,7 +18,8 @@ package wicketforge.action;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.ide.actions.CreateElementActionBase;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandProcessor;
@@ -42,7 +43,7 @@ abstract class CreateWicketAction extends CreateElementActionBase {
         super(text, description, TargetAWT.to(Constants.WICKET_ICON));
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected PsiElement[] create(String newName, PsiDirectory directory) throws Exception {
         PsiElement[] elements = new PsiElement[1];
@@ -64,7 +65,7 @@ abstract class CreateWicketAction extends CreateElementActionBase {
         }
 
         @Override
-        public boolean run(@NotNull final String inputString, @NotNull final String extendsClass, final boolean hasMarkup, @NotNull final PsiDirectory markupDirectory) {
+        public boolean run(@Nonnull final String inputString, @Nonnull final String extendsClass, final boolean hasMarkup, @Nonnull final PsiDirectory markupDirectory) {
             try {
                 JavaDirectoryService.getInstance().checkCreateClass(psiDirectory, inputString);
             } catch (IncorrectOperationException e) {
@@ -136,7 +137,7 @@ abstract class CreateWicketAction extends CreateElementActionBase {
             return createdElements.length != 0;
         }
 
-        @NotNull
+        @Nonnull
         public final PsiElement[] getCreatedElements() {
             List<PsiElement> elts = new ArrayList<PsiElement>();
             for (SmartPsiElementPointer pointer : createdElements) {

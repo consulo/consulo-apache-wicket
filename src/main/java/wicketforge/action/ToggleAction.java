@@ -16,8 +16,9 @@
 package wicketforge.action;
 
 import consulo.psi.PsiPackage;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -130,7 +131,7 @@ public class ToggleAction extends AnAction {
     }
 
     @Nullable
-    private PsiElement createMarkup(@NotNull Module module, @NotNull PsiFile psiFile, @NotNull PsiClass psiClass) {
+    private PsiElement createMarkup(@Nonnull Module module, @Nonnull PsiFile psiFile, @Nonnull PsiClass psiClass) {
         PsiDirectory psiDirectory = psiFile.getContainingDirectory();
         if (psiDirectory == null) {
             return null;

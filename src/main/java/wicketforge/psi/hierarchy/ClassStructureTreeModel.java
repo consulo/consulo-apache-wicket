@@ -25,7 +25,7 @@ import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiNewExpression;
 import com.intellij.util.PsiNavigateUtil;
 import com.intellij.util.SmartList;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import wicketforge.util.WicketPsiUtil;
 
 import java.util.List;
@@ -36,13 +36,13 @@ public class ClassStructureTreeModel extends TextEditorBasedStructureViewModel {
     private StructureViewTreeElement root;
     private static final TreeElement[] EMPTY_TREE_ELEMENTS = new TreeElement[0];
 
-    public ClassStructureTreeModel(@NotNull PsiJavaFile psiJavaFile) {
+    public ClassStructureTreeModel(@Nonnull PsiJavaFile psiJavaFile) {
         super(psiJavaFile);
         root = new JavaFileTreeElement(psiJavaFile);
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public StructureViewTreeElement getRoot() {
         return root;
     }
@@ -64,7 +64,7 @@ public class ClassStructureTreeModel extends TextEditorBasedStructureViewModel {
     private static class JavaFileTreeElement implements StructureViewTreeElement {
         private PsiJavaFile psiJavaFile;
 
-        private JavaFileTreeElement(@NotNull PsiJavaFile psiJavaFile) {
+        private JavaFileTreeElement(@Nonnull PsiJavaFile psiJavaFile) {
             this.psiJavaFile = psiJavaFile;
         }
 
@@ -115,7 +115,7 @@ public class ClassStructureTreeModel extends TextEditorBasedStructureViewModel {
         final ClassWicketIdReferences classWicketIdReferences;
         final PsiClass psiClass;
 
-        private ClassTreeElement(@NotNull PsiClass psiClass, @NotNull ClassWicketIdReferences classWicketIdReferences) {
+        private ClassTreeElement(@Nonnull PsiClass psiClass, @Nonnull ClassWicketIdReferences classWicketIdReferences) {
             this.psiClass = psiClass;
             this.classWicketIdReferences = classWicketIdReferences;
         }

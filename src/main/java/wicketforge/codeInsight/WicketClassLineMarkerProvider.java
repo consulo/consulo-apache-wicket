@@ -18,8 +18,9 @@ package wicketforge.codeInsight;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
 import com.intellij.psi.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.MarkupIndex;
@@ -33,7 +34,7 @@ import java.util.List;
 public class WicketClassLineMarkerProvider implements LineMarkerProvider {
     @Override
     @Nullable
-    public LineMarkerInfo getLineMarkerInfo(@NotNull PsiElement element) {
+    public LineMarkerInfo getLineMarkerInfo(@Nonnull PsiElement element) {
         if (element instanceof PsiIdentifier && element.getParent() instanceof PsiClass) {
             if (WicketForgeFacet.hasFacetOrIsFromLibrary(element)) {
                 PsiClass psiClass = (PsiClass) element.getParent();
@@ -49,6 +50,6 @@ public class WicketClassLineMarkerProvider implements LineMarkerProvider {
     }
 
     @Override
-    public void collectSlowLineMarkers(@NotNull List<PsiElement> elements, @NotNull Collection<LineMarkerInfo> result) {
+    public void collectSlowLineMarkers(@Nonnull List<PsiElement> elements, @Nonnull Collection<LineMarkerInfo> result) {
     }
 }

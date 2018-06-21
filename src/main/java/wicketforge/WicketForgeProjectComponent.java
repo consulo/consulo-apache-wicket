@@ -15,10 +15,11 @@
  */
 package wicketforge;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.intention.IntentionManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.intention.*;
 
 /**
@@ -44,7 +45,7 @@ public class WicketForgeProjectComponent implements ProjectComponent {
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getComponentName() {
         return "WicketForge Project Component";
     }

@@ -23,7 +23,7 @@ import com.intellij.refactoring.rename.naming.AutomaticRenamer;
 import com.intellij.refactoring.rename.naming.AutomaticRenamerFactory;
 import com.intellij.usageView.UsageInfo;
 import com.intellij.util.SmartList;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import wicketforge.util.WicketFilenameUtil;
 
 import java.util.*;
@@ -32,7 +32,7 @@ abstract class ResourceRenamerFactory implements AutomaticRenamerFactory {
     private final String entityName;
     private final String[] fileExtensions;
 
-    protected ResourceRenamerFactory(@NotNull String entityName, @NotNull String[] fileExtensions) {
+    protected ResourceRenamerFactory(@Nonnull String entityName, @Nonnull String[] fileExtensions) {
         this.entityName = entityName;
         this.fileExtensions = fileExtensions;
     }
@@ -61,11 +61,11 @@ abstract class ResourceRenamerFactory implements AutomaticRenamerFactory {
         return new ResourceRenamer((PsiClass) element, newName);
     }
 
-    @NotNull
-    protected abstract PsiFile[] getAllFiles(@NotNull PsiClass psiClass);
+    @Nonnull
+    protected abstract PsiFile[] getAllFiles(@Nonnull PsiClass psiClass);
 
-    @NotNull
-    private List<PsiFile> getAllFilesIncludeInnerclasses(@NotNull PsiClass psiClass) {
+    @Nonnull
+    private List<PsiFile> getAllFilesIncludeInnerclasses(@Nonnull PsiClass psiClass) {
         List<PsiFile> files = new SmartList<PsiFile>();
         Queue<PsiClass> queue = new LinkedList<PsiClass>();
         queue.add(psiClass);

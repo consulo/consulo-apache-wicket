@@ -27,8 +27,8 @@ import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.util.SmartList;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.psi.references.ClassWicketIdReference;
@@ -46,13 +46,13 @@ class WicketForgeHighlightingPass extends TextEditorHighlightingPass {
 
     private volatile Collection<HighlightInfo> highlights = Collections.emptyList();
 
-    WicketForgeHighlightingPass(@NotNull PsiFile file, @NotNull Editor editor) {
+    WicketForgeHighlightingPass(@Nonnull PsiFile file, @Nonnull Editor editor) {
         super(file.getProject(), editor.getDocument());
         this.file = file;
     }
 
     @Override
-    public void doCollectInformation(@NotNull ProgressIndicator progress) {
+    public void doCollectInformation(@Nonnull ProgressIndicator progress) {
         if (!WicketForgeFacet.hasFacetOrIsFromLibrary(file)) {
             return;
         }
@@ -113,7 +113,7 @@ class WicketForgeHighlightingPass extends TextEditorHighlightingPass {
         }
     }
 
-    private boolean hasReference(@NotNull final PsiElement element, @NotNull final Class<? extends PsiReference> referenceClass) {
+    private boolean hasReference(@Nonnull final PsiElement element, @Nonnull final Class<? extends PsiReference> referenceClass) {
         for (PsiReference reference : element.getReferences()) {
             if (reference.getClass().equals(referenceClass)) {
                 return true;

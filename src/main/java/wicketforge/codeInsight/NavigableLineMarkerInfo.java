@@ -25,7 +25,7 @@ import com.intellij.openapi.editor.markup.GutterIconRenderer;
 import com.intellij.psi.NavigatablePsiElement;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.Function;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -36,7 +36,7 @@ class NavigableLineMarkerInfo {
     private NavigableLineMarkerInfo() {
     }
 
-    public static LineMarkerInfo create(@NotNull PsiElement element, @NotNull final NavigatablePsiElement[] targets, @NotNull Icon icon) {
+    public static LineMarkerInfo create(@Nonnull PsiElement element, @Nonnull final NavigatablePsiElement[] targets, @Nonnull Icon icon) {
         return new LineMarkerInfo(element, element.getTextRange(), icon, Pass.UPDATE_ALL,
                 new Function<PsiElement, String>() {
                     @Override

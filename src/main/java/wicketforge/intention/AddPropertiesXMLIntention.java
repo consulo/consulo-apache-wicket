@@ -15,8 +15,9 @@
  */
 package wicketforge.intention;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiClass;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.Constants;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.templates.WicketTemplates;
@@ -29,36 +30,36 @@ import wicketforge.util.WicketPsiUtil;
 public class AddPropertiesXMLIntention extends AddMarkupIntention {
 
     @Override
-    @NotNull
+    @Nonnull
     public String getText() {
         return "Create Properties XML File";
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getFamilyName() {
         return "Create Properties XML File";
     }
 
     @Override
-    protected boolean hasResourceFile(@NotNull PsiClass psiClass) {
+    protected boolean hasResourceFile(@Nonnull PsiClass psiClass) {
         return PropertiesIndex.getBaseFile(psiClass) != null;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    protected String getResourceFileName(@NotNull PsiClass psiClass) {
+    protected String getResourceFileName(@Nonnull PsiClass psiClass) {
         return WicketFilenameUtil.getPropertiesFilename(psiClass, Constants.PropertiesType.XML);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected String getTemplateName() {
         return WicketTemplates.WICKET_PROPERTIES_XML;
     }
 
     @Override
-    protected boolean isApplicableForClass(@NotNull PsiClass psiClass) {
+    protected boolean isApplicableForClass(@Nonnull PsiClass psiClass) {
         return WicketPsiUtil.isWicketComponentWithAssociatedMarkup(psiClass);
     }
 }

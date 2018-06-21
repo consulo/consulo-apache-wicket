@@ -20,7 +20,7 @@ import com.intellij.psi.XmlRecursiveElementVisitor;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlFile;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import wicketforge.Constants;
 
 import java.util.HashMap;
@@ -32,12 +32,12 @@ public class MarkupWicketIdHierarchy {
     private Map<String, MarkupWicketIdItem> wicketIdPathMap;
     private MarkupWicketIdItem root;
 
-    @NotNull
-    public static MarkupWicketIdHierarchy create(@NotNull XmlFile xmlFile) {
+    @Nonnull
+    public static MarkupWicketIdHierarchy create(@Nonnull XmlFile xmlFile) {
         return new MarkupWicketIdHierarchy(xmlFile);
     }
 
-    private MarkupWicketIdHierarchy(@NotNull final XmlFile xmlFile) {
+    private MarkupWicketIdHierarchy(@Nonnull final XmlFile xmlFile) {
         this.wicketIdPathMap = new HashMap<String, MarkupWicketIdItem>();
         this.root = new MarkupWicketIdItem();
         this.wicketIdPathMap.put("", root);
@@ -83,12 +83,12 @@ public class MarkupWicketIdHierarchy {
         });
     }
 
-    @NotNull
+    @Nonnull
     public Map<String, MarkupWicketIdItem> getWicketIdPathMap() {
         return wicketIdPathMap;
     }
 
-    @NotNull
+    @Nonnull
     public MarkupWicketIdItem getRoot() {
         return root;
     }

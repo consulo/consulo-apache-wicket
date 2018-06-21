@@ -15,7 +15,7 @@
  */
 package wicketforge.action;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.ide.structureView.StructureView;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.newStructureView.StructureViewComponent;
@@ -81,8 +81,8 @@ public class ViewWicketStructureAction extends AnAction {
         popup.show();
     }
 
-    @NotNull
-    private static FileStructurePopup createStructureViewPopup(@NotNull Project project, @NotNull FileEditor fileEditor, @NotNull StructureView structureView) {
+    @Nonnull
+    private static FileStructurePopup createStructureViewPopup(@Nonnull Project project, @Nonnull FileEditor fileEditor, @Nonnull StructureView structureView) {
         return new FileStructurePopup(project, fileEditor, structureView, true);
     }
 

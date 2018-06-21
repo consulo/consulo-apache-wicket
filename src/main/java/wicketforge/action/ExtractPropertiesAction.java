@@ -15,8 +15,8 @@
  */
 package wicketforge.action;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.highlighter.HtmlFileType;
 import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.lang.properties.PropertiesUtil;
@@ -111,7 +111,7 @@ public class ExtractPropertiesAction extends EditorAction {
 
             ExtractPropertiesDialog.ActionRunnable actionRunnable = new ExtractPropertiesDialog.ActionRunnable() {
                 @Override
-                public boolean run(@Nullable final Object selectedItem, @NotNull final PsiDirectory destinationDirectory, final @NotNull String key, final @NotNull String value) {
+                public boolean run(@Nullable final Object selectedItem, @Nonnull final PsiDirectory destinationDirectory, final @Nonnull String key, final @Nonnull String value) {
                     return ApplicationManager.getApplication().runWriteAction(new Computable<Boolean>() {
                         @Override
                         public Boolean compute() {

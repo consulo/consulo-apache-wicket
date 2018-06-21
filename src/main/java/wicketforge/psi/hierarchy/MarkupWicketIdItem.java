@@ -15,18 +15,19 @@
  */
 package wicketforge.psi.hierarchy;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.swing.Icon;
+
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import wicketforge.Constants;
-
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public final class MarkupWicketIdItem implements ItemPresentation {
     private String wicketId;
@@ -39,20 +40,20 @@ public final class MarkupWicketIdItem implements ItemPresentation {
         this.wicketId = "";
     }
 
-    MarkupWicketIdItem(@NotNull String wicketId, @NotNull XmlAttribute attribute, @NotNull XmlAttributeValue attributeValue) {
+    MarkupWicketIdItem(@Nonnull String wicketId, @Nonnull XmlAttribute attribute, @Nonnull XmlAttributeValue attributeValue) {
         this.wicketId = wicketId;
         this.attribute = attribute;
         this.attributeValue = attributeValue;
     }
 
-    void addChild(@NotNull MarkupWicketIdItem child) {
+    void addChild(@Nonnull MarkupWicketIdItem child) {
         if (children == null) {
             children = new ArrayList<MarkupWicketIdItem>();
         }
         children.add(child);
     }
 
-    @NotNull
+    @Nonnull
     public String getWicketId() {
         return wicketId;
     }
@@ -67,7 +68,7 @@ public final class MarkupWicketIdItem implements ItemPresentation {
         return attributeValue;
     }
 
-    @NotNull
+    @Nonnull
     public List<MarkupWicketIdItem> getChildren() {
         return children == null ? Collections.<MarkupWicketIdItem>emptyList() : children;
     }

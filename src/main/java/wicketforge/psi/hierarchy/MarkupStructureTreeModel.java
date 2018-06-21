@@ -23,7 +23,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
 import com.intellij.util.PsiNavigateUtil;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -33,14 +33,14 @@ public class MarkupStructureTreeModel extends TextEditorBasedStructureViewModel 
     private StructureViewTreeElement root;
     private MarkupWicketIdHierarchy hierarchy;
 
-    public MarkupStructureTreeModel(@NotNull XmlFile xmlFile) {
+    public MarkupStructureTreeModel(@Nonnull XmlFile xmlFile) {
         super(xmlFile);
         hierarchy = MarkupWicketIdHierarchy.create(xmlFile);
         root = new MarkupTreeElement(hierarchy.getRoot());
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public StructureViewTreeElement getRoot() {
         return root;
     }

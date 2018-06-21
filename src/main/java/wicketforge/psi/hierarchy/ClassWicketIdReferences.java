@@ -20,8 +20,8 @@ import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.SmartList;
 import com.intellij.util.containers.Stack;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import wicketforge.util.WicketPsiUtil;
 
 import java.util.*;
@@ -30,7 +30,7 @@ class ClassWicketIdReferences {
     private final Map<PsiElement, List<PsiNewExpression>> addMap;
     private final Map<PsiNewExpression, ClassWicketIdNewComponentItem> newComponentItemMap;
 
-    private ClassWicketIdReferences(@NotNull Map<PsiElement, List<PsiNewExpression>> addMap, @NotNull Map<PsiNewExpression, ClassWicketIdNewComponentItem> newComponentItemMap) {
+    private ClassWicketIdReferences(@Nonnull Map<PsiElement, List<PsiNewExpression>> addMap, @Nonnull Map<PsiNewExpression, ClassWicketIdNewComponentItem> newComponentItemMap) {
         this.addMap = addMap;
         this.newComponentItemMap = newComponentItemMap;
     }
@@ -56,15 +56,15 @@ class ClassWicketIdReferences {
     /**
      * @return
      */
-    public boolean containsClass(@NotNull PsiClass psiClass) {
+    public boolean containsClass(@Nonnull PsiClass psiClass) {
         return addMap.containsKey(psiClass);
     }
 
-    public static ClassWicketIdReferences build(@NotNull final PsiClass psiClass) {
+    public static ClassWicketIdReferences build(@Nonnull final PsiClass psiClass) {
         return build(psiClass, true);
     }
 
-    public static ClassWicketIdReferences build(@NotNull final PsiClass psiClass, final boolean onlyThisMarkupContainer) {
+    public static ClassWicketIdReferences build(@Nonnull final PsiClass psiClass, final boolean onlyThisMarkupContainer) {
         final Map<PsiElement, List<PsiNewExpression>> componentAddMap = new HashMap<PsiElement, List<PsiNewExpression>>(); // Key: PsiClass or PsiNewExpression reference from a WicketMarkup component
         final Map<PsiElement, List<PsiNewExpression>> componentReplaceMap = new HashMap<PsiElement, List<PsiNewExpression>>();
         psiClass.accept(new JavaRecursiveElementVisitor() {
@@ -263,7 +263,7 @@ class ClassWicketIdReferences {
              * @param expression
              * @return referenced PsiNewExpression's (if they are Wicket Components)
              */
-            @NotNull
+            @Nonnull
             private List<PsiNewExpression> resolveExpressionNewWicketComponent(@Nullable PsiExpression expression) {
                 List<PsiNewExpression> list = new SmartList<PsiNewExpression>();
                 if (expression instanceof PsiConditionalExpression) {
@@ -353,7 +353,7 @@ class ClassWicketIdReferences {
              * This is *not* equal to PsiNewExpression.getClassOrAnonymousClassReference()
              */
             @Nullable
-            private PsiClass resolveClassFromNewExpression(@NotNull PsiNewExpression newExpression) {
+            private PsiClass resolveClassFromNewExpression(@Nonnull PsiNewExpression newExpression) {
                 // first check if referenced var is a anonymous class, then we have our result
                 PsiClass result = newExpression.getAnonymousClass();
                 if (result == null) {
@@ -424,8 +424,8 @@ class ClassWicketIdReferences {
          * @param variable  PsiVariable
          * @return          PsiClass, PsiNewExpression of WicketComponent or null.
          */
-        @NotNull
-        private List<? extends PsiElement> get(@NotNull PsiVariable variable) {
+        @Nonnull
+        private List<? extends PsiElement> get(@Nonnull PsiVariable variable) {
             List<? extends PsiElement> result = variableMap.get(variable);
             return result == null ? Collections.<PsiElement>emptyList() : result;
         }
@@ -436,7 +436,7 @@ class ClassWicketIdReferences {
          * @param variable      PsiVariable
          * @param elements       PsiClass or PsiNewExpression
          */
-        private void put(@NotNull PsiVariable variable, @Nullable List<? extends PsiElement> elements) {
+        private void put(@Nonnull PsiVariable variable, @Nullable List<? extends PsiElement> elements) {
             if (elements == null || elements.isEmpty()) {
                 // remove variable
                 variableMap.remove(variable);

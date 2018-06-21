@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -29,8 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.lang.properties.IProperty;
 import com.intellij.lang.properties.psi.PropertiesFile;
 import com.intellij.openapi.module.Module;
@@ -65,7 +65,7 @@ public class ExtractPropertiesDialog extends DialogWrapper {
     private PsiDirectory destinationDirectory;
     private PsiPackage psiPackage;
 
-    public ExtractPropertiesDialog(@NotNull Project project, @NotNull ActionRunnable actionRunnable, @NotNull String title, @NotNull PsiClass componentClass, @NotNull PsiDirectory directory, @NotNull String text) {
+    public ExtractPropertiesDialog(@Nonnull Project project, @Nonnull ActionRunnable actionRunnable, @Nonnull String title, @Nonnull PsiClass componentClass, @Nonnull PsiDirectory directory, @Nonnull String text) {
         super(project, false);
 
         this.project = project;
@@ -231,6 +231,6 @@ public class ExtractPropertiesDialog extends DialogWrapper {
         /**
          * @param selectedItem PropertiesFile or NewPropertiesFileInfo
          */
-        boolean run(@Nullable Object selectedItem, @NotNull PsiDirectory destinationDirectory, @NotNull String key, @NotNull String value);
+        boolean run(@Nullable Object selectedItem, @Nonnull PsiDirectory destinationDirectory, @Nonnull String key, @Nonnull String value);
     }
 }

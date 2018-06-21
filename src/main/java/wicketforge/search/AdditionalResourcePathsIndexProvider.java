@@ -19,8 +19,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
@@ -34,7 +34,7 @@ import consulo.roots.impl.WebResourcesFolderTypeProvider;
 
 public class AdditionalResourcePathsIndexProvider extends IndexableSetContributor
 {
-	@NotNull
+	@Nonnull
 	@Override
 	public Set<VirtualFile> getAdditionalProjectRootsToIndex(@Nullable Project project)
 	{

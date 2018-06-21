@@ -15,6 +15,8 @@
  */
 package wicketforge.inspection;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInspection.BaseJavaLocalInspectionTool;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemHighlightType;
@@ -22,16 +24,15 @@ import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.*;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.Constants;
 import wicketforge.psi.references.ClassWicketIdReference;
 
 /**
  */
 public class ClassWicketIdInspection extends BaseJavaLocalInspectionTool {
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new JavaElementVisitor() {
             @Override
             public void visitReferenceExpression(PsiReferenceExpression expression) {
@@ -56,21 +57,21 @@ public class ClassWicketIdInspection extends BaseJavaLocalInspectionTool {
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return Constants.INTENSION_INSPECTION_GROUPNAME;
     }
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Wicket Java ID Inspection";
     }
 
     @Override
     @NonNls
-    @NotNull
+    @Nonnull
     public String getShortName() {
         return "WicketForgeJavaIdInspection";
     }

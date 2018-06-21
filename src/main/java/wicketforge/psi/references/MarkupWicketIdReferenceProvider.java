@@ -15,11 +15,12 @@
  */
 package wicketforge.psi.references;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.*;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.util.ProcessingContext;
-import org.jetbrains.annotations.NotNull;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.ClassIndex;
@@ -27,9 +28,9 @@ import wicketforge.search.ClassIndex;
 /**
  */
 public class MarkupWicketIdReferenceProvider extends PsiReferenceProvider {
-    @NotNull
+    @Nonnull
     @Override
-    public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext context) {
+    public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext context) {
         XmlAttributeValue attributeValue = (XmlAttributeValue) element;
         PsiElement parent = attributeValue.getParent();
         if (parent instanceof XmlAttribute && Constants.WICKET_ID.equals(((XmlAttribute) parent).getName())) {

@@ -15,8 +15,8 @@
  */
 package wicketforge.completion;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.codeInsight.completion.CompletionContributor;
 import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionResultSet;
@@ -83,7 +83,7 @@ public class MarkupWicketIdCompletionContributor extends CompletionContributor {
      * @return XmlAttributeValue if position is wicket:id attribute else null
      */
     @Nullable
-    private XmlAttributeValue getWicketIdAttribute(@NotNull XmlToken position) {
+    private XmlAttributeValue getWicketIdAttribute(@Nonnull XmlToken position) {
         if (!(position.getParent() instanceof XmlAttributeValue)) {
             return null;
         }

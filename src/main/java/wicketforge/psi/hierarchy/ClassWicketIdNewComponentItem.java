@@ -17,11 +17,12 @@ package wicketforge.psi.hierarchy;
 
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.*;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+
 import wicketforge.Constants;
 import wicketforge.util.WicketPsiUtil;
 
+import javax.annotation.Nullable;
 import javax.swing.*;
 
 public final class ClassWicketIdNewComponentItem implements ItemPresentation {
@@ -34,7 +35,7 @@ public final class ClassWicketIdNewComponentItem implements ItemPresentation {
     }
 
     @Nullable
-    static ClassWicketIdNewComponentItem create(@NotNull PsiNewExpression newExpression) {
+    static ClassWicketIdNewComponentItem create(@Nonnull PsiNewExpression newExpression) {
         ClassWicketIdNewComponentItem result = new ClassWicketIdNewComponentItem();
 
         result.newExpression = newExpression;
@@ -58,17 +59,17 @@ public final class ClassWicketIdNewComponentItem implements ItemPresentation {
         return result;
     }
 
-    @NotNull
+    @Nonnull
     public PsiNewExpression getNewExpression() {
         return newExpression;
     }
 
-    @NotNull
+    @Nonnull
     public PsiExpression getWicketIdExpression() {
         return wicketIdExpression;
     }
 
-    @NotNull
+    @Nonnull
     public String getWicketId() {
         return wicketId;
     }
@@ -76,7 +77,7 @@ public final class ClassWicketIdNewComponentItem implements ItemPresentation {
     /**
      * @return  Class to be created (base class on anonymous creation)
      */
-    @NotNull
+    @Nonnull
     public PsiClass getBaseClassToCreate() {
         return baseClassToCreate;
     }
