@@ -1,9 +1,2 @@
-.idea/
-out/
-*.iml
+.consulo/
 target/
-wicketforge.jar
-
-/dep
-/.consulo/workspace.xml
-/.consulo/sandbox
