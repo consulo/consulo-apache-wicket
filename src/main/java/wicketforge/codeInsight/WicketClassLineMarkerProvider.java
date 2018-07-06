@@ -48,8 +48,4 @@ public class WicketClassLineMarkerProvider implements LineMarkerProvider {
         }
         return null;
     }
-
-    @Override
-    public void collectSlowLineMarkers(@Nonnull List<PsiElement> elements, @Nonnull Collection<LineMarkerInfo> result) {
-    }
 }

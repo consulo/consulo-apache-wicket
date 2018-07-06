@@ -50,9 +50,9 @@ public interface Constants {
 
     // icons
     public static final Image WICKET_ICON = IconLoader.findIcon("/icons/wicket.png");
-    public static final Icon WICKET_COMPONENT_ICON = IconLoader.findIcon("/icons/wicket_component.png");
-    public static final Icon TOJAVAREF = IconLoader.findIcon("/icons/wicket_form.png");
-    public static final Icon TOMARKUPREF = IconLoader.findIcon("/icons/wicket_form.png");
+    public static final Image WICKET_COMPONENT_ICON = IconLoader.findIcon("/icons/wicket_component.png");
+    public static final Image TOJAVAREF = IconLoader.findIcon("/icons/wicket_form.png");
+    public static final Image TOMARKUPREF = IconLoader.findIcon("/icons/wicket_form.png");
 
     // icon markup references
     public static final Icon ICON_MARKUP_ = IconLoader.findIcon("/icons/wicket_component.png");

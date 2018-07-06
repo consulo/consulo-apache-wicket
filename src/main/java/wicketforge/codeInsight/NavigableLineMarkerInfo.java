@@ -15,6 +15,10 @@
  */
 package wicketforge.codeInsight;
 
+import java.awt.event.MouseEvent;
+
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.GutterIconNavigationHandler;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
@@ -25,10 +29,7 @@ import com.intellij.openapi.editor.markup.GutterIconRenderer;
 import com.intellij.psi.NavigatablePsiElement;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.Function;
-import javax.annotation.Nonnull;
-
-import javax.swing.*;
-import java.awt.event.MouseEvent;
+import consulo.ui.image.Image;
 
 /**
  */
@@ -36,7 +37,7 @@ class NavigableLineMarkerInfo {
     private NavigableLineMarkerInfo() {
     }
 
-    public static LineMarkerInfo create(@Nonnull PsiElement element, @Nonnull final NavigatablePsiElement[] targets, @Nonnull Icon icon) {
+    public static LineMarkerInfo create(@Nonnull PsiElement element, @Nonnull final NavigatablePsiElement[] targets, @Nonnull Image icon) {
         return new LineMarkerInfo(element, element.getTextRange(), icon, Pass.UPDATE_ALL,
                 new Function<PsiElement, String>() {
                     @Override
