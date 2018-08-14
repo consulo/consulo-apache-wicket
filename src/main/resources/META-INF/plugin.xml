@@ -35,6 +35,8 @@
 
 		<automaticRenamerFactory implementation="wicketforge.refactoring.MarkupRenamerFactory"/>
 		<automaticRenamerFactory implementation="wicketforge.refactoring.PropertiesRenamerFactory"/>
+
+		<textEditorHighlightingPassFactory implementation="wicketforge.highlighting.WicketForgeHighlightingPassFactory" />
 	</extensions>
 	<application-components>
 		<component>
@@ -44,9 +46,6 @@
 	<project-components>
 		<component>
 			<implementation-class>wicketforge.WicketForgeProjectComponent</implementation-class>
-		</component>
-		<component>
-			<implementation-class>wicketforge.highlighting.WicketForgeHighlightingPassFactory</implementation-class>
 		</component>
 	</project-components>
 	<actions>

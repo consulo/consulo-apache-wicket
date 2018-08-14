@@ -15,32 +15,25 @@
  */
 package wicketforge.highlighting;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeHighlighting.TextEditorHighlightingPass;
 import com.intellij.codeHighlighting.TextEditorHighlightingPassFactory;
-import com.intellij.codeHighlighting.TextEditorHighlightingPassRegistrar;
-import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
-import javax.annotation.Nonnull;
 
-/**
- */
-public class WicketForgeHighlightingPassFactory extends AbstractProjectComponent implements TextEditorHighlightingPassFactory {
-    public WicketForgeHighlightingPassFactory(Project project, TextEditorHighlightingPassRegistrar highlightingPassRegistrar) {
-        super(project);
-        highlightingPassRegistrar.registerTextEditorHighlightingPass(this, null, new int[]{Pass.UPDATE_ALL}, false, -1);
-    }
+public class WicketForgeHighlightingPassFactory implements TextEditorHighlightingPassFactory
+{
+	@Override
+	public void register(@Nonnull Registrar registrar)
+	{
+		registrar.registerTextEditorHighlightingPass(this, null, new int[]{Pass.UPDATE_ALL}, false, -1);
+	}
 
-    @Nonnull
-    @Override
-    public String getComponentName() {
-        return "WicketForgeHighlightingPassFactory";
-    }
-
-    @Override
-    public TextEditorHighlightingPass createHighlightingPass(@Nonnull PsiFile file, @Nonnull Editor editor) {
-        return new WicketForgeHighlightingPass(file, editor);
-    }
+	@Override
+	public TextEditorHighlightingPass createHighlightingPass(@Nonnull PsiFile file, @Nonnull Editor editor)
+	{
+		return new WicketForgeHighlightingPass(file, editor);
+	}
 }
