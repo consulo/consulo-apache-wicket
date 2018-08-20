@@ -37,12 +37,10 @@
 		<automaticRenamerFactory implementation="wicketforge.refactoring.PropertiesRenamerFactory"/>
 
 		<textEditorHighlightingPassFactory implementation="wicketforge.highlighting.WicketForgeHighlightingPassFactory" />
+
+		<inspectionToolProvider implementation="wicketforge.WicketForgeInspectionToolProvider" />
 	</extensions>
-	<application-components>
-		<component>
-			<implementation-class>wicketforge.WicketForgeApplicationComponent</implementation-class>
-		</component>
-	</application-components>
+
 	<project-components>
 		<component>
 			<implementation-class>wicketforge.WicketForgeProjectComponent</implementation-class>

@@ -16,9 +16,6 @@
 package wicketforge;
 
 import com.intellij.codeInspection.InspectionToolProvider;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.components.ServiceManager;
-import javax.annotation.Nonnull;
 import wicketforge.inspection.ClassWicketIdInspection;
 import wicketforge.inspection.EmptySrcAttributeInspection;
 import wicketforge.inspection.MarkupWicketIdInspection;
@@ -26,28 +23,7 @@ import wicketforge.inspection.MarkupWicketIdInspection;
 /**
  *
  */
-public class WicketForgeApplicationComponent implements ApplicationComponent, InspectionToolProvider {
-
-    public static WicketForgeApplicationComponent get() {
-      return ServiceManager.getService(WicketForgeApplicationComponent.class);
-    }
-
-    public WicketForgeApplicationComponent() {
-    }
-
-    @Override
-    public void initComponent() {
-    }
-
-    @Override
-    public void disposeComponent() {
-    }
-
-    @Override
-    @Nonnull
-    public String getComponentName() {
-        return "WicketForgeApplicationComponent";
-    }
+public class WicketForgeInspectionToolProvider implements InspectionToolProvider {
 
     @Override
     public Class[] getInspectionClasses() {
