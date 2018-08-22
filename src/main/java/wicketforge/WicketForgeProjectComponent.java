@@ -15,47 +15,27 @@
  */
 package wicketforge;
 
-import javax.annotation.Nonnull;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import com.intellij.codeInsight.intention.IntentionManager;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
-import wicketforge.intention.*;
+import wicketforge.intention.AddMarkupBorderIntention;
+import wicketforge.intention.AddMarkupPageIntention;
+import wicketforge.intention.AddMarkupPanelIntention;
+import wicketforge.intention.AddPropertiesIntention;
+import wicketforge.intention.AddPropertiesXMLIntention;
 
-/**
- *
- */
-public class WicketForgeProjectComponent implements ProjectComponent {
-    @SuppressWarnings({"UnusedDeclaration"})
-    public WicketForgeProjectComponent(Project project) {
-    }
-
-    @Override
-    public void initComponent() {
-        IntentionManager intentionManager = IntentionManager.getInstance();
-        intentionManager.registerIntentionAndMetaData(new AddMarkupPageIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
-        intentionManager.registerIntentionAndMetaData(new AddMarkupPanelIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
-        intentionManager.registerIntentionAndMetaData(new AddMarkupBorderIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
-        intentionManager.registerIntentionAndMetaData(new AddPropertiesIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
-        intentionManager.registerIntentionAndMetaData(new AddPropertiesXMLIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
-    }
-
-    @Override
-    public void disposeComponent() {
-    }
-
-    @Override
-    @Nonnull
-    public String getComponentName() {
-        return "WicketForge Project Component";
-    }
-
-    @Override
-    public void projectOpened() {
-    }
-
-    @Override
-    public void projectClosed() {
-    }
-
+@Singleton
+public class WicketForgeProjectComponent
+{
+	@Inject
+	public WicketForgeProjectComponent(IntentionManager intentionManager)
+	{
+		intentionManager.registerIntentionAndMetaData(new AddMarkupPageIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
+		intentionManager.registerIntentionAndMetaData(new AddMarkupPanelIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
+		intentionManager.registerIntentionAndMetaData(new AddMarkupBorderIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
+		intentionManager.registerIntentionAndMetaData(new AddPropertiesIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
+		intentionManager.registerIntentionAndMetaData(new AddPropertiesXMLIntention(), Constants.INTENSION_INSPECTION_GROUPNAME);
+	}
 }

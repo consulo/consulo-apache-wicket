@@ -39,13 +39,10 @@
 		<textEditorHighlightingPassFactory implementation="wicketforge.highlighting.WicketForgeHighlightingPassFactory" />
 
 		<inspectionToolProvider implementation="wicketforge.WicketForgeInspectionToolProvider" />
+
+		<projectService serviceImplementation="wicketforge.WicketForgeProjectComponent" lazy="false" />
 	</extensions>
 
-	<project-components>
-		<component>
-			<implementation-class>wicketforge.WicketForgeProjectComponent</implementation-class>
-		</component>
-	</project-components>
 	<actions>
 		<action id="WicketForgeToggle"
 				class="wicketforge.action.ToggleAction"
