@@ -15,9 +15,8 @@
  */
 package wicketforge;
 
-import javax.swing.Icon;
-
 import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.IconLoader;
 import consulo.ui.image.Image;
 import wicketforge.templates.WicketTemplates;
@@ -55,43 +54,43 @@ public interface Constants {
     public static final Image TOMARKUPREF = IconLoader.findIcon("/icons/wicket_form.png");
 
     // icon markup references
-    public static final Icon ICON_MARKUP_ = IconLoader.findIcon("/icons/wicket_component.png");
-    public static final Icon ICON_MARKUP_DIV = IconLoader.findIcon("/icons/components/div.png");
-    public static final Icon ICON_MARKUP_SPAN = IconLoader.findIcon("/icons/components/div.png");
-    public static final Icon ICON_MARKUP_LINK = IconLoader.findIcon("/icons/components/link.png");
-    public static final Icon ICON_MARKUP_TABLE = IconLoader.findIcon("/icons/components/table.png");
-    public static final Icon ICON_MARKUP_TR = IconLoader.findIcon("/icons/components/table_tr.png");
-    public static final Icon ICON_MARKUP_TD = IconLoader.findIcon("/icons/components/table_td.png");
-    public static final Icon ICON_MARKUP_UL = IconLoader.findIcon("/icons/components/ul.png");
-    public static final Icon ICON_MARKUP_LI = IconLoader.findIcon("/icons/components/bullet.png");
-    public static final Icon ICON_MARKUP_LABEL = IconLoader.findIcon("/icons/components/label.png");
-    public static final Icon ICON_MARKUP_INPUT = IconLoader.findIcon("/icons/components/textField.png");
-    public static final Icon ICON_MARKUP_INPUT_CHECKBOX = IconLoader.findIcon("/icons/components/checkBox.png");
-    public static final Icon ICON_MARKUP_INPUT_RADIO = IconLoader.findIcon("/icons/components/radioButton.png");
-    public static final Icon ICON_MARKUP_TEXTAREA = IconLoader.findIcon("/icons/components/textArea.png");
-    public static final Icon ICON_MARKUP_SELECT = IconLoader.findIcon("/icons/components/select.png");
-    public static final Icon ICON_MARKUP_OPTION = IconLoader.findIcon("/icons/components/bullet.png");
-    public static final Icon ICON_MARKUP_FORM = IconLoader.findIcon("/icons/components/form.png");
-    public static final Icon ICON_MARKUP_IMG = IconLoader.findIcon("/icons/components/image.png");
-    public static final Icon ICON_MARKUP_BUTTON = IconLoader.findIcon("/icons/components/button.png");
+    public static final Image ICON_MARKUP_ = IconLoader.findIcon("/icons/wicket_component.png");
+    public static final Image ICON_MARKUP_DIV = IconLoader.findIcon("/icons/components/div.png");
+    public static final Image ICON_MARKUP_SPAN = IconLoader.findIcon("/icons/components/div.png");
+    public static final Image ICON_MARKUP_LINK = IconLoader.findIcon("/icons/components/link.png");
+    public static final Image ICON_MARKUP_TABLE = IconLoader.findIcon("/icons/components/table.png");
+    public static final Image ICON_MARKUP_TR = IconLoader.findIcon("/icons/components/table_tr.png");
+    public static final Image ICON_MARKUP_TD = IconLoader.findIcon("/icons/components/table_td.png");
+    public static final Image ICON_MARKUP_UL = IconLoader.findIcon("/icons/components/ul.png");
+    public static final Image ICON_MARKUP_LI = IconLoader.findIcon("/icons/components/bullet.png");
+    public static final Image ICON_MARKUP_LABEL = IconLoader.findIcon("/icons/components/label.png");
+    public static final Image ICON_MARKUP_INPUT = IconLoader.findIcon("/icons/components/textField.png");
+    public static final Image ICON_MARKUP_INPUT_CHECKBOX = IconLoader.findIcon("/icons/components/checkBox.png");
+    public static final Image ICON_MARKUP_INPUT_RADIO = IconLoader.findIcon("/icons/components/radioButton.png");
+    public static final Image ICON_MARKUP_TEXTAREA = IconLoader.findIcon("/icons/components/textArea.png");
+    public static final Image ICON_MARKUP_SELECT = IconLoader.findIcon("/icons/components/select.png");
+    public static final Image ICON_MARKUP_OPTION = IconLoader.findIcon("/icons/components/bullet.png");
+    public static final Image ICON_MARKUP_FORM = IconLoader.findIcon("/icons/components/form.png");
+    public static final Image ICON_MARKUP_IMG = IconLoader.findIcon("/icons/components/image.png");
+    public static final Image ICON_MARKUP_BUTTON = IconLoader.findIcon("/icons/components/button.png");
 
     // icon class references
-    public static final Icon ICON_CLASS_ = IconLoader.findIcon("/icons/wicket_component.png");
-    public static final Icon ICON_CLASS_FORM = IconLoader.findIcon("/icons/components/form.png");
-    public static final Icon ICON_CLASS_SELECT = IconLoader.findIcon("/icons/components/select.png");
-    public static final Icon ICON_CLASS_CHECKBOX = IconLoader.findIcon("/icons/components/checkBox.png");
-    public static final Icon ICON_CLASS_RADIO = IconLoader.findIcon("/icons/components/radioButton.png");
-    public static final Icon ICON_CLASS_LABEL = IconLoader.findIcon("/icons/components/label.png");
-    public static final Icon ICON_CLASS_LINK = IconLoader.findIcon("/icons/components/link.png");
-    public static final Icon ICON_CLASS_BUTTON = IconLoader.findIcon("/icons/components/button.png");
-    public static final Icon ICON_CLASS_TEXTFIELD = IconLoader.findIcon("/icons/components/textField.png");
-    public static final Icon ICON_CLASS_TEXTAREA = IconLoader.findIcon("/icons/components/textArea.png");
-    public static final Icon ICON_CLASS_REPEATER = IconLoader.findIcon("/icons/components/repeater.png");
-    public static final Icon ICON_CLASS_PANEL = IconLoader.findIcon("/icons/components/panel.png");
-    public static final Icon ICON_CLASS_BORDER = IconLoader.findIcon("/icons/components/border.png");
-    public static final Icon ICON_CLASS_FORMCOMPONENTPANEL = IconLoader.findIcon("/icons/components/formComponent.png");
-    public static final Icon ICON_CLASS_FORMCOMPONENT = IconLoader.findIcon("/icons/components/formComponent.png");
-    public static final Icon ICON_CLASS_WEBMARKUPCONTAINER = IconLoader.findIcon("/icons/components/div.png");
+    public static final Image ICON_CLASS_ = IconLoader.findIcon("/icons/wicket_component.png");
+    public static final Image ICON_CLASS_FORM = IconLoader.findIcon("/icons/components/form.png");
+    public static final Image ICON_CLASS_SELECT = IconLoader.findIcon("/icons/components/select.png");
+    public static final Image ICON_CLASS_CHECKBOX = IconLoader.findIcon("/icons/components/checkBox.png");
+    public static final Image ICON_CLASS_RADIO = IconLoader.findIcon("/icons/components/radioButton.png");
+    public static final Image ICON_CLASS_LABEL = IconLoader.findIcon("/icons/components/label.png");
+    public static final Image ICON_CLASS_LINK = IconLoader.findIcon("/icons/components/link.png");
+    public static final Image ICON_CLASS_BUTTON = IconLoader.findIcon("/icons/components/button.png");
+    public static final Image ICON_CLASS_TEXTFIELD = IconLoader.findIcon("/icons/components/textField.png");
+    public static final Image ICON_CLASS_TEXTAREA = IconLoader.findIcon("/icons/components/textArea.png");
+    public static final Image ICON_CLASS_REPEATER = IconLoader.findIcon("/icons/components/repeater.png");
+    public static final Image ICON_CLASS_PANEL = IconLoader.findIcon("/icons/components/panel.png");
+    public static final Image ICON_CLASS_BORDER = IconLoader.findIcon("/icons/components/border.png");
+    public static final Image ICON_CLASS_FORMCOMPONENTPANEL = IconLoader.findIcon("/icons/components/formComponent.png");
+    public static final Image ICON_CLASS_FORMCOMPONENT = IconLoader.findIcon("/icons/components/formComponent.png");
+    public static final Image ICON_CLASS_WEBMARKUPCONTAINER = IconLoader.findIcon("/icons/components/div.png");
 
     enum PropertiesType {
         PROPERTIES(WicketTemplates.WICKET_PROPERTIES),

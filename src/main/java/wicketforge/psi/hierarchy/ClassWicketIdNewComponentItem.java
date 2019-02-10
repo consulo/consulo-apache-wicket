@@ -19,6 +19,7 @@ import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.*;
 import javax.annotation.Nonnull;
 
+import consulo.ui.image.Image;
 import wicketforge.Constants;
 import wicketforge.util.WicketPsiUtil;
 
@@ -94,11 +95,11 @@ public final class ClassWicketIdNewComponentItem implements ItemPresentation {
 
     @Nullable
     @Override
-    public Icon getIcon(boolean unused) {
+    public Image getIcon() {
         return getIcon(baseClassToCreate);
     }
 
-    private static Icon getIcon(@Nullable PsiClass classToCreate) {
+    private static Image getIcon(@Nullable PsiClass classToCreate) {
         // simply name check should be enough
         while (classToCreate != null) {
             String name = classToCreate.getName();

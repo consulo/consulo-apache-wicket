@@ -15,16 +15,17 @@
  */
 package wicketforge.psi.hierarchy;
 
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.util.SmartList;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import wicketforge.Constants;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import com.intellij.navigation.ItemPresentation;
+import com.intellij.util.SmartList;
+import consulo.ui.image.Image;
+import wicketforge.Constants;
 
 public final class ClassWicketIdItem implements ItemPresentation {
     private String wicketId;
@@ -104,10 +105,10 @@ public final class ClassWicketIdItem implements ItemPresentation {
 
     @Override
     @Nullable
-    public Icon getIcon(boolean unused) {
+    public Image getIcon() {
         // we can have multiple ClassWicketIdNewComponentItem -> just show icon from first item...
         if (!newComponentItems.isEmpty()) {
-            return newComponentItems.get(0).getIcon(unused);
+            return newComponentItems.get(0).getIcon();
         }
         return Constants.ICON_CLASS_;
     }

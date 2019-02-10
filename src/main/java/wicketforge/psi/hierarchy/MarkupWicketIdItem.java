@@ -21,12 +21,12 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.Icon;
 
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlTag;
+import consulo.ui.image.Image;
 import wicketforge.Constants;
 
 public final class MarkupWicketIdItem implements ItemPresentation {
@@ -88,11 +88,11 @@ public final class MarkupWicketIdItem implements ItemPresentation {
 
     @Override
     @Nullable
-    public Icon getIcon(boolean unused) {
+    public Image getIcon() {
         return getIcon(getTag());
     }
 
-    private static Icon getIcon(@Nullable XmlTag tag) {
+    private static Image getIcon(@Nullable XmlTag tag) {
         if (tag != null) {
             String name = tag.getName();
             if ("div".equals(name)) {
