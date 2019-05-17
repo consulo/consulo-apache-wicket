@@ -15,13 +15,6 @@
  */
 package wicketforge.util;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import com.intellij.CommonBundle;
 import com.intellij.codeInsight.CodeInsightBundle;
 import com.intellij.ide.fileTemplates.FileTemplate;
@@ -48,9 +41,16 @@ import com.intellij.refactoring.util.RefactoringMessageUtil;
 import com.intellij.refactoring.util.RefactoringUtil;
 import com.intellij.util.IncorrectOperationException;
 import com.intellij.util.SmartList;
+import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import consulo.roots.ContentFolderScopes;
 import consulo.roots.impl.WebResourcesFolderTypeProvider;
 import wicketforge.Constants;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
 
 public final class WicketFileUtil
 {
@@ -100,28 +100,24 @@ public final class WicketFileUtil
 	{
 		final PackageWrapper targetPackage = new PackageWrapper(PsiManager.getInstance(project), packageName);
 
-		final VirtualFile selectedRoot = new ReadAction<VirtualFile>()
+		final VirtualFile selectedRoot = ReadAction.compute(() ->
 		{
-			@Override
-			protected void run(Result<VirtualFile> result) throws Throwable
+			VirtualFile[] roots = getResourceRoots(module);
+			if(roots.length == 0)
 			{
-				VirtualFile[] roots = getResourceRoots(module);
-				if(roots.length == 0)
-				{
-					return;
-				}
-
-				if(roots.length == 1)
-				{
-					result.setResult(roots[0]);
-				}
-				else
-				{
-					PsiDirectory defaultDir = PackageUtil.findPossiblePackageDirectoryInModule(module, packageName);
-					result.setResult(MoveClassesOrPackagesUtil.chooseSourceRoot(targetPackage, roots, defaultDir));
-				}
+				return null;
 			}
-		}.execute().getResultObject();
+
+			if(roots.length == 1)
+			{
+				return roots[0];
+			}
+			else
+			{
+				PsiDirectory defaultDir = PackageUtil.findPossiblePackageDirectoryInModule(module, packageName);
+				return MoveClassesOrPackagesUtil.chooseSourceRoot(targetPackage, roots, defaultDir);
+			}
+		});
 
 		if(selectedRoot == null)
 		{
