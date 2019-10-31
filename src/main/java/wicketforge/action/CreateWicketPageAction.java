@@ -15,13 +15,14 @@
  */
 package wicketforge.action;
 
-import javax.annotation.Nonnull;
-
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import wicketforge.action.ui.CreatePageDialog;
 import wicketforge.templates.WicketTemplates;
+
+import javax.annotation.Nonnull;
+import java.util.function.Consumer;
 
 /**
  * CreateWicketPageAction
@@ -33,12 +34,10 @@ public class CreateWicketPageAction extends CreateWicketAction {
     }
 
     @Override
-    @Nonnull
-    protected PsiElement[] invokeDialog(Project project, PsiDirectory directory) {
+    protected void invokeDialog(Project project, PsiDirectory directory, Consumer<PsiElement[]> consumer) {
         ActionRunnableImpl actionRunnable = new ActionRunnableImpl(project, directory, WicketTemplates.WICKET_PAGE_HTML);
         CreatePageDialog dialog = new CreatePageDialog(project, actionRunnable, getCommandName(), directory);
-        dialog.show();
-        return actionRunnable.getCreatedElements();
+        dialog.showAsync().doWhenDone(() -> consumer.accept(actionRunnable.getCreatedElements()));
     }
 
     @Override
