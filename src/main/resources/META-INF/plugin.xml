@@ -1,4 +1,4 @@
-<idea-plugin>
+<consulo-plugin>
 	<id>consulo.apache.wicket</id>
 	<name>WicketForge</name>
 	<version>SNAPSHOT</version>
@@ -86,4 +86,4 @@
 			<add-to-group group-id="NewGroup" anchor="last"/>
 		</group>
 	</actions>
-</idea-plugin>
+</consulo-plugin>

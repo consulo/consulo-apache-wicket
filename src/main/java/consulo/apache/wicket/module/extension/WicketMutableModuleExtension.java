@@ -2,10 +2,12 @@ package consulo.apache.wicket.module.extension;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.JComponent;
 
+import consulo.disposer.Disposable;
 import consulo.module.extension.MutableModuleExtension;
 import consulo.roots.ModuleRootLayer;
+import consulo.ui.Component;
+import consulo.ui.annotation.RequiredUIAccess;
 
 /**
  * @author VISTALL
@@ -18,9 +20,10 @@ public class WicketMutableModuleExtension extends WicketModuleExtension implemen
 		super(id, moduleRootLayer);
 	}
 
+	@RequiredUIAccess
 	@Nullable
 	@Override
-	public JComponent createConfigurablePanel(@Nonnull Runnable updateOnCheck)
+	public Component createConfigurationComponent(@Nonnull Disposable disposable, @Nonnull Runnable runnable)
 	{
 		return null;
 	}
