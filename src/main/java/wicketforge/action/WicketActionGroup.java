@@ -24,7 +24,6 @@ import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.psi.JavaDirectoryService;
 import com.intellij.psi.PsiDirectory;
-import consulo.awt.TargetAWT;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 
@@ -35,7 +34,7 @@ public class WicketActionGroup extends DefaultActionGroup {
     public WicketActionGroup() {
         super("WicketForge", true);
         getTemplatePresentation().setDescription("Wicket");
-        getTemplatePresentation().setIcon(TargetAWT.to(Constants.WICKET_ICON));
+        getTemplatePresentation().setIcon(Constants.WICKET_ICON);
     }
 
     @Override
