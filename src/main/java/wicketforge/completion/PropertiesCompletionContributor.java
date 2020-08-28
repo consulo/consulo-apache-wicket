@@ -25,19 +25,10 @@ import com.intellij.lang.properties.IProperty;
 import com.intellij.lang.properties.PropertiesFileType;
 import com.intellij.lang.properties.psi.PropertiesFile;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiExpressionList;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiJavaFile;
-import com.intellij.psi.PsiJavaToken;
-import com.intellij.psi.PsiLiteralExpression;
-import com.intellij.psi.PsiMethod;
-import com.intellij.psi.PsiNewExpression;
+import com.intellij.psi.*;
 import com.intellij.psi.xml.XmlAttribute;
 import com.intellij.psi.xml.XmlAttributeValue;
 import com.intellij.psi.xml.XmlToken;
-import consulo.awt.TargetAWT;
 import wicketforge.search.ClassIndex;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.util.WicketPsiUtil;
@@ -88,7 +79,7 @@ public class PropertiesCompletionContributor extends CompletionContributor {
                 if (propertyKey != null) {
                     LookupElementBuilder lookupElementBuilder =
                             LookupElementBuilder.create(propertyKey)
-                                    .withIcon(TargetAWT.to(PropertiesFileType.INSTANCE.getIcon()))
+                                    .withIcon(PropertiesFileType.INSTANCE.getIcon())
                                     .withTypeText(".properties")
                                     .withTailText("  " + property.getValue(), true);
                     rs.addElement(lookupElementBuilder);
