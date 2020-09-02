@@ -15,11 +15,6 @@
  */
 package wicketforge.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import com.intellij.ide.actions.CreateElementActionBase;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandProcessor;
@@ -28,11 +23,14 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.*;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.IncorrectOperationException;
-import consulo.awt.TargetAWT;
 import wicketforge.Constants;
 import wicketforge.action.ui.AbstractCreateDialog;
 import wicketforge.util.WicketFileUtil;
 import wicketforge.util.WicketFilenameUtil;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CreateWicketAction
@@ -40,7 +38,7 @@ import wicketforge.util.WicketFilenameUtil;
 abstract class CreateWicketAction extends CreateElementActionBase {
 
     protected CreateWicketAction(String text, String description) {
-        super(text, description, TargetAWT.to(Constants.WICKET_ICON));
+        super(text, description, Constants.WICKET_ICON);
     }
 
     @Nonnull
