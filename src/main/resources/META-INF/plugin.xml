@@ -11,7 +11,7 @@
 		<moduleExtensionProvider key="apache-wicket"
 								 parentKey="java-web"
 								 name="Apache Wicket"
-								 icon="/icons/wicket.png"
+								 icon="consulo.apache.wicket.ApacheWicketIconGroup@wicket"
 								 immutableClass="consulo.apache.wicket.module.extension.WicketModuleExtension"
 								 mutableClass="consulo.apache.wicket.module.extension.WicketMutableModuleExtension"/>
 		<fileTemplateGroup implementation="wicketforge.templates.WicketFileTemplateGroupFactory"/>

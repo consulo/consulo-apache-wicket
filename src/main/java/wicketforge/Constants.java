@@ -15,11 +15,11 @@
  */
 package wicketforge;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.openapi.util.IconLoader;
+import consulo.apache.wicket.icon.ApacheWicketIconGroup;
 import consulo.ui.image.Image;
 import wicketforge.templates.WicketTemplates;
+
+import javax.annotation.Nonnull;
 
 /**
  * A collection of constants used by the plugin.
@@ -48,49 +48,49 @@ public interface Constants {
     public static final String PROP_WICKET_NS = "WICKET_NS";
 
     // icons
-    public static final Image WICKET_ICON = IconLoader.findIcon("/icons/wicket.png");
-    public static final Image WICKET_COMPONENT_ICON = IconLoader.findIcon("/icons/wicket_component.png");
-    public static final Image TOJAVAREF = IconLoader.findIcon("/icons/wicket_form.png");
-    public static final Image TOMARKUPREF = IconLoader.findIcon("/icons/wicket_form.png");
+    public static final Image WICKET_ICON = ApacheWicketIconGroup.wicket();
+    public static final Image WICKET_COMPONENT_ICON = ApacheWicketIconGroup.wicket_component();
+    public static final Image TOJAVAREF = ApacheWicketIconGroup.wicket_form();
+    public static final Image TOMARKUPREF = ApacheWicketIconGroup.wicket_form();
 
     // icon markup references
-    public static final Image ICON_MARKUP_ = IconLoader.findIcon("/icons/wicket_component.png");
-    public static final Image ICON_MARKUP_DIV = IconLoader.findIcon("/icons/components/div.png");
-    public static final Image ICON_MARKUP_SPAN = IconLoader.findIcon("/icons/components/div.png");
-    public static final Image ICON_MARKUP_LINK = IconLoader.findIcon("/icons/components/link.png");
-    public static final Image ICON_MARKUP_TABLE = IconLoader.findIcon("/icons/components/table.png");
-    public static final Image ICON_MARKUP_TR = IconLoader.findIcon("/icons/components/table_tr.png");
-    public static final Image ICON_MARKUP_TD = IconLoader.findIcon("/icons/components/table_td.png");
-    public static final Image ICON_MARKUP_UL = IconLoader.findIcon("/icons/components/ul.png");
-    public static final Image ICON_MARKUP_LI = IconLoader.findIcon("/icons/components/bullet.png");
-    public static final Image ICON_MARKUP_LABEL = IconLoader.findIcon("/icons/components/label.png");
-    public static final Image ICON_MARKUP_INPUT = IconLoader.findIcon("/icons/components/textField.png");
-    public static final Image ICON_MARKUP_INPUT_CHECKBOX = IconLoader.findIcon("/icons/components/checkBox.png");
-    public static final Image ICON_MARKUP_INPUT_RADIO = IconLoader.findIcon("/icons/components/radioButton.png");
-    public static final Image ICON_MARKUP_TEXTAREA = IconLoader.findIcon("/icons/components/textArea.png");
-    public static final Image ICON_MARKUP_SELECT = IconLoader.findIcon("/icons/components/select.png");
-    public static final Image ICON_MARKUP_OPTION = IconLoader.findIcon("/icons/components/bullet.png");
-    public static final Image ICON_MARKUP_FORM = IconLoader.findIcon("/icons/components/form.png");
-    public static final Image ICON_MARKUP_IMG = IconLoader.findIcon("/icons/components/image.png");
-    public static final Image ICON_MARKUP_BUTTON = IconLoader.findIcon("/icons/components/button.png");
+    public static final Image ICON_MARKUP_ = ApacheWicketIconGroup.wicket_component();
+    public static final Image ICON_MARKUP_DIV = ApacheWicketIconGroup.componentsDiv();
+    public static final Image ICON_MARKUP_SPAN = ApacheWicketIconGroup.componentsDiv();
+    public static final Image ICON_MARKUP_LINK = ApacheWicketIconGroup.componentsLink();
+    public static final Image ICON_MARKUP_TABLE = ApacheWicketIconGroup.componentsTable();
+    public static final Image ICON_MARKUP_TR = ApacheWicketIconGroup.componentsTable_tr();
+    public static final Image ICON_MARKUP_TD = ApacheWicketIconGroup.componentsTable_td();
+    public static final Image ICON_MARKUP_UL = ApacheWicketIconGroup.componentsUl();
+    public static final Image ICON_MARKUP_LI = ApacheWicketIconGroup.componentsBullet();
+    public static final Image ICON_MARKUP_LABEL = ApacheWicketIconGroup.componentsLabel();
+    public static final Image ICON_MARKUP_INPUT = ApacheWicketIconGroup.componentsTextField();
+    public static final Image ICON_MARKUP_INPUT_CHECKBOX = ApacheWicketIconGroup.componentsCheckBox();
+    public static final Image ICON_MARKUP_INPUT_RADIO = ApacheWicketIconGroup.componentsRadioButton();
+    public static final Image ICON_MARKUP_TEXTAREA = ApacheWicketIconGroup.componentsTextArea();
+    public static final Image ICON_MARKUP_SELECT = ApacheWicketIconGroup.componentsSelect();
+    public static final Image ICON_MARKUP_OPTION = ApacheWicketIconGroup.componentsBullet();
+    public static final Image ICON_MARKUP_FORM = ApacheWicketIconGroup.componentsForm();
+    public static final Image ICON_MARKUP_IMG = ApacheWicketIconGroup.componentsImage();
+    public static final Image ICON_MARKUP_BUTTON = ApacheWicketIconGroup.componentsButton();
 
     // icon class references
-    public static final Image ICON_CLASS_ = IconLoader.findIcon("/icons/wicket_component.png");
-    public static final Image ICON_CLASS_FORM = IconLoader.findIcon("/icons/components/form.png");
-    public static final Image ICON_CLASS_SELECT = IconLoader.findIcon("/icons/components/select.png");
-    public static final Image ICON_CLASS_CHECKBOX = IconLoader.findIcon("/icons/components/checkBox.png");
-    public static final Image ICON_CLASS_RADIO = IconLoader.findIcon("/icons/components/radioButton.png");
-    public static final Image ICON_CLASS_LABEL = IconLoader.findIcon("/icons/components/label.png");
-    public static final Image ICON_CLASS_LINK = IconLoader.findIcon("/icons/components/link.png");
-    public static final Image ICON_CLASS_BUTTON = IconLoader.findIcon("/icons/components/button.png");
-    public static final Image ICON_CLASS_TEXTFIELD = IconLoader.findIcon("/icons/components/textField.png");
-    public static final Image ICON_CLASS_TEXTAREA = IconLoader.findIcon("/icons/components/textArea.png");
-    public static final Image ICON_CLASS_REPEATER = IconLoader.findIcon("/icons/components/repeater.png");
-    public static final Image ICON_CLASS_PANEL = IconLoader.findIcon("/icons/components/panel.png");
-    public static final Image ICON_CLASS_BORDER = IconLoader.findIcon("/icons/components/border.png");
-    public static final Image ICON_CLASS_FORMCOMPONENTPANEL = IconLoader.findIcon("/icons/components/formComponent.png");
-    public static final Image ICON_CLASS_FORMCOMPONENT = IconLoader.findIcon("/icons/components/formComponent.png");
-    public static final Image ICON_CLASS_WEBMARKUPCONTAINER = IconLoader.findIcon("/icons/components/div.png");
+    public static final Image ICON_CLASS_ = ApacheWicketIconGroup.wicket_component();
+    public static final Image ICON_CLASS_FORM = ApacheWicketIconGroup.componentsForm();
+    public static final Image ICON_CLASS_SELECT = ApacheWicketIconGroup.componentsSelect();
+    public static final Image ICON_CLASS_CHECKBOX = ApacheWicketIconGroup.componentsCheckBox();
+    public static final Image ICON_CLASS_RADIO = ApacheWicketIconGroup.componentsRadioButton();
+    public static final Image ICON_CLASS_LABEL = ApacheWicketIconGroup.componentsLabel();
+    public static final Image ICON_CLASS_LINK = ApacheWicketIconGroup.componentsLink();
+    public static final Image ICON_CLASS_BUTTON = ApacheWicketIconGroup.componentsButton();
+    public static final Image ICON_CLASS_TEXTFIELD = ApacheWicketIconGroup.componentsTextField();
+    public static final Image ICON_CLASS_TEXTAREA = ApacheWicketIconGroup.componentsTextArea();
+    public static final Image ICON_CLASS_REPEATER = ApacheWicketIconGroup.componentsRepeater();
+    public static final Image ICON_CLASS_PANEL = ApacheWicketIconGroup.componentsPanel();
+    public static final Image ICON_CLASS_BORDER = ApacheWicketIconGroup.componentsBorder();
+    public static final Image ICON_CLASS_FORMCOMPONENTPANEL = ApacheWicketIconGroup.componentsFormComponent();
+    public static final Image ICON_CLASS_FORMCOMPONENT = ApacheWicketIconGroup.componentsFormComponent();
+    public static final Image ICON_CLASS_WEBMARKUPCONTAINER = ApacheWicketIconGroup.componentsDiv();
 
     enum PropertiesType {
         PROPERTIES(WicketTemplates.WICKET_PROPERTIES),
