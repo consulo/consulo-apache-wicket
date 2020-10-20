@@ -15,11 +15,10 @@
  */
 package wicketforge;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 
 import com.intellij.codeInsight.intention.IntentionManager;
-import com.intellij.openapi.project.Project;
 import wicketforge.intention.AddMarkupBorderIntention;
 import wicketforge.intention.AddMarkupPageIntention;
 import wicketforge.intention.AddMarkupPanelIntention;
