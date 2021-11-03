@@ -1,11 +1,15 @@
 <consulo-plugin>
 	<id>consulo.apache.wicket</id>
-	<name>WicketForge</name>
+	<name>Apache Wicket</name>
 	<version>SNAPSHOT</version>
 	<vendor>Minas Manthos</vendor>
 	<depends>com.intellij.properties</depends>
 	<depends>consulo.java</depends>
 	<depends>consulo.javaee</depends>
+
+	<tags>
+		<tag>web.framework</tag>
+	</tags>
 
 	<extensions defaultExtensionNs="com.intellij">
 		<moduleExtensionProvider key="apache-wicket"
