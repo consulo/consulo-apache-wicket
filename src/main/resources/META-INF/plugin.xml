@@ -1,4 +1,4 @@
-<consulo-plugin>
+<consulo-plugin url="https://github.com/consulo/consulo-apache-wicket">
 	<id>consulo.apache.wicket</id>
 	<name>Apache Wicket</name>
 	<version>SNAPSHOT</version>
