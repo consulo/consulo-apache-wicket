@@ -52,6 +52,7 @@
                         <dependency>consulo.javaee</dependency>
                         <dependency>com.intellij.xml</dependency>
                         <dependency>com.intellij.properties</dependency>
+                        <dependency>org.jetbrains.idea.maven</dependency>
                     </dependencies>
                     <packaging>
                         <skip>${dev.mode}</skip>
@@ -79,6 +80,13 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>consulo.apache.wicket.maven.impl</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>consulo.java</artifactId>

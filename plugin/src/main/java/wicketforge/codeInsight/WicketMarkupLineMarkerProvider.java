@@ -18,9 +18,9 @@ package wicketforge.codeInsight;
 import com.intellij.java.language.psi.PsiClass;
 import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.apache.wicket.editor.WicketLineMarkerProvider;
 import consulo.language.Language;
 import consulo.language.editor.gutter.LineMarkerInfo;
-import consulo.language.editor.gutter.LineMarkerProvider;
 import consulo.language.psi.NavigatablePsiElement;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
@@ -38,7 +38,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 @ExtensionImpl
-public class WicketMarkupLineMarkerProvider implements LineMarkerProvider {
+public class WicketMarkupLineMarkerProvider extends WicketLineMarkerProvider {
     @RequiredReadAction
     @Override
     @Nullable

@@ -42,5 +42,6 @@
 
 	<modules>
 		<module>plugin</module>
+		<module>maven-impl</module>
 	</modules>
 </project>
