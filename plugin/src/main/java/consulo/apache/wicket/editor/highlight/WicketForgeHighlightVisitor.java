@@ -2,9 +2,7 @@ package consulo.apache.wicket.editor.highlight;
 
 import com.intellij.java.language.psi.PsiClass;
 import com.intellij.java.language.psi.PsiExpression;
-import com.intellij.java.language.psi.PsiJavaFile;
 import com.intellij.java.language.psi.PsiNewExpression;
-import consulo.annotation.component.ExtensionImpl;
 import consulo.document.util.TextRange;
 import consulo.language.editor.rawHighlight.HighlightInfo;
 import consulo.language.editor.rawHighlight.HighlightInfoHolder;
@@ -15,7 +13,6 @@ import consulo.language.psi.PsiFile;
 import consulo.language.psi.PsiReference;
 import consulo.xml.psi.xml.XmlAttribute;
 import consulo.xml.psi.xml.XmlAttributeValue;
-import consulo.xml.psi.xml.XmlFile;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.highlighting.WicketForgeColorSettingsPage;
