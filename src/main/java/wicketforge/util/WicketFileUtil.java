@@ -15,35 +15,35 @@
  */
 package wicketforge.util;
 
-import com.intellij.CommonBundle;
-import com.intellij.codeInsight.CodeInsightBundle;
-import com.intellij.ide.fileTemplates.FileTemplate;
-import com.intellij.ide.fileTemplates.FileTemplateManager;
-import com.intellij.ide.fileTemplates.FileTemplateUtil;
-import com.intellij.ide.util.PackageUtil;
-import com.intellij.openapi.application.ReadAction;
-import com.intellij.openapi.application.Result;
-import com.intellij.openapi.command.WriteCommandAction;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.roots.ProjectFileIndex;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiManager;
-import com.intellij.refactoring.PackageWrapper;
-import com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesUtil;
-import com.intellij.refactoring.util.RefactoringMessageUtil;
-import com.intellij.refactoring.util.RefactoringUtil;
-import com.intellij.util.IncorrectOperationException;
-import com.intellij.util.SmartList;
+import com.intellij.java.impl.refactoring.PackageWrapper;
+import com.intellij.java.impl.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesUtil;
+import com.intellij.java.impl.refactoring.util.RefactoringMessageUtil;
+import com.intellij.java.impl.refactoring.util.RefactoringUtil;
+import com.intellij.java.language.impl.codeInsight.PackageUtil;
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
-import consulo.roots.ContentFolderScopes;
-import consulo.roots.impl.WebResourcesFolderTypeProvider;
+import consulo.application.CommonBundle;
+import consulo.application.ReadAction;
+import consulo.application.Result;
+import consulo.content.base.WebResourcesFolderTypeProvider;
+import consulo.fileTemplate.FileTemplate;
+import consulo.fileTemplate.FileTemplateManager;
+import consulo.fileTemplate.FileTemplateUtil;
+import consulo.language.content.LanguageContentFolderScopes;
+import consulo.language.editor.CodeInsightBundle;
+import consulo.language.editor.WriteCommandAction;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiManager;
+import consulo.language.util.IncorrectOperationException;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.module.content.ModuleRootManager;
+import consulo.module.content.ProjectFileIndex;
+import consulo.module.content.ProjectRootManager;
+import consulo.project.Project;
+import consulo.ui.ex.awt.Messages;
+import consulo.util.collection.SmartList;
+import consulo.virtualFileSystem.VirtualFile;
 import wicketforge.Constants;
 
 import javax.annotation.Nonnull;
@@ -69,7 +69,7 @@ public final class WicketFileUtil
 		{
 			List<VirtualFile> alternateFiles = new SmartList<VirtualFile>();
 			// add all valid alternate paths to list
-			VirtualFile[] webFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
+			VirtualFile[] webFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(LanguageContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
 			for(VirtualFile virtualFile : webFiles)
 			{
 				if(virtualFile != null && virtualFile.isValid())

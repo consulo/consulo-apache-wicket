@@ -15,24 +15,25 @@
  */
 package wicketforge.psi.hierarchy;
 
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.ide.structureView.TextEditorBasedStructureViewModel;
-import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiJavaFile;
-import com.intellij.psi.PsiNewExpression;
-import com.intellij.util.PsiNavigateUtil;
-import com.intellij.util.SmartList;
-import javax.annotation.Nonnull;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiJavaFile;
+import com.intellij.java.language.psi.PsiNewExpression;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
+import consulo.fileEditor.structureView.tree.TreeElement;
+import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiNavigateUtil;
+import consulo.navigation.ItemPresentation;
+import consulo.util.collection.SmartList;
 import wicketforge.util.WicketPsiUtil;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
  */
-public class ClassStructureTreeModel extends TextEditorBasedStructureViewModel {
+public class ClassStructureTreeModel extends TextEditorBasedStructureViewModel
+{
     private StructureViewTreeElement root;
     private static final TreeElement[] EMPTY_TREE_ELEMENTS = new TreeElement[0];
 

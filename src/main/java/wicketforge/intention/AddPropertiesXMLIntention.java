@@ -15,29 +15,27 @@
  */
 package wicketforge.intention;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.psi.PsiClass;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.intention.IntentionMetaData;
 import wicketforge.Constants;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.templates.WicketTemplates;
 import wicketforge.util.WicketFilenameUtil;
 import wicketforge.util.WicketPsiUtil;
 
+import javax.annotation.Nonnull;
+
 /**
  * Class level intention used to create properties xml files for Wicket page and panel components.
  */
+@ExtensionImpl
+@IntentionMetaData(ignoreId = "wicket.AddPropertiesXMLIntention", categories = {"Java", "Apache Wicket"}, fileExtensions = "java")
 public class AddPropertiesXMLIntention extends AddMarkupIntention {
 
     @Override
     @Nonnull
     public String getText() {
-        return "Create Properties XML File";
-    }
-
-    @Override
-    @Nonnull
-    public String getFamilyName() {
         return "Create Properties XML File";
     }
 

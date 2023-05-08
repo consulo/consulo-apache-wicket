@@ -15,32 +15,30 @@
  */
 package wicketforge.search;
 
-import java.util.Collections;
-import java.util.Map;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import com.intellij.ide.highlighter.XmlFileType;
+import com.intellij.java.language.psi.PsiClass;
 import com.intellij.lang.properties.PropertiesFileType;
 import com.intellij.lang.properties.PropertiesUtil;
 import com.intellij.lang.properties.psi.PropertiesFile;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.indexing.FileContent;
-import com.intellij.util.indexing.ID;
-import com.intellij.util.messages.MessageBus;
-import com.intellij.util.xml.NanoXmlUtil;
-import com.intellij.util.xml.XmlFileHeader;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.index.io.ID;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.FileContent;
+import consulo.project.Project;
+import consulo.util.xml.fastReader.NanoXmlUtil;
+import consulo.util.xml.fastReader.XmlFileHeader;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.fileType.FileType;
+import consulo.xml.ide.highlighter.XmlFileType;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.Map;
+
+@ExtensionImpl
 public class PropertiesIndex extends WicketResourceIndexExtension {
     private static final ID<String, Void> NAME = ID.create("WicketPropertiesIndex");
-
-    public PropertiesIndex(@Nonnull MessageBus messageBus) {
-        super(messageBus);
-    }
 
     @Nonnull
     @Override
@@ -59,9 +57,13 @@ public class PropertiesIndex extends WicketResourceIndexExtension {
     public Map<String, Void> map(FileContent inputData) {
         if (XmlFileType.INSTANCE.equals(inputData.getFileType())) {
             // check if its a properties xml
-            XmlFileHeader fileHeader = NanoXmlUtil.parseHeader(inputData.getFile());
-            if (!"properties".equals(fileHeader.getRootTagLocalName())) {
-                return Collections.emptyMap(); // if not, nothing to map here
+            try (InputStream stream = inputData.getFile().getInputStream()) {
+                XmlFileHeader fileHeader = NanoXmlUtil.parseHeaderWithException(stream);
+                if (!"properties".equals(fileHeader.getRootTagLocalName())) {
+                    return Collections.emptyMap(); // if not, nothing to map here
+                }
+            }
+            catch (Exception ignored) {
             }
         }
         return super.map(inputData);

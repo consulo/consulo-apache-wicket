@@ -15,18 +15,19 @@
  */
 package wicketforge.search;
 
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.JavaPsiFacade;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.impl.compiled.ClsClassImpl;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.search.ProjectScope;
+import com.intellij.java.language.impl.psi.impl.compiled.ClsClassImpl;
+import com.intellij.java.language.psi.JavaPsiFacade;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.project.Project;
+import consulo.project.content.scope.ProjectScopes;
+import wicketforge.util.WicketPsiUtil;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import wicketforge.util.WicketPsiUtil;
 
 public class ClassIndex {
     private ClassIndex() {
@@ -50,9 +51,9 @@ public class ClassIndex {
 
         GlobalSearchScope scope;
         if (WicketPsiUtil.isInLibrary(psiFile)) {
-            scope = ProjectScope.getLibrariesScope(project);
+            scope = (GlobalSearchScope) ProjectScopes.getLibrariesScope(project);
         } else {
-            Module module = ModuleUtil.findModuleForPsiElement(psiFile);
+            Module module = ModuleUtilCore.findModuleForPsiElement(psiFile);
             if (module == null) {
                 return null;
             }

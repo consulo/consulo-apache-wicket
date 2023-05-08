@@ -15,28 +15,26 @@
  */
 package wicketforge.intention;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.psi.PsiClass;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.intention.IntentionMetaData;
 import wicketforge.search.MarkupIndex;
 import wicketforge.templates.WicketTemplates;
 import wicketforge.util.WicketFilenameUtil;
 import wicketforge.util.WicketPsiUtil;
 
+import javax.annotation.Nonnull;
+
 /**
  * Class intention to create new a new markup file for a Wicket page or panel component.
  */
+@ExtensionImpl
+@IntentionMetaData(ignoreId = "wicket.AddMarkupPageIntention", categories = {"Java", "Apache Wicket"}, fileExtensions = "java")
 public class AddMarkupPageIntention extends AddMarkupIntention {
 
     @Override
     @Nonnull
     public String getText() {
-        return "Create Markup Page";
-    }
-
-    @Override
-    @Nonnull
-    public String getFamilyName() {
         return "Create Markup Page";
     }
 

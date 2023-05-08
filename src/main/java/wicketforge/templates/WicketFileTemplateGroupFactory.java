@@ -15,14 +15,16 @@
  */
 package wicketforge.templates;
 
-import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
-import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptor;
-import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptorFactory;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.fileTemplate.FileTemplateDescriptor;
+import consulo.fileTemplate.FileTemplateGroupDescriptor;
+import consulo.fileTemplate.FileTemplateGroupDescriptorFactory;
 import wicketforge.Constants;
 
 /**
  * WicketFileTemplateGroupFactory
  */
+@ExtensionImpl
 public class WicketFileTemplateGroupFactory implements FileTemplateGroupDescriptorFactory, WicketTemplates {
     
     @Override

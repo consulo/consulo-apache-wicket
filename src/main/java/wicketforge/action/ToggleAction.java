@@ -15,28 +15,25 @@
  */
 package wicketforge.action;
 
-import consulo.psi.PsiPackage;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.intellij.codeInsight.hint.HintManager;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileEditor.FileEditorManager;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.JavaDirectoryService;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiJavaFile;
-import com.intellij.psi.xml.XmlFile;
-import com.intellij.util.PsiNavigateUtil;
+import com.intellij.java.language.psi.JavaDirectoryService;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiJavaFile;
+import consulo.codeEditor.Editor;
+import consulo.fileEditor.FileEditorManager;
+import consulo.language.editor.LangDataKeys;
+import consulo.language.editor.hint.HintManager;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiPackage;
+import consulo.language.psi.util.PsiNavigateUtil;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.ui.ex.action.AnAction;
+import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.awt.Messages;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.xml.psi.xml.XmlFile;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.ClassIndex;
 import wicketforge.search.MarkupIndex;
@@ -45,9 +42,13 @@ import wicketforge.util.WicketFileUtil;
 import wicketforge.util.WicketFilenameUtil;
 import wicketforge.util.WicketPsiUtil;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  */
-public class ToggleAction extends AnAction {
+public class ToggleAction extends AnAction
+{
     @Override
     public void update(AnActionEvent e) {
         final PsiFile psiFile = e.getData(LangDataKeys.PSI_FILE);
@@ -114,7 +115,7 @@ public class ToggleAction extends AnAction {
             PsiElement markupFile = MarkupIndex.getBaseFile(psiClass);
             if (markupFile == null) {
                 // no markup file found -> ask to create one
-                final Module module = ModuleUtil.findModuleForPsiElement(psiFile);
+                final Module module = ModuleUtilCore.findModuleForPsiElement(psiFile);
                 if (module != null && !WicketPsiUtil.isInLibrary(psiClass)) {
                     markupFile = createMarkup(module, psiFile, psiClass);
                     if (markupFile == null) { // cancel

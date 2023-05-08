@@ -1,15 +1,15 @@
 package consulo.apache.wicket.module.extension;
 
-import javax.annotation.Nonnull;
+import consulo.module.content.layer.ModuleRootLayer;
+import consulo.module.content.layer.extension.ModuleExtensionBase;
 
-import consulo.module.extension.impl.ModuleExtensionImpl;
-import consulo.roots.ModuleRootLayer;
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 16.04.14
  */
-public class WicketModuleExtension extends ModuleExtensionImpl<WicketModuleExtension>
+public class WicketModuleExtension extends ModuleExtensionBase<WicketModuleExtension>
 {
 	public WicketModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{

@@ -15,19 +15,24 @@
  */
 package wicketforge.psi.references;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.psi.*;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlAttributeValue;
-import com.intellij.util.ProcessingContext;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.PsiReferenceProvider;
+import consulo.language.util.ProcessingContext;
+import consulo.xml.psi.xml.XmlAttribute;
+import consulo.xml.psi.xml.XmlAttributeValue;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.ClassIndex;
 
+import javax.annotation.Nonnull;
+
 /**
  */
-public class MarkupWicketIdReferenceProvider extends PsiReferenceProvider {
+public class MarkupWicketIdReferenceProvider extends PsiReferenceProvider
+{
     @Nonnull
     @Override
     public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext context) {

@@ -15,34 +15,33 @@
  */
 package wicketforge.action;
 
-import javax.annotation.Nonnull;
-import com.intellij.ide.structureView.StructureView;
-import com.intellij.ide.structureView.StructureViewModel;
-import com.intellij.ide.structureView.newStructureView.StructureViewComponent;
-import com.intellij.ide.util.FileStructurePopup;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiJavaFile;
-import com.intellij.psi.xml.XmlFile;
+import com.intellij.java.language.psi.PsiJavaFile;
+import consulo.codeEditor.Editor;
+import consulo.fileEditor.FileEditor;
+import consulo.fileEditor.structureView.StructureView;
+import consulo.fileEditor.structureView.StructureViewModel;
+import consulo.ide.impl.idea.ide.structureView.newStructureView.StructureViewComponent;
+import consulo.ide.impl.idea.ide.util.FileStructurePopup;
+import consulo.language.editor.PlatformDataKeys;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
+import consulo.ui.ex.action.AnAction;
+import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.Presentation;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.xml.psi.xml.XmlFile;
 import wicketforge.psi.hierarchy.ClassStructureTreeModel;
 import wicketforge.psi.hierarchy.MarkupStructureTreeModel;
 
-/**
- */
-public class ViewWicketStructureAction extends AnAction {
+import javax.annotation.Nonnull;
+
+public class ViewWicketStructureAction extends AnAction
+{
     @Override
     public void actionPerformed(AnActionEvent e) {
-        Project project = e.getProject();
+        Project project = e.getData(Project.KEY);
         if (project == null) {
             return;
         }
@@ -89,8 +88,7 @@ public class ViewWicketStructureAction extends AnAction {
     @Override
     public void update(AnActionEvent e) {
         Presentation presentation = e.getPresentation();
-        DataContext dataContext = e.getDataContext();
-        Project project = e.getProject();
+        Project project = e.getData(Project.KEY);
         if (project == null) {
             presentation.setEnabled(false);
             return;

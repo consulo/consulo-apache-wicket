@@ -15,31 +15,25 @@
  */
 package wicketforge.psi.references;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.ElementManipulators;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementResolveResult;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.PsiPolyVariantReference;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.ResolveResult;
-import com.intellij.psi.xml.XmlAttributeValue;
-import com.intellij.util.ArrayUtil;
-import com.intellij.util.IncorrectOperationException;
-import com.intellij.util.SmartList;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.document.util.TextRange;
+import consulo.language.psi.*;
+import consulo.language.util.IncorrectOperationException;
+import consulo.util.collection.ArrayUtil;
+import consulo.util.collection.SmartList;
+import consulo.xml.psi.xml.XmlAttributeValue;
 import wicketforge.psi.hierarchy.ClassWicketIdHierarchy;
 import wicketforge.psi.hierarchy.ClassWicketIdItem;
 import wicketforge.psi.hierarchy.ClassWicketIdNewComponentItem;
 import wicketforge.psi.hierarchy.HierarchyUtil;
 
+import javax.annotation.Nonnull;
+import java.util.List;
+
 /**
  */
-public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantReference {
+public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantReference
+{
     private XmlAttributeValue attributeValue;
     private PsiClass psiClass;
     private TextRange textRange;
@@ -94,7 +88,8 @@ public class MarkupWicketIdReference implements PsiReference, PsiPolyVariantRefe
     }
 
     @Override
-    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException {
+    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException
+	{
         final PsiElement elementAt = attributeValue.findElementAt(textRange.getStartOffset());
         assert elementAt != null;
         return ElementManipulators.getManipulator(elementAt).handleContentChange(elementAt, getRangeInElement(), newElementName);

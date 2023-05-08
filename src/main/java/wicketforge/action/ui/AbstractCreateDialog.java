@@ -15,37 +15,35 @@
  */
 package wicketforge.action.ui;
 
+import com.intellij.java.impl.ui.ReferenceEditorComboWithBrowseButton;
+import com.intellij.java.language.psi.JavaDirectoryService;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.util.TreeClassChooser;
+import com.intellij.java.language.util.TreeClassChooserFactory;
+import consulo.component.PropertiesComponent;
+import consulo.ide.IdeBundle;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiPackage;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.project.Project;
+import consulo.project.ProjectPropertiesComponent;
+import consulo.ui.ex.RecentsManager;
+import consulo.ui.ex.awt.DialogWrapper;
+import wicketforge.search.WicketSearchScope;
+import wicketforge.util.WicketFileUtil;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import consulo.psi.PsiPackage;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import com.intellij.ide.IdeBundle;
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.ide.util.TreeClassChooser;
-import com.intellij.ide.util.TreeClassChooserFactory;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.DialogWrapper;
-import com.intellij.psi.JavaDirectoryService;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.ui.RecentsManager;
-import com.intellij.ui.ReferenceEditorComboWithBrowseButton;
-import wicketforge.search.WicketSearchScope;
-import wicketforge.util.WicketFileUtil;
-
-public abstract class AbstractCreateDialog extends DialogWrapper {
+public abstract class AbstractCreateDialog extends DialogWrapper
+{
     private JTextField classNameTextField;
     private JCheckBox createAssociatedMarkupFileCheckBox;
     private JPanel contentPane;
@@ -72,7 +70,7 @@ public abstract class AbstractCreateDialog extends DialogWrapper {
 
         this.actionRunnable = actionRunnable;
         this.project = project;
-        this.module = ModuleUtil.findModuleForPsiElement(directory);
+        this.module = ModuleUtilCore.findModuleForPsiElement(directory);
         this.markupDirectory = directory;
         this.psiPackage = JavaDirectoryService.getInstance().getPackage(directory);
 
@@ -100,7 +98,7 @@ public abstract class AbstractCreateDialog extends DialogWrapper {
                 recentsManager.registerRecentEntry(getStoreKey(RECENT_EXTENDCLASS_KEY), psiClass.getQualifiedName());
             }
         }
-        PropertiesComponent propertiesComponent = PropertiesComponent.getInstance(project);
+        PropertiesComponent propertiesComponent = ProjectPropertiesComponent.getInstance(project);
         // restore last used options
         createAssociatedMarkupFileCheckBox.setSelected(propertiesComponent.getBoolean(getStoreKey(CREATE_MARKUP_KEY), false));
         chooseDifferentDestinationFolderCheckBox.setSelected(propertiesComponent.getBoolean(getStoreKey(CHOOSE_DIFFERENT_DESTINATION_KEY), true));
@@ -161,7 +159,7 @@ public abstract class AbstractCreateDialog extends DialogWrapper {
 
             // remember last extended class and options
             RecentsManager.getInstance(project).registerRecentEntry(getStoreKey(RECENT_EXTENDCLASS_KEY), extendsClass);
-            PropertiesComponent propertiesComponent = PropertiesComponent.getInstance(project);
+            PropertiesComponent propertiesComponent = ProjectPropertiesComponent.getInstance(project);
             propertiesComponent.setValue(getStoreKey(CREATE_MARKUP_KEY), Boolean.toString(createMarkup));
             propertiesComponent.setValue(getStoreKey(CHOOSE_DIFFERENT_DESTINATION_KEY), Boolean.toString(chooseDifferentDestination));
 

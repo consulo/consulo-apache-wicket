@@ -15,20 +15,25 @@
  */
 package wicketforge.inspection;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.codeInspection.BaseJavaLocalInspectionTool;
-import com.intellij.codeInspection.LocalQuickFix;
-import com.intellij.codeInspection.ProblemHighlightType;
-import com.intellij.codeInspection.ProblemsHolder;
-import com.intellij.psi.*;
+import com.intellij.java.analysis.impl.codeInspection.BaseJavaLocalInspectionTool;
+import com.intellij.java.language.psi.JavaElementVisitor;
+import com.intellij.java.language.psi.PsiExpression;
+import com.intellij.java.language.psi.PsiLiteralExpression;
+import com.intellij.java.language.psi.PsiReferenceExpression;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiReference;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import wicketforge.Constants;
 import wicketforge.psi.references.ClassWicketIdReference;
 
-/**
- */
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
 public class ClassWicketIdInspection extends BaseJavaLocalInspectionTool {
     @Nonnull
     @Override

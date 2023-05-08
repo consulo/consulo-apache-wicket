@@ -15,14 +15,14 @@
  */
 package wicketforge.action.ui;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.JavaPsiFacade;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.java.language.psi.JavaPsiFacade;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.project.Project;
 import wicketforge.Constants;
+
+import javax.annotation.Nonnull;
 
 /**
  * CreatePanelDialog

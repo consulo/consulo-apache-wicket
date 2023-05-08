@@ -15,19 +15,19 @@
  */
 package wicketforge.facet;
 
-import javax.annotation.Nullable;
+import com.intellij.java.language.psi.JavaPsiFacade;
+import com.intellij.java.language.psi.util.PsiUtil;
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.JavaPsiFacade;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.PsiUtil;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
 import wicketforge.Constants;
 import wicketforge.search.WicketSearchScope;
 import wicketforge.util.WicketFileUtil;
+
+import javax.annotation.Nullable;
 
 /**
  * WicketForgeFacet
@@ -64,7 +64,7 @@ public class WicketForgeFacet
 			if(vf != null)
 			{
 				Project project = element.getProject();
-				Module module = ModuleUtil.findModuleForFile(vf, project);
+				Module module = ModuleUtilCore.findModuleForFile(vf, project);
 				// if we got a module -> check if WicketForgeFacet available
 				if(module != null)
 				{

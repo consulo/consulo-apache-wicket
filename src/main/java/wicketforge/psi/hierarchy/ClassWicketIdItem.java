@@ -15,19 +15,19 @@
  */
 package wicketforge.psi.hierarchy;
 
+import consulo.navigation.ItemPresentation;
+import consulo.ui.image.Image;
+import consulo.util.collection.SmartList;
+import wicketforge.Constants;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.util.SmartList;
-import consulo.ui.image.Image;
-import wicketforge.Constants;
-
-public final class ClassWicketIdItem implements ItemPresentation {
+public final class ClassWicketIdItem implements ItemPresentation
+{
     private String wicketId;
     private List<ClassWicketIdNewComponentItem> newComponentItems;
     private List<ClassWicketIdItem> children;

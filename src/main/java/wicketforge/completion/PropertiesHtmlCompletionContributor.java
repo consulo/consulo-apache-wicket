@@ -15,60 +15,49 @@
  */
 package wicketforge.completion;
 
-import com.intellij.codeInsight.completion.CompletionContributor;
-import com.intellij.codeInsight.completion.CompletionParameters;
-import com.intellij.codeInsight.completion.CompletionResultSet;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.ide.highlighter.HtmlFileType;
-import com.intellij.ide.highlighter.JavaFileType;
+import com.intellij.java.language.psi.*;
 import com.intellij.lang.properties.IProperty;
 import com.intellij.lang.properties.PropertiesFileType;
 import com.intellij.lang.properties.psi.PropertiesFile;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.psi.*;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlAttributeValue;
-import com.intellij.psi.xml.XmlToken;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.completion.CompletionContributor;
+import consulo.language.editor.completion.CompletionParameters;
+import consulo.language.editor.completion.CompletionResultSet;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.xml.ide.highlighter.HtmlFileType;
+import consulo.xml.lang.html.HTMLLanguage;
+import consulo.xml.psi.xml.XmlAttribute;
+import consulo.xml.psi.xml.XmlAttributeValue;
+import consulo.xml.psi.xml.XmlToken;
 import wicketforge.search.ClassIndex;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.util.WicketPsiUtil;
 
-/**
- */
-public class PropertiesCompletionContributor extends CompletionContributor {
+import javax.annotation.Nonnull;
+
+
+// java and html todo
+@ExtensionImpl
+public class PropertiesHtmlCompletionContributor extends CompletionContributor {
 
     @Override
     public void fillCompletionVariants(final CompletionParameters p, final CompletionResultSet rs) {
-        ApplicationManager.getApplication().runReadAction(new Runnable() {
-            @Override
-            public void run() {
-                PsiFile f = p.getOriginalFile();
-                if (f.getFileType() == JavaFileType.INSTANCE && p.getPosition() instanceof PsiJavaToken) {
-                    PsiJavaToken position = (PsiJavaToken) p.getPosition();
-                    if (isWicketResourceModel(position)) {
-                        PsiJavaFile jf = (PsiJavaFile) f;
-                        PsiClass[] classes = jf.getClasses();
-
-                        for (PsiClass c : classes) {
-                            if (WicketPsiUtil.isWicketComponent(c)) {
-                                addPropertiesToResult(c, rs);
-                            }
-                        }
-                    }
-                } else if (f.getFileType() == HtmlFileType.INSTANCE) {
-                    PsiElement psiElement = p.getPosition();
-                    if (psiElement instanceof XmlToken) {
-                        XmlToken position = (XmlToken) psiElement;
-                        if (isWicketAttribute(position)) {
-                            PsiClass c = ClassIndex.getAssociatedClass(f);
-                            if (c != null) {
-                                addPropertiesToResult(c, rs);
-                            }
-                        }
+        PsiFile f = p.getOriginalFile();
+        if (f.getFileType() == HtmlFileType.INSTANCE) {
+            PsiElement psiElement = p.getPosition();
+            if (psiElement instanceof XmlToken) {
+                XmlToken position = (XmlToken) psiElement;
+                if (isWicketAttribute(position)) {
+                    PsiClass c = ClassIndex.getAssociatedClass(f);
+                    if (c != null) {
+                        addPropertiesToResult(c, rs);
                     }
                 }
             }
-        });
+        }
     }
 
     private void addPropertiesToResult(PsiClass c, CompletionResultSet rs) {
@@ -135,5 +124,11 @@ public class PropertiesCompletionContributor extends CompletionContributor {
         XmlAttribute attribute = (XmlAttribute) attributeValue.getParent();
         String name = attribute.getName();
         return "key".equalsIgnoreCase(name);
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return HTMLLanguage.INSTANCE;
     }
 }

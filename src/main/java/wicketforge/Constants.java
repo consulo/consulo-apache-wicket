@@ -64,10 +64,10 @@ public interface Constants {
     public static final Image ICON_MARKUP_UL = ApacheWicketIconGroup.componentsUl();
     public static final Image ICON_MARKUP_LI = ApacheWicketIconGroup.componentsBullet();
     public static final Image ICON_MARKUP_LABEL = ApacheWicketIconGroup.componentsLabel();
-    public static final Image ICON_MARKUP_INPUT = ApacheWicketIconGroup.componentsTextField();
-    public static final Image ICON_MARKUP_INPUT_CHECKBOX = ApacheWicketIconGroup.componentsCheckBox();
-    public static final Image ICON_MARKUP_INPUT_RADIO = ApacheWicketIconGroup.componentsRadioButton();
-    public static final Image ICON_MARKUP_TEXTAREA = ApacheWicketIconGroup.componentsTextArea();
+    public static final Image ICON_MARKUP_INPUT = ApacheWicketIconGroup.componentsTextfield();
+    public static final Image ICON_MARKUP_INPUT_CHECKBOX = ApacheWicketIconGroup.componentsCheckbox();
+    public static final Image ICON_MARKUP_INPUT_RADIO = ApacheWicketIconGroup.componentsRadiobutton();
+    public static final Image ICON_MARKUP_TEXTAREA = ApacheWicketIconGroup.componentsTextarea();
     public static final Image ICON_MARKUP_SELECT = ApacheWicketIconGroup.componentsSelect();
     public static final Image ICON_MARKUP_OPTION = ApacheWicketIconGroup.componentsBullet();
     public static final Image ICON_MARKUP_FORM = ApacheWicketIconGroup.componentsForm();
@@ -78,18 +78,18 @@ public interface Constants {
     public static final Image ICON_CLASS_ = ApacheWicketIconGroup.wicket_component();
     public static final Image ICON_CLASS_FORM = ApacheWicketIconGroup.componentsForm();
     public static final Image ICON_CLASS_SELECT = ApacheWicketIconGroup.componentsSelect();
-    public static final Image ICON_CLASS_CHECKBOX = ApacheWicketIconGroup.componentsCheckBox();
-    public static final Image ICON_CLASS_RADIO = ApacheWicketIconGroup.componentsRadioButton();
+    public static final Image ICON_CLASS_CHECKBOX = ApacheWicketIconGroup.componentsCheckbox();
+    public static final Image ICON_CLASS_RADIO = ApacheWicketIconGroup.componentsRadiobutton();
     public static final Image ICON_CLASS_LABEL = ApacheWicketIconGroup.componentsLabel();
     public static final Image ICON_CLASS_LINK = ApacheWicketIconGroup.componentsLink();
     public static final Image ICON_CLASS_BUTTON = ApacheWicketIconGroup.componentsButton();
-    public static final Image ICON_CLASS_TEXTFIELD = ApacheWicketIconGroup.componentsTextField();
-    public static final Image ICON_CLASS_TEXTAREA = ApacheWicketIconGroup.componentsTextArea();
+    public static final Image ICON_CLASS_TEXTFIELD = ApacheWicketIconGroup.componentsTextfield();
+    public static final Image ICON_CLASS_TEXTAREA = ApacheWicketIconGroup.componentsTextarea();
     public static final Image ICON_CLASS_REPEATER = ApacheWicketIconGroup.componentsRepeater();
     public static final Image ICON_CLASS_PANEL = ApacheWicketIconGroup.componentsPanel();
     public static final Image ICON_CLASS_BORDER = ApacheWicketIconGroup.componentsBorder();
-    public static final Image ICON_CLASS_FORMCOMPONENTPANEL = ApacheWicketIconGroup.componentsFormComponent();
-    public static final Image ICON_CLASS_FORMCOMPONENT = ApacheWicketIconGroup.componentsFormComponent();
+    public static final Image ICON_CLASS_FORMCOMPONENTPANEL = ApacheWicketIconGroup.componentsFormcomponent();
+    public static final Image ICON_CLASS_FORMCOMPONENT = ApacheWicketIconGroup.componentsFormcomponent();
     public static final Image ICON_CLASS_WEBMARKUPCONTAINER = ApacheWicketIconGroup.componentsDiv();
 
     enum PropertiesType {

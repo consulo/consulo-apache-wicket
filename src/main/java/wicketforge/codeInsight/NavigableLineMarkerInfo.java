@@ -15,42 +15,32 @@
  */
 package wicketforge.codeInsight;
 
-import java.awt.event.MouseEvent;
+import com.intellij.java.impl.codeInsight.daemon.impl.GutterIconTooltipHelper;
+import consulo.codeEditor.markup.GutterIconRenderer;
+import consulo.language.editor.Pass;
+import consulo.language.editor.gutter.LineMarkerInfo;
+import consulo.language.editor.ui.DefaultPsiElementCellRenderer;
+import consulo.language.editor.ui.PsiElementListNavigator;
+import consulo.language.psi.NavigatablePsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.ui.image.Image;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.codeHighlighting.Pass;
-import com.intellij.codeInsight.daemon.GutterIconNavigationHandler;
-import com.intellij.codeInsight.daemon.LineMarkerInfo;
-import com.intellij.codeInsight.daemon.impl.GutterIconTooltipHelper;
-import com.intellij.codeInsight.daemon.impl.PsiElementListNavigator;
-import com.intellij.ide.util.DefaultPsiElementCellRenderer;
-import com.intellij.openapi.editor.markup.GutterIconRenderer;
-import com.intellij.psi.NavigatablePsiElement;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.Function;
-import consulo.ui.image.Image;
-
 /**
+ *
  */
-class NavigableLineMarkerInfo {
-    private NavigableLineMarkerInfo() {
-    }
+class NavigableLineMarkerInfo
+{
+	private NavigableLineMarkerInfo()
+	{
+	}
 
-    public static LineMarkerInfo create(@Nonnull PsiElement element, @Nonnull final NavigatablePsiElement[] targets, @Nonnull Image icon) {
-        return new LineMarkerInfo(element, element.getTextRange(), icon, Pass.UPDATE_ALL,
-                new Function<PsiElement, String>() {
-                    @Override
-                    public String fun(PsiElement psiElement) {
-                        return GutterIconTooltipHelper.composeText(targets, "", "{0}");
-                    }
-                },
-                new GutterIconNavigationHandler() {
-                    @Override
-                    public void navigate(MouseEvent e, PsiElement elt) {
-                        PsiElementListNavigator.openTargets(e, targets, "Select Target", null, new DefaultPsiElementCellRenderer());
-                    }
-                },
-                GutterIconRenderer.Alignment.LEFT);
-    }
+	public static LineMarkerInfo create(@Nonnull PsiElement element, @Nonnull final NavigatablePsiElement[] targets, @Nonnull Image icon)
+	{
+		return new LineMarkerInfo(element, element.getTextRange(), icon, Pass.UPDATE_ALL,
+				psiElement -> GutterIconTooltipHelper.composeText(targets, "", "{0}"),
+				(e, elt) -> PsiElementListNavigator.openTargets(e, targets, "Select Target", null, new DefaultPsiElementCellRenderer()),
+				GutterIconRenderer.Alignment.LEFT);
+	}
 }

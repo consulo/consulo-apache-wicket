@@ -15,31 +15,32 @@
  */
 package wicketforge.psi;
 
-import com.intellij.patterns.*;
-import com.intellij.psi.*;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.psi.PsiReferenceContributor;
+import consulo.language.psi.PsiReferenceRegistrar;
+import consulo.xml.lang.xml.XMLLanguage;
+import consulo.xml.patterns.XmlAttributeValuePattern;
+import consulo.xml.patterns.XmlPatterns;
 import wicketforge.Constants;
-import wicketforge.psi.references.ClassWicketIdReferenceProvider;
 import wicketforge.psi.references.MarkupWicketIdReferenceProvider;
 
-/**
- */
-public class WicketReferenceContributor extends PsiReferenceContributor {
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
+public class WicketXmReferenceContributor extends PsiReferenceContributor {
     @Override
     public void registerReferenceProviders(PsiReferenceRegistrar registrar) {
-
-        {// java -> new Component("..." ...)
-            ElementPattern<PsiLiteralExpression> pattern = StandardPatterns.or(
-                    //
-                    PsiJavaPatterns.psiElement(PsiLiteralExpression.class).withParent(PsiExpressionList.class).withSuperParent(2, PsiNewExpression.class),
-                    // for Anonymous create like Link's...
-                    PsiJavaPatterns.psiElement(PsiLiteralExpression.class).withParent(PsiExpressionList.class).withSuperParent(2, PsiAnonymousClass.class).withSuperParent(3, PsiNewExpression.class)
-            );
-            registrar.registerReferenceProvider(pattern, new ClassWicketIdReferenceProvider());
-        }
 
         {// html -> wicket:id
             XmlAttributeValuePattern pattern = XmlPatterns.xmlAttributeValue(XmlPatterns.xmlAttribute().withName(Constants.WICKET_ID));
             registrar.registerReferenceProvider(pattern, new MarkupWicketIdReferenceProvider());
         }
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return XMLLanguage.INSTANCE;
     }
 }

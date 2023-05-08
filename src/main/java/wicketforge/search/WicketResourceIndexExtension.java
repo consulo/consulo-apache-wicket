@@ -15,37 +15,33 @@
  */
 package wicketforge.search;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Nonnull;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.search.ProjectScope;
-import com.intellij.psi.util.PsiUtilCore;
-import com.intellij.util.indexing.DataIndexer;
-import com.intellij.util.indexing.FileBasedIndex;
-import com.intellij.util.indexing.FileContent;
-import com.intellij.util.indexing.ID;
-import com.intellij.util.indexing.ScalarIndexExtension;
-import com.intellij.util.io.EnumeratorStringDescriptor;
-import com.intellij.util.io.KeyDescriptor;
-import com.intellij.util.messages.MessageBus;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.index.io.DataIndexer;
+import consulo.index.io.EnumeratorStringDescriptor;
+import consulo.index.io.ID;
+import consulo.index.io.KeyDescriptor;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiManager;
+import consulo.language.psi.PsiUtilCore;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.psi.stub.FileBasedIndex;
+import consulo.language.psi.stub.FileContent;
+import consulo.language.psi.stub.ScalarIndexExtension;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.project.content.scope.ProjectScopes;
+import consulo.virtualFileSystem.VirtualFile;
 import wicketforge.util.WicketPsiUtil;
 
-abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String> implements FileBasedIndex.InputFilter, DataIndexer<String, Void, FileContent>  {
+import javax.annotation.Nonnull;
+import java.util.*;
+
+abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String> implements FileBasedIndex.InputFilter, DataIndexer<String, Void, FileContent>
+{
     private final EnumeratorStringDescriptor keyDescriptor = new EnumeratorStringDescriptor();
     private static final char LOCALIZEDFILE_INDEXMARKER = '#';
 
-    protected WicketResourceIndexExtension(@Nonnull MessageBus messageBus) {
+    protected WicketResourceIndexExtension() {
        /* messageBus.connect().subscribe(WicketForgeFacetConfiguration.ADDITIONAL_PATHS_CHANGED, new Runnable() {
             @Override
             public void run() {
@@ -102,9 +98,9 @@ abstract class WicketResourceIndexExtension extends ScalarIndexExtension<String>
 
         GlobalSearchScope scope;
         if (WicketPsiUtil.isInLibrary(psiClass)) {
-            scope = ProjectScope.getLibrariesScope(psiClass.getProject());
+            scope = (GlobalSearchScope) ProjectScopes.getLibrariesScope(psiClass.getProject());
         } else {
-            Module module = ModuleUtil.findModuleForPsiElement(psiClass);
+            Module module = ModuleUtilCore.findModuleForPsiElement(psiClass);
             if (module == null) {
                 return PsiFile.EMPTY_ARRAY;
             }

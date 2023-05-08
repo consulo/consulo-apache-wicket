@@ -15,24 +15,23 @@
  */
 package wicketforge.intention;
 
-import javax.annotation.Nonnull;
-
-import consulo.psi.PsiPackage;
-import com.intellij.codeInsight.intention.IntentionAction;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.JavaDirectoryService;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiJavaFile;
-import com.intellij.util.IncorrectOperationException;
+import com.intellij.java.language.psi.JavaDirectoryService;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiJavaFile;
+import consulo.codeEditor.Editor;
+import consulo.language.editor.intention.IntentionAction;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiPackage;
+import consulo.language.util.IncorrectOperationException;
+import consulo.module.Module;
+import consulo.project.Project;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.util.WicketFileUtil;
 import wicketforge.util.WicketPsiUtil;
+
+import javax.annotation.Nonnull;
 
 /**
  * AddMarkupIntention
@@ -68,9 +67,9 @@ abstract class AddMarkupIntention implements IntentionAction {
 
         PsiClass psiClass = (PsiClass) element;
 
-        return  psiClass.getName() != null && // add..intention needs a name for resource (ex anonymous classes dont have) (issue 54)
-                WicketForgeFacet.isLibraryPresent(ModuleUtil.findModuleForPsiElement(element)) && // let user create page/panel when we have a wicket-lib (so we can detect new facet)
-                isApplicableForClass(psiClass) && 
+        return psiClass.getName() != null && // add..intention needs a name for resource (ex anonymous classes dont have) (issue 54)
+                WicketForgeFacet.isLibraryPresent(element.getModule()) && // let user create page/panel when we have a wicket-lib (so we can detect new facet)
+                isApplicableForClass(psiClass) &&
                 !hasResourceFile(psiClass);
     }
 
@@ -87,7 +86,7 @@ abstract class AddMarkupIntention implements IntentionAction {
             if (fileDirectory == null) {
                 return;
             }
-            Module module = ModuleUtil.findModuleForPsiElement(fileDirectory);
+            Module module = fileDirectory.getModule();
             if (module == null) {
                 return;
             }

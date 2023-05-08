@@ -15,23 +15,25 @@
  */
 package wicketforge.search;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.apache.wicket.module.extension.WicketModuleExtension;
+import consulo.content.base.WebResourcesFolderTypeProvider;
+import consulo.language.content.LanguageContentFolderScopes;
+import consulo.language.psi.stub.IndexableSetContributor;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.module.ModuleManager;
+import consulo.module.content.ModuleRootManager;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import consulo.apache.wicket.module.extension.WicketModuleExtension;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.indexing.IndexableSetContributor;
-import consulo.roots.ContentFolderScopes;
-import consulo.roots.impl.WebResourcesFolderTypeProvider;
-
+@ExtensionImpl
 public class AdditionalResourcePathsIndexProvider extends IndexableSetContributor
 {
 	@Nonnull
@@ -40,13 +42,13 @@ public class AdditionalResourcePathsIndexProvider extends IndexableSetContributo
 	{
 		if(project != null)
 		{
-			Set<VirtualFile> files = new HashSet<VirtualFile>();
+			Set<VirtualFile> files = new HashSet<>();
 			for(Module module : ModuleManager.getInstance(project).getModules())
 			{
 				WicketModuleExtension facet = ModuleUtilCore.getExtension(module, WicketModuleExtension.class);
 				if(facet != null)
 				{
-					VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
+					VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(LanguageContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
 					for(VirtualFile file : contentFolderFiles)
 					{
 						files.add(file);

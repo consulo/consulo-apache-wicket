@@ -15,13 +15,15 @@
  */
 package wicketforge.refactoring;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiFile;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.psi.PsiFile;
 import wicketforge.search.MarkupIndex;
 import wicketforge.util.FilenameConstants;
 
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
 public class MarkupRenamerFactory extends ResourceRenamerFactory {
     public MarkupRenamerFactory() {
         super("Markup", FilenameConstants.MARKUP_EXTENSIONS);

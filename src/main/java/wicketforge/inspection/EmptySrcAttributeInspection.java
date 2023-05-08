@@ -15,22 +15,26 @@
  */
 package wicketforge.inspection;
 
-import com.intellij.codeHighlighting.HighlightDisplayLevel;
-import com.intellij.codeInspection.*;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.XmlRecursiveElementVisitor;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlAttributeValue;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemDescriptor;
+import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.editor.inspection.scheme.InspectionManager;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiFile;
+import consulo.util.lang.StringUtil;
+import consulo.xml.codeInspection.XmlSuppressableInspectionTool;
+import consulo.xml.psi.XmlRecursiveElementVisitor;
+import consulo.xml.psi.xml.XmlAttribute;
+import consulo.xml.psi.xml.XmlAttributeValue;
 import org.jetbrains.annotations.Nls;
-import javax.annotation.Nonnull;
 import wicketforge.Constants;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- */
+@ExtensionImpl
 public class EmptySrcAttributeInspection extends XmlSuppressableInspectionTool {
 
     @Override

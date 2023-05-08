@@ -15,13 +15,12 @@
  */
 package wicketforge.action;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiElement;
+import consulo.project.Project;
 import wicketforge.action.ui.CreatePanelDialog;
 import wicketforge.templates.WicketTemplates;
 
-import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
 /**

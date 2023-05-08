@@ -15,14 +15,14 @@
  */
 package wicketforge.psi.hierarchy;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiNewExpression;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiNewExpression;
+import consulo.language.psi.PsiElement;
+import consulo.logging.Logger;
 import wicketforge.Constants;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  */
 public class ClassWicketIdHierarchy {
-    private static final Logger LOG = Logger.getInstance("#wicketforge.psi.hierarchy.ClassWicketIdHierarchy");
+    private static final Logger LOG = Logger.getInstance(ClassWicketIdHierarchy.class);
 
     private Map<String, ClassWicketIdItem> wicketIdPathMap;
 

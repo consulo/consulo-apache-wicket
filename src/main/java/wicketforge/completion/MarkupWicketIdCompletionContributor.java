@@ -15,28 +15,31 @@
  */
 package wicketforge.completion;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import com.intellij.codeInsight.completion.CompletionContributor;
-import com.intellij.codeInsight.completion.CompletionParameters;
-import com.intellij.codeInsight.completion.CompletionResultSet;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.ide.highlighter.HtmlFileType;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlAttributeValue;
-import com.intellij.psi.xml.XmlToken;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.ApplicationManager;
+import consulo.language.Language;
+import consulo.language.editor.completion.CompletionContributor;
+import consulo.language.editor.completion.CompletionParameters;
+import consulo.language.editor.completion.CompletionResultSet;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.xml.ide.highlighter.HtmlFileType;
+import consulo.xml.lang.html.HTMLLanguage;
+import consulo.xml.psi.xml.XmlAttribute;
+import consulo.xml.psi.xml.XmlAttributeValue;
+import consulo.xml.psi.xml.XmlToken;
 import wicketforge.Constants;
 import wicketforge.psi.hierarchy.ClassWicketIdHierarchy;
 import wicketforge.psi.hierarchy.ClassWicketIdItem;
 import wicketforge.psi.hierarchy.HierarchyUtil;
 import wicketforge.search.ClassIndex;
 
-/**
- */
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+@ExtensionImpl
 public class MarkupWicketIdCompletionContributor extends CompletionContributor {
 
     @Override
@@ -93,5 +96,11 @@ public class MarkupWicketIdCompletionContributor extends CompletionContributor {
         }
         XmlAttribute attribute = (XmlAttribute) attributeValue.getParent();
         return Constants.WICKET_ID.equals(attribute.getName()) ? attributeValue : null;
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return HTMLLanguage.INSTANCE;
     }
 }

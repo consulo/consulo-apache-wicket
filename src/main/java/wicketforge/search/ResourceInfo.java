@@ -15,33 +15,32 @@
  */
 package wicketforge.search;
 
-import java.util.Collections;
-import java.util.List;
+import com.intellij.lang.properties.PropertiesFileType;
+import consulo.apache.wicket.module.extension.WicketModuleExtension;
+import consulo.content.base.WebResourcesFolderTypeProvider;
+import consulo.language.content.LanguageContentFolderScopes;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.FileContent;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.module.ModuleManager;
+import consulo.module.content.ModuleRootManager;
+import consulo.module.content.ProjectRootManager;
+import consulo.project.Project;
+import consulo.util.collection.SmartList;
+import consulo.util.lang.StringUtil;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.fileType.FileType;
+import consulo.virtualFileSystem.util.VirtualFileUtil;
+import consulo.xml.ide.highlighter.HtmlFileType;
+import consulo.xml.ide.highlighter.XmlFileType;
+import wicketforge.util.FilenameConstants;
+import wicketforge.util.WicketFilenameUtil;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import consulo.apache.wicket.module.extension.WicketModuleExtension;
-import com.intellij.ide.highlighter.HtmlFileType;
-import com.intellij.ide.highlighter.XmlFileType;
-import com.intellij.lang.properties.PropertiesFileType;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.vfs.VfsUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.SmartList;
-import com.intellij.util.indexing.FileContent;
-import consulo.roots.ContentFolderScopes;
-import consulo.roots.impl.WebResourcesFolderTypeProvider;
-import wicketforge.util.FilenameConstants;
-import wicketforge.util.WicketFilenameUtil;
+import java.util.Collections;
+import java.util.List;
 
 final class ResourceInfo
 {
@@ -150,7 +149,7 @@ final class ResourceInfo
 	private static String getPackageNameFromAdditionalResourcePaths(@Nonnull VirtualFile file, @Nonnull VirtualFile dir, @Nonnull Project project)
 	{
 		List<Module> modules = new SmartList<Module>();
-		Module module = ModuleUtil.findModuleForFile(file, project);
+		Module module = ModuleUtilCore.findModuleForFile(file, project);
 		if(module != null)
 		{
 			// if we have a module -> only get resourcepaths from this one
@@ -166,11 +165,10 @@ final class ResourceInfo
 			WicketModuleExtension facet = ModuleUtilCore.getExtension(module1, WicketModuleExtension.class);
 			if(facet != null)
 			{
-				VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module1).getContentFolderFiles(ContentFolderScopes.of
-						(WebResourcesFolderTypeProvider.getInstance()));
+				VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module1).getContentFolderFiles(LanguageContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
 				for(VirtualFile virtualFile : contentFolderFiles)
 				{
-					String packageName = VfsUtil.getRelativePath(dir, virtualFile, '.');
+					String packageName = VirtualFileUtil.getRelativePath(dir, virtualFile, '.');
 					if(packageName != null)
 					{
 						return packageName;

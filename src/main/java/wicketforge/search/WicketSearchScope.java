@@ -15,17 +15,17 @@
  */
 package wicketforge.search;
 
-import javax.annotation.Nonnull;
-
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.search.GlobalSearchScopes;
-import consulo.roots.ContentFolderScopes;
-import consulo.roots.impl.WebResourcesFolderTypeProvider;
+import consulo.content.base.WebResourcesFolderTypeProvider;
+import consulo.language.content.LanguageContentFolderScopes;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.psi.scope.GlobalSearchScopesCore;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.module.content.ModuleRootManager;
+import consulo.virtualFileSystem.VirtualFile;
+
+import javax.annotation.Nonnull;
 
 public final class WicketSearchScope
 {
@@ -41,10 +41,10 @@ public final class WicketSearchScope
 		WicketModuleExtension facet = ModuleUtilCore.getExtension(module, WicketModuleExtension.class);
 		if(facet != null)
 		{
-			VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(ContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
+			VirtualFile[] contentFolderFiles = ModuleRootManager.getInstance(module).getContentFolderFiles(LanguageContentFolderScopes.of(WebResourcesFolderTypeProvider.getInstance()));
 			for(VirtualFile virtualFile : contentFolderFiles)
 			{
-				scope = scope.uniteWith(GlobalSearchScopes.directoryScope(module.getProject(), virtualFile, true));
+				scope = scope.uniteWith(GlobalSearchScopesCore.directoryScope(module.getProject(), virtualFile, true));
 			}
 		}
 		return scope;

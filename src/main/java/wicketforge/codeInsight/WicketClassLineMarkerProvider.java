@@ -15,22 +15,28 @@
  */
 package wicketforge.codeInsight;
 
-import com.intellij.codeInsight.daemon.LineMarkerInfo;
-import com.intellij.codeInsight.daemon.LineMarkerProvider;
-import com.intellij.psi.*;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import com.intellij.java.language.JavaLanguage;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiIdentifier;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.gutter.LineMarkerInfo;
+import consulo.language.editor.gutter.LineMarkerProvider;
+import consulo.language.psi.NavigatablePsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.MarkupIndex;
 import wicketforge.util.WicketPsiUtil;
 
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
+ *
  */
+@ExtensionImpl
 public class WicketClassLineMarkerProvider implements LineMarkerProvider {
     @Override
     @Nullable
@@ -41,11 +47,17 @@ public class WicketClassLineMarkerProvider implements LineMarkerProvider {
                 if (WicketPsiUtil.isWicketComponentWithAssociatedMarkup(psiClass)) {
                     final PsiFile psiFile = MarkupIndex.getBaseFile(psiClass);
                     if (psiFile != null) {
-                        return NavigableLineMarkerInfo.create(element, new NavigatablePsiElement[] {psiFile}, Constants.TOMARKUPREF);
+                        return NavigableLineMarkerInfo.create(element, new NavigatablePsiElement[]{psiFile}, Constants.TOMARKUPREF);
                     }
                 }
             }
         }
         return null;
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return JavaLanguage.INSTANCE;
     }
 }

@@ -15,20 +15,21 @@
  */
 package wicketforge.refactoring;
 
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.refactoring.rename.naming.AutomaticRenamer;
-import com.intellij.refactoring.rename.naming.AutomaticRenamerFactory;
-import com.intellij.usageView.UsageInfo;
-import com.intellij.util.SmartList;
-import javax.annotation.Nonnull;
+import com.intellij.java.language.psi.PsiClass;
+import consulo.language.editor.refactoring.rename.AutomaticRenamer;
+import consulo.language.editor.refactoring.rename.AutomaticRenamerFactory;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiNamedElement;
+import consulo.usage.UsageInfo;
+import consulo.util.collection.SmartList;
 import wicketforge.util.WicketFilenameUtil;
 
+import javax.annotation.Nonnull;
 import java.util.*;
 
-abstract class ResourceRenamerFactory implements AutomaticRenamerFactory {
+abstract class ResourceRenamerFactory implements AutomaticRenamerFactory
+{
     private final String entityName;
     private final String[] fileExtensions;
 

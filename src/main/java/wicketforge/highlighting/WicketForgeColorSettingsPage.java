@@ -15,18 +15,19 @@
  */
 package wicketforge.highlighting;
 
-import com.intellij.codeInsight.daemon.impl.HighlightInfoType;
-import com.intellij.lang.annotation.HighlightSeverity;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.editor.markup.TextAttributes;
-import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.psi.PsiElement;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.colorScheme.TextAttributes;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.colorScheme.setting.AttributesDescriptor;
+import consulo.colorScheme.setting.ColorDescriptor;
+import consulo.language.editor.annotation.HighlightSeverity;
+import consulo.language.editor.colorScheme.setting.ColorSettingsPage;
+import consulo.language.editor.highlight.DefaultSyntaxHighlighter;
+import consulo.language.editor.highlight.SyntaxHighlighter;
+import consulo.language.editor.rawHighlight.HighlightInfoType;
+import consulo.language.psi.PsiElement;
 import consulo.ui.color.RGBColor;
-import consulo.ui.ex.util.LightDarkColorValue;
+import consulo.ui.util.LightDarkColorValue;
 
 import javax.annotation.Nonnull;
 import java.awt.*;
@@ -35,6 +36,7 @@ import java.util.Map;
 
 /**
  */
+@ExtensionImpl
 public class WicketForgeColorSettingsPage implements ColorSettingsPage {
     private static final TextAttributes DEFAULTWICKETID = new TextAttributes(new LightDarkColorValue(new RGBColor(232, 89, 10), new RGBColor(200, 83, 10)), null, null, null, Font.BOLD);
     private static final TextAttributes DEFAULTWICKETID_NOTRESOLVABLE = new TextAttributes(null, null, null, null, Font.PLAIN);
@@ -43,9 +45,9 @@ public class WicketForgeColorSettingsPage implements ColorSettingsPage {
     private static final TextAttributesKey JAVAWICKETID_NOTRESOLVABLE = TextAttributesKey.createTextAttributesKey("JAVAWICKETID_NOTRESOLVABLE", DEFAULTWICKETID_NOTRESOLVABLE);
     private static final TextAttributesKey MARKUPWICKETID = TextAttributesKey.createTextAttributesKey("MARKUPWICKETID", DEFAULTWICKETID);
 
-    static final HighlightInfoType HIGHLIGHT_JAVAWICKETID = new WicketHighlightInfoType(JAVAWICKETID);
-    static final HighlightInfoType HIGHLIGHT_JAVAWICKETID_NOTRESOLVABLE = new WicketHighlightInfoType(JAVAWICKETID_NOTRESOLVABLE);
-    static final HighlightInfoType HIGHLIGHT_MARKUPWICKETID = new WicketHighlightInfoType(MARKUPWICKETID);
+    public static final HighlightInfoType HIGHLIGHT_JAVAWICKETID = new WicketHighlightInfoType(JAVAWICKETID);
+    public static final HighlightInfoType HIGHLIGHT_JAVAWICKETID_NOTRESOLVABLE = new WicketHighlightInfoType(JAVAWICKETID_NOTRESOLVABLE);
+    public static final HighlightInfoType HIGHLIGHT_MARKUPWICKETID = new WicketHighlightInfoType(MARKUPWICKETID);
 
     private static final AttributesDescriptor[] ATTRIBUTESDESC = {
             new AttributesDescriptor("java wicketId", JAVAWICKETID),
@@ -74,7 +76,7 @@ public class WicketForgeColorSettingsPage implements ColorSettingsPage {
     @Override
     @Nonnull
     public SyntaxHighlighter getHighlighter() {
-        return new PlainSyntaxHighlighter();
+        return new DefaultSyntaxHighlighter();
     }
 
     @Override

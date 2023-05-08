@@ -15,16 +15,16 @@
  */
 package wicketforge.psi.hierarchy;
 
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.ide.structureView.TextEditorBasedStructureViewModel;
-import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.xml.XmlFile;
-import com.intellij.psi.xml.XmlTag;
-import com.intellij.util.PsiNavigateUtil;
-import javax.annotation.Nonnull;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
+import consulo.fileEditor.structureView.tree.TreeElement;
+import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiNavigateUtil;
+import consulo.navigation.ItemPresentation;
+import consulo.xml.psi.xml.XmlFile;
+import consulo.xml.psi.xml.XmlTag;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 
 /**

@@ -15,19 +15,18 @@
  */
 package wicketforge.psi.hierarchy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import consulo.navigation.ItemPresentation;
+import consulo.ui.image.Image;
+import consulo.xml.psi.xml.XmlAttribute;
+import consulo.xml.psi.xml.XmlAttributeValue;
+import consulo.xml.psi.xml.XmlTag;
+import wicketforge.Constants;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlAttributeValue;
-import com.intellij.psi.xml.XmlTag;
-import consulo.ui.image.Image;
-import wicketforge.Constants;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public final class MarkupWicketIdItem implements ItemPresentation {
     private String wicketId;

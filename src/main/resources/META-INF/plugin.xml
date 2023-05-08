@@ -11,42 +11,6 @@
 		<tag>web.framework</tag>
 	</tags>
 
-	<extensions defaultExtensionNs="com.intellij">
-		<moduleExtensionProvider key="apache-wicket"
-								 parentKey="java-web"
-								 name="Apache Wicket"
-								 icon="consulo.apache.wicket.ApacheWicketIconGroup@wicket"
-								 immutableClass="consulo.apache.wicket.module.extension.WicketModuleExtension"
-								 mutableClass="consulo.apache.wicket.module.extension.WicketMutableModuleExtension"/>
-		<fileTemplateGroup implementation="wicketforge.templates.WicketFileTemplateGroupFactory"/>
-
-		<completion.contributor language="JAVA" implementationClass="wicketforge.completion.ClassWicketIdCompletionContributor"/>
-		<completion.contributor language="JAVA" implementationClass="wicketforge.completion.PropertiesCompletionContributor"/>
-
-		<completion.contributor language="HTML" implementationClass="wicketforge.completion.MarkupWicketIdCompletionContributor"/>
-		<completion.contributor language="HTML" implementationClass="wicketforge.completion.PropertiesCompletionContributor"/>
-
-		<codeInsight.lineMarkerProvider language="JAVA" implementationClass="wicketforge.codeInsight.WicketClassLineMarkerProvider"/>
-		<codeInsight.lineMarkerProvider language="HTML" implementationClass="wicketforge.codeInsight.WicketMarkupLineMarkerProvider"/>
-
-		<colorSettingsPage implementation="wicketforge.highlighting.WicketForgeColorSettingsPage"/>
-
-		<psi.referenceContributor implementation="wicketforge.psi.WicketReferenceContributor"/>
-
-		<indexedRootsContributor implementation="wicketforge.search.AdditionalResourcePathsIndexProvider"/>
-		<fileBasedIndex implementation="wicketforge.search.MarkupIndex"/>
-		<fileBasedIndex implementation="wicketforge.search.PropertiesIndex"/>
-
-		<automaticRenamerFactory implementation="wicketforge.refactoring.MarkupRenamerFactory"/>
-		<automaticRenamerFactory implementation="wicketforge.refactoring.PropertiesRenamerFactory"/>
-
-		<textEditorHighlightingPassFactory implementation="wicketforge.highlighting.WicketForgeHighlightingPassFactory" />
-
-		<inspectionToolProvider implementation="wicketforge.WicketForgeInspectionToolProvider" />
-
-		<projectService serviceImplementation="wicketforge.WicketForgeProjectComponent" lazy="false" />
-	</extensions>
-
 	<actions>
 		<action id="WicketForgeToggle"
 				class="wicketforge.action.ToggleAction"

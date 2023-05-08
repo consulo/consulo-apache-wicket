@@ -15,15 +15,15 @@
  */
 package wicketforge.util;
 
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.psi.JavaPsiFacade;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiMethod;
-import javax.annotation.Nonnull;
+import com.intellij.java.language.psi.JavaPsiFacade;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiMethod;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
 import wicketforge.search.WicketSearchScope;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +56,7 @@ enum WicketVersion {
 
     @Nonnull
     public static WicketVersion getVersion(@Nonnull PsiElement element) {
-        Module module = ModuleUtil.findModuleForPsiElement(element);
+        Module module = ModuleUtilCore.findModuleForPsiElement(element);
         if (module == null) {
             return WICKET_1_5;
         }

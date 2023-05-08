@@ -15,22 +15,20 @@
  */
 package wicketforge.search;
 
+import com.intellij.java.language.psi.PsiClass;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.index.io.ID;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.xml.ide.highlighter.HtmlFileType;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import com.intellij.ide.highlighter.HtmlFileType;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.indexing.ID;
-import com.intellij.util.messages.MessageBus;
 
+@ExtensionImpl
 public class MarkupIndex extends WicketResourceIndexExtension {
     private static final ID<String, Void> NAME = ID.create("WicketMarkupIndex");
-
-    public MarkupIndex(@Nonnull MessageBus messageBus) {
-        super(messageBus);
-    }
 
     @Nonnull
     @Override

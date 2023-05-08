@@ -15,22 +15,23 @@
  */
 package wicketforge.action;
 
-import com.intellij.ide.IdeView;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.roots.ProjectFileIndex;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.psi.JavaDirectoryService;
-import com.intellij.psi.PsiDirectory;
+import com.intellij.java.language.psi.JavaDirectoryService;
+import consulo.ide.IdeView;
+import consulo.language.editor.LangDataKeys;
+import consulo.language.psi.PsiDirectory;
+import consulo.module.Module;
+import consulo.module.content.ProjectFileIndex;
+import consulo.module.content.ProjectRootManager;
+import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.DefaultActionGroup;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 
 /**
  * WicketActionGroup
  */
-public class WicketActionGroup extends DefaultActionGroup {
+public class WicketActionGroup extends DefaultActionGroup
+{
     public WicketActionGroup() {
         super("WicketForge", true);
         getTemplatePresentation().setDescription("Wicket");
@@ -43,7 +44,7 @@ public class WicketActionGroup extends DefaultActionGroup {
     }
 
     private static boolean isUnderSourceRoots(final AnActionEvent e) {
-        final IdeView view = e.getData(LangDataKeys.IDE_VIEW);
+        final IdeView view = e.getData(IdeView.KEY);
         if (view != null) {
             final Module module = e.getData(LangDataKeys.MODULE);
             // let user create page/panel when we have a wicket-lib (so we can detect new facet)

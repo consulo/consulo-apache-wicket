@@ -15,14 +15,18 @@
  */
 package wicketforge.action;
 
-import com.intellij.ide.actions.CreateElementActionBase;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.command.CommandProcessor;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.psi.*;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.util.IncorrectOperationException;
+import com.intellij.java.language.psi.*;
+import consulo.application.ApplicationManager;
+import consulo.ide.action.CreateElementActionBase;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.SmartPointerManager;
+import consulo.language.psi.SmartPsiElementPointer;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.util.IncorrectOperationException;
+import consulo.project.Project;
+import consulo.ui.ex.awt.Messages;
+import consulo.undoRedo.CommandProcessor;
 import wicketforge.Constants;
 import wicketforge.action.ui.AbstractCreateDialog;
 import wicketforge.util.WicketFileUtil;
@@ -35,7 +39,8 @@ import java.util.List;
 /**
  * CreateWicketAction
  */
-abstract class CreateWicketAction extends CreateElementActionBase {
+abstract class CreateWicketAction extends CreateElementActionBase
+{
 
     protected CreateWicketAction(String text, String description) {
         super(text, description, Constants.WICKET_ICON);

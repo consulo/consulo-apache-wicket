@@ -15,30 +15,31 @@
  */
 package wicketforge.codeInsight;
 
-import com.intellij.codeInsight.daemon.LineMarkerInfo;
-import com.intellij.codeInsight.daemon.LineMarkerProvider;
-import com.intellij.psi.NavigatablePsiElement;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.xml.XmlDocument;
-import com.intellij.psi.xml.XmlTag;
-import com.intellij.psi.xml.XmlToken;
-import com.intellij.psi.xml.XmlTokenType;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import com.intellij.java.language.psi.PsiClass;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.gutter.LineMarkerInfo;
+import consulo.language.editor.gutter.LineMarkerProvider;
+import consulo.language.psi.NavigatablePsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.xml.lang.html.HTMLLanguage;
+import consulo.xml.psi.xml.XmlDocument;
+import consulo.xml.psi.xml.XmlTag;
+import consulo.xml.psi.xml.XmlToken;
+import consulo.xml.psi.xml.XmlTokenType;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.ClassIndex;
 import wicketforge.util.WicketPsiUtil;
 
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-/**
- */
+@ExtensionImpl
 public class WicketMarkupLineMarkerProvider implements LineMarkerProvider {
+    @RequiredReadAction
     @Override
     @Nullable
     public LineMarkerInfo getLineMarkerInfo(@Nonnull PsiElement element) {
@@ -56,5 +57,11 @@ public class WicketMarkupLineMarkerProvider implements LineMarkerProvider {
             }
         }
         return null;
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return HTMLLanguage.INSTANCE;
     }
 }

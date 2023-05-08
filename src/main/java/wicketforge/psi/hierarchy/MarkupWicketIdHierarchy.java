@@ -15,14 +15,14 @@
  */
 package wicketforge.psi.hierarchy;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.XmlRecursiveElementVisitor;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlAttributeValue;
-import com.intellij.psi.xml.XmlFile;
-import javax.annotation.Nonnull;
+import consulo.language.psi.PsiElement;
+import consulo.xml.psi.XmlRecursiveElementVisitor;
+import consulo.xml.psi.xml.XmlAttribute;
+import consulo.xml.psi.xml.XmlAttributeValue;
+import consulo.xml.psi.xml.XmlFile;
 import wicketforge.Constants;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 

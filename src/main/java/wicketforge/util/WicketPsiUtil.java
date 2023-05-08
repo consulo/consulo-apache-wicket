@@ -15,19 +15,20 @@
  */
 package wicketforge.util;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.*;
-import com.intellij.psi.impl.JavaConstantExpressionEvaluator;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.search.searches.ClassInheritorsSearch;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.psi.util.PsiUtil;
-import com.intellij.util.Query;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import com.intellij.java.indexing.search.searches.ClassInheritorsSearch;
+import com.intellij.java.language.impl.psi.impl.JavaConstantExpressionEvaluator;
+import com.intellij.java.language.psi.*;
+import com.intellij.java.language.psi.util.PsiUtil;
+import consulo.application.util.query.Query;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
 import wicketforge.Constants;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Collection;
 
 /**

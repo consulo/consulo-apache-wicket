@@ -15,25 +15,18 @@
  */
 package wicketforge.completion;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.intellij.codeInsight.completion.CompletionContributor;
-import com.intellij.codeInsight.completion.CompletionParameters;
-import com.intellij.codeInsight.completion.CompletionResultSet;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.ide.highlighter.JavaFileType;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.psi.PsiAnonymousClass;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiExpression;
-import com.intellij.psi.PsiExpressionList;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiJavaToken;
-import com.intellij.psi.PsiLiteralExpression;
-import com.intellij.psi.PsiNewExpression;
-import com.intellij.psi.xml.XmlFile;
+import com.intellij.java.language.JavaLanguage;
+import com.intellij.java.language.impl.JavaFileType;
+import com.intellij.java.language.psi.*;
+import consulo.application.ApplicationManager;
+import consulo.language.Language;
+import consulo.language.editor.completion.CompletionContributor;
+import consulo.language.editor.completion.CompletionParameters;
+import consulo.language.editor.completion.CompletionResultSet;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.xml.psi.xml.XmlFile;
 import wicketforge.Constants;
 import wicketforge.psi.hierarchy.HierarchyUtil;
 import wicketforge.psi.hierarchy.MarkupWicketIdHierarchy;
@@ -41,7 +34,11 @@ import wicketforge.psi.hierarchy.MarkupWicketIdItem;
 import wicketforge.search.MarkupIndex;
 import wicketforge.util.WicketPsiUtil;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
+ *
  */
 public class ClassWicketIdCompletionContributor extends CompletionContributor {
 
@@ -92,7 +89,7 @@ public class ClassWicketIdCompletionContributor extends CompletionContributor {
 
     /**
      * @param position
-     * @return          possible candidate for wicketId (psiExpression) of position or null if not matches
+     * @return possible candidate for wicketId (psiExpression) of position or null if not matches
      */
     @Nullable
     private PsiExpression getWicketIdExpression(@Nonnull PsiJavaToken position) {
@@ -118,5 +115,11 @@ public class ClassWicketIdCompletionContributor extends CompletionContributor {
         PsiClass psiClass = WicketPsiUtil.getClassFromNewExpression((PsiNewExpression) parent);
 
         return psiClass != null && WicketPsiUtil.isWicketComponent(psiClass) ? (PsiNewExpression) parent : null;
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return JavaLanguage.INSTANCE;
     }
 }

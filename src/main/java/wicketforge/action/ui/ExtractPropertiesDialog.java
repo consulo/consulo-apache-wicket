@@ -15,42 +15,35 @@
  */
 package wicketforge.action.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
-import javax.annotation.Nullable;
+import com.intellij.java.language.psi.JavaDirectoryService;
+import com.intellij.java.language.psi.PsiClass;
 import com.intellij.lang.properties.IProperty;
 import com.intellij.lang.properties.psi.PropertiesFile;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.DialogWrapper;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.JavaDirectoryService;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.ui.ColoredListCellRenderer;
-import com.intellij.ui.SimpleTextAttributes;
-import consulo.psi.PsiPackage;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiPackage;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.project.Project;
+import consulo.ui.ex.SimpleTextAttributes;
+import consulo.ui.ex.awt.ColoredListCellRenderer;
+import consulo.ui.ex.awt.DialogWrapper;
+import consulo.util.lang.StringUtil;
 import wicketforge.Constants;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.util.WicketFileUtil;
 import wicketforge.util.WicketFilenameUtil;
 import wicketforge.util.WicketPsiUtil;
 
-public class ExtractPropertiesDialog extends DialogWrapper {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExtractPropertiesDialog extends DialogWrapper
+{
     private JPanel contentPane;
     private JTextField propertyKeyTextField;
     private JTextArea propertyValueTextArea;
@@ -72,7 +65,7 @@ public class ExtractPropertiesDialog extends DialogWrapper {
         this.actionRunnable = actionRunnable;
         this.componentClass = componentClass;
         this.destinationDirectory = directory;
-        this.module = ModuleUtil.findModuleForPsiElement(directory);
+        this.module = ModuleUtilCore.findModuleForPsiElement(directory);
         this.psiPackage = JavaDirectoryService.getInstance().getPackage(directory);
 
         setResizable(true);
@@ -197,7 +190,8 @@ public class ExtractPropertiesDialog extends DialogWrapper {
         }
     }
 
-    private static class PropertiesFileComboBoxRenderer extends ColoredListCellRenderer {
+    private static class PropertiesFileComboBoxRenderer extends ColoredListCellRenderer
+	{
         @Override
         protected void customizeCellRenderer(JList list, Object value, int index, boolean selected, boolean hasFocus) {
             if (value instanceof PropertiesFile) {

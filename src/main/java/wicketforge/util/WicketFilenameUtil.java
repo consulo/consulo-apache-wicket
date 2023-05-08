@@ -15,12 +15,11 @@
  */
 package wicketforge.util;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.psi.PsiClass;
-
-import javax.annotation.Nullable;
+import com.intellij.java.language.psi.PsiClass;
 import wicketforge.Constants;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public final class WicketFilenameUtil {
     private WicketFilenameUtil() {

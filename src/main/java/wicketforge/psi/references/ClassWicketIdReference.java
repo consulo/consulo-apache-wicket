@@ -15,22 +15,25 @@
  */
 package wicketforge.psi.references;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.*;
-import com.intellij.psi.impl.source.resolve.reference.impl.manipulators.StringLiteralManipulator;
-import com.intellij.psi.xml.XmlFile;
-import com.intellij.util.ArrayUtil;
-import com.intellij.util.IncorrectOperationException;
+import com.intellij.java.impl.psi.impl.source.resolve.reference.impl.manipulators.StringLiteralManipulator;
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiLiteralExpression;
+import consulo.document.util.TextRange;
+import consulo.language.psi.*;
+import consulo.language.util.IncorrectOperationException;
+import consulo.util.collection.ArrayUtil;
+import consulo.xml.psi.xml.XmlFile;
 import wicketforge.psi.hierarchy.HierarchyUtil;
 import wicketforge.psi.hierarchy.MarkupWicketIdHierarchy;
 import wicketforge.psi.hierarchy.MarkupWicketIdItem;
 import wicketforge.search.MarkupIndex;
 
+import javax.annotation.Nonnull;
+
 /**
  */
-public class ClassWicketIdReference implements PsiReference {
+public class ClassWicketIdReference implements PsiReference
+{
     private PsiLiteralExpression wicketIdExpression;
     private PsiClass psiClass;
     private TextRange textRange;
@@ -74,7 +77,8 @@ public class ClassWicketIdReference implements PsiReference {
     }
 
     @Override
-    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException {
+    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException
+	{
         ElementManipulator manipulator = ElementManipulators.getManipulator(wicketIdExpression);
         if (manipulator instanceof StringLiteralManipulator) {
             return ((StringLiteralManipulator) manipulator).handleContentChange(wicketIdExpression, newElementName);

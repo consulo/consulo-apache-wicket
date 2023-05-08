@@ -15,25 +15,25 @@
  */
 package wicketforge.inspection;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.codeHighlighting.HighlightDisplayLevel;
-import com.intellij.codeInspection.LocalQuickFix;
-import com.intellij.codeInspection.ProblemHighlightType;
-import com.intellij.codeInspection.ProblemsHolder;
-import com.intellij.codeInspection.XmlSuppressableInspectionTool;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.XmlElementVisitor;
-import com.intellij.psi.xml.XmlAttribute;
-import com.intellij.psi.xml.XmlAttributeValue;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiReference;
+import consulo.xml.codeInspection.XmlSuppressableInspectionTool;
+import consulo.xml.psi.XmlElementVisitor;
+import consulo.xml.psi.xml.XmlAttribute;
+import consulo.xml.psi.xml.XmlAttributeValue;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import wicketforge.Constants;
 import wicketforge.psi.references.MarkupWicketIdReference;
 
-/**
- */
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
 public class MarkupWicketIdInspection extends XmlSuppressableInspectionTool {
     @Nonnull
     @Override

@@ -15,18 +15,21 @@
  */
 package wicketforge.psi.hierarchy;
 
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.*;
-import javax.annotation.Nonnull;
-
+import com.intellij.java.language.psi.PsiClass;
+import com.intellij.java.language.psi.PsiExpression;
+import com.intellij.java.language.psi.PsiJavaCodeReferenceElement;
+import com.intellij.java.language.psi.PsiNewExpression;
+import consulo.language.psi.PsiElement;
+import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
 import wicketforge.Constants;
 import wicketforge.util.WicketPsiUtil;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.*;
 
-public final class ClassWicketIdNewComponentItem implements ItemPresentation {
+public final class ClassWicketIdNewComponentItem implements ItemPresentation
+{
     private PsiNewExpression newExpression;
     private PsiExpression wicketIdExpression;
     private String wicketId;
