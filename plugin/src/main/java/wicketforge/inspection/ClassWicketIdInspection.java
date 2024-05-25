@@ -21,13 +21,13 @@ import com.intellij.java.language.psi.PsiExpression;
 import com.intellij.java.language.psi.PsiLiteralExpression;
 import com.intellij.java.language.psi.PsiReferenceExpression;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.inspection.LocalInspectionToolSession;
 import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.editor.inspection.ProblemHighlightType;
 import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiReference;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NonNls;
 import wicketforge.Constants;
 import wicketforge.psi.references.ClassWicketIdReference;
 
@@ -37,7 +37,7 @@ import javax.annotation.Nonnull;
 public class ClassWicketIdInspection extends BaseJavaLocalInspectionTool {
     @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitorImpl(@Nonnull ProblemsHolder holder, boolean isOnTheFly, LocalInspectionToolSession session, Object o) {
         return new JavaElementVisitor() {
             @Override
             public void visitReferenceExpression(PsiReferenceExpression expression) {
@@ -75,7 +75,6 @@ public class ClassWicketIdInspection extends BaseJavaLocalInspectionTool {
     }
 
     @Override
-    @NonNls
     @Nonnull
     public String getShortName() {
         return "WicketForgeJavaIdInspection";
