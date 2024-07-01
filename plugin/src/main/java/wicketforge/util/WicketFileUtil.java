@@ -15,11 +15,11 @@
  */
 package wicketforge.util;
 
+import com.intellij.java.impl.codeInsight.PackageUtil;
 import com.intellij.java.impl.refactoring.PackageWrapper;
 import com.intellij.java.impl.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesUtil;
 import com.intellij.java.impl.refactoring.util.RefactoringMessageUtil;
 import com.intellij.java.impl.refactoring.util.RefactoringUtil;
-import com.intellij.java.language.impl.codeInsight.PackageUtil;
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import consulo.application.CommonBundle;
 import consulo.application.ReadAction;
