@@ -21,6 +21,7 @@ import consulo.language.editor.refactoring.rename.AutomaticRenamerFactory;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.PsiNamedElement;
+import consulo.localize.LocalizeValue;
 import consulo.usage.UsageInfo;
 import consulo.util.collection.SmartList;
 import wicketforge.util.WicketFilenameUtil;
@@ -44,8 +45,8 @@ abstract class ResourceRenamerFactory implements AutomaticRenamerFactory
     }
 
     @Override
-    public String getOptionName() {
-        return "Rename Wicket " + entityName;
+    public LocalizeValue getOptionName() {
+        return LocalizeValue.localizeTODO("Rename Wicket " + entityName);
     }
 
     @Override
