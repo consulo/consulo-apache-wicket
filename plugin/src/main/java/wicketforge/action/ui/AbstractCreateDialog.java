@@ -21,13 +21,14 @@ import com.intellij.java.language.psi.PsiClass;
 import com.intellij.java.language.util.TreeClassChooser;
 import com.intellij.java.language.util.TreeClassChooserFactory;
 import consulo.component.PropertiesComponent;
-import consulo.ide.IdeBundle;
+import consulo.ide.localize.IdeLocalize;
 import consulo.language.psi.PsiDirectory;
 import consulo.language.psi.PsiPackage;
-import consulo.language.util.ModuleUtilCore;
+import consulo.localize.LocalizeValue;
 import consulo.module.Module;
 import consulo.project.Project;
 import consulo.project.ProjectPropertiesComponent;
+import consulo.ui.annotation.RequiredUIAccess;
 import consulo.ui.ex.RecentsManager;
 import consulo.ui.ex.awt.DialogWrapper;
 import wicketforge.search.WicketSearchScope;
@@ -70,7 +71,7 @@ public abstract class AbstractCreateDialog extends DialogWrapper
 
         this.actionRunnable = actionRunnable;
         this.project = project;
-        this.module = ModuleUtilCore.findModuleForPsiElement(directory);
+        this.module = directory.getModule();
         this.markupDirectory = directory;
         this.psiPackage = JavaDirectoryService.getInstance().getPackage(directory);
 
@@ -169,18 +170,19 @@ public abstract class AbstractCreateDialog extends DialogWrapper
 
     private boolean validateInput(@Nonnull String inputString, @Nonnull String extendsClass) {
         if (inputString.length() == 0) {
-            setErrorText(IdeBundle.message("error.name.should.be.specified"));
+            setErrorText(IdeLocalize.errorNameShouldBeSpecified());
             return false;
         }
         if (extendsClass.length() == 0) {
-            setErrorText("Invalid base class");
+            setErrorText(LocalizeValue.localizeTODO("Invalid base class"));
             return false;
         }
 
-        setErrorText(null);
+        clearErrorText();
         return true;
     }
 
+    @RequiredUIAccess
     @Override
     public JComponent getPreferredFocusedComponent() {
         return classNameTextField;

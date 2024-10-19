@@ -168,7 +168,7 @@ public class ExtractPropertiesDialog extends DialogWrapper
             }
         }
 
-        setErrorText(null);
+        clearErrorText();
         return true;
     }
 
