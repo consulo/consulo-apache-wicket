@@ -34,7 +34,7 @@ import consulo.xml.psi.xml.XmlToken;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 
 // java and html todo

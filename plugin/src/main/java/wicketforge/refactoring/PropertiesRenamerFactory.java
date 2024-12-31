@@ -21,7 +21,7 @@ import consulo.language.psi.PsiFile;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.util.FilenameConstants;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class PropertiesRenamerFactory extends ResourceRenamerFactory {

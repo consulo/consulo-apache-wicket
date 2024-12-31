@@ -19,7 +19,7 @@ import consulo.apache.wicket.icon.ApacheWicketIconGroup;
 import consulo.ui.image.Image;
 import wicketforge.templates.WicketTemplates;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * A collection of constants used by the plugin.

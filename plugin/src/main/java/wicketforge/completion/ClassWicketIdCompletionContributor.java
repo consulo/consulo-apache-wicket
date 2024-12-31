@@ -34,8 +34,8 @@ import wicketforge.psi.hierarchy.MarkupWicketIdItem;
 import wicketforge.search.MarkupIndex;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  *

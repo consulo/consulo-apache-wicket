@@ -26,8 +26,8 @@ import consulo.project.Project;
 import consulo.project.content.scope.ProjectScopes;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public class ClassIndex {
     private ClassIndex() {

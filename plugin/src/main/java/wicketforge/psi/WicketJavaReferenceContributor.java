@@ -29,7 +29,7 @@ import consulo.language.psi.PsiReferenceContributor;
 import consulo.language.psi.PsiReferenceRegistrar;
 import wicketforge.psi.references.ClassWicketIdReferenceProvider;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class WicketJavaReferenceContributor extends PsiReferenceContributor {

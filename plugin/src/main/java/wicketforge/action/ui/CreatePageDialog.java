@@ -22,7 +22,7 @@ import consulo.language.psi.scope.GlobalSearchScope;
 import consulo.project.Project;
 import wicketforge.Constants;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * CreatePageDialog

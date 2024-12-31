@@ -24,7 +24,7 @@ import wicketforge.templates.WicketTemplates;
 import wicketforge.util.WicketFilenameUtil;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Class level intention used to create properties files for Wicket page and panel components.

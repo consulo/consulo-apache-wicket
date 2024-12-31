@@ -25,7 +25,7 @@ import consulo.module.Module;
 import consulo.module.content.ModuleRootManager;
 import consulo.virtualFileSystem.VirtualFile;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public final class WicketSearchScope
 {

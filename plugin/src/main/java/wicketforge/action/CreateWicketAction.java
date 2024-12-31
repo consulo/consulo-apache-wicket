@@ -32,7 +32,7 @@ import wicketforge.action.ui.AbstractCreateDialog;
 import wicketforge.util.WicketFileUtil;
 import wicketforge.util.WicketFilenameUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 

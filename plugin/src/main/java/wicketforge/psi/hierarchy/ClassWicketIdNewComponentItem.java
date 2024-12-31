@@ -25,8 +25,8 @@ import consulo.ui.image.Image;
 import wicketforge.Constants;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public final class ClassWicketIdNewComponentItem implements ItemPresentation
 {

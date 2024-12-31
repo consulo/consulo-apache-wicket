@@ -25,7 +25,7 @@ import consulo.xml.patterns.XmlPatterns;
 import wicketforge.Constants;
 import wicketforge.psi.references.MarkupWicketIdReferenceProvider;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class WicketXmReferenceContributor extends PsiReferenceContributor {

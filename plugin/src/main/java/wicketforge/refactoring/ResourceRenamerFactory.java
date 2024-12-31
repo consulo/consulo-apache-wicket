@@ -26,7 +26,7 @@ import consulo.usage.UsageInfo;
 import consulo.util.collection.SmartList;
 import wicketforge.util.WicketFilenameUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.*;
 
 abstract class ResourceRenamerFactory implements AutomaticRenamerFactory

@@ -35,7 +35,7 @@ import consulo.xml.psi.xml.XmlFile;
 import wicketforge.psi.hierarchy.ClassStructureTreeModel;
 import wicketforge.psi.hierarchy.MarkupStructureTreeModel;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class ViewWicketStructureAction extends AnAction
 {

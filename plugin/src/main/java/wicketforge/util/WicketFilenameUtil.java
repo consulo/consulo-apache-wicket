@@ -18,8 +18,8 @@ package wicketforge.util;
 import com.intellij.java.language.psi.PsiClass;
 import wicketforge.Constants;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public final class WicketFilenameUtil {
     private WicketFilenameUtil() {

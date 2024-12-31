@@ -23,7 +23,7 @@ import wicketforge.templates.WicketTemplates;
 import wicketforge.util.WicketFilenameUtil;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Class intention to create new a new markup file for a Wicket page or panel component.

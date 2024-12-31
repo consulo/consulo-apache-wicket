@@ -24,8 +24,8 @@ import consulo.xml.psi.xml.XmlFile;
 import wicketforge.Constants;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.util.Map;
 
 public final class HierarchyUtil {

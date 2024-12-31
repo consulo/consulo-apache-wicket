@@ -24,7 +24,7 @@ import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.MarkupIndex;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  */

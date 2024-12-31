@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NonNls;
 import wicketforge.Constants;
 import wicketforge.psi.references.MarkupWicketIdReference;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class MarkupWicketIdInspection extends XmlSuppressableInspectionTool {

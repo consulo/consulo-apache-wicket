@@ -23,8 +23,8 @@ import consulo.util.collection.ArrayUtil;
 import consulo.util.collection.SmartList;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.util.*;
 
 class ClassWicketIdReferences {

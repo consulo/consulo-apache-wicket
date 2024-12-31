@@ -27,7 +27,7 @@ import wicketforge.psi.hierarchy.ClassWicketIdItem;
 import wicketforge.psi.hierarchy.ClassWicketIdNewComponentItem;
 import wicketforge.psi.hierarchy.HierarchyUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.List;
 
 /**

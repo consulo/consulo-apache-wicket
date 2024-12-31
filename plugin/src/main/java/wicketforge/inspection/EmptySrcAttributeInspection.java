@@ -30,7 +30,7 @@ import consulo.xml.psi.xml.XmlAttributeValue;
 import org.jetbrains.annotations.Nls;
 import wicketforge.Constants;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 

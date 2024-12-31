@@ -27,7 +27,7 @@ import wicketforge.Constants;
 import wicketforge.search.WicketSearchScope;
 import wicketforge.util.WicketFileUtil;
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * WicketForgeFacet

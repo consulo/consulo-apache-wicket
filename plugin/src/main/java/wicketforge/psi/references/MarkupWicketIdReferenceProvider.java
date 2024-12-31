@@ -27,7 +27,7 @@ import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
 import wicketforge.search.ClassIndex;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  */

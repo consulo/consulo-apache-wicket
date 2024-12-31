@@ -31,7 +31,7 @@ import wicketforge.facet.WicketForgeFacet;
 import wicketforge.util.WicketFileUtil;
 import wicketforge.util.WicketPsiUtil;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * AddMarkupIntention
