@@ -60,7 +60,7 @@ public class ClassWicketIdHierarchy {
                               @Nullable List<PsiNewExpression> addedComponents,
                               int depth) {
         if (depth++ > 50) {
-            LOG.error("Deep addRecursive", path.toString());
+            LOG.error("Deep addRecursive: " + path.toString());
             return;
         }
         
