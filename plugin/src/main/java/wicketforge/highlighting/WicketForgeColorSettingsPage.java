@@ -19,17 +19,17 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.colorScheme.TextAttributes;
 import consulo.colorScheme.TextAttributesKey;
 import consulo.colorScheme.setting.AttributesDescriptor;
-import consulo.colorScheme.setting.ColorDescriptor;
 import consulo.language.editor.annotation.HighlightSeverity;
 import consulo.language.editor.colorScheme.setting.ColorSettingsPage;
 import consulo.language.editor.highlight.DefaultSyntaxHighlighter;
 import consulo.language.editor.highlight.SyntaxHighlighter;
 import consulo.language.editor.rawHighlight.HighlightInfoType;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
 import consulo.ui.color.RGBColor;
 import consulo.ui.util.LightDarkColorValue;
-
 import jakarta.annotation.Nonnull;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,20 +57,14 @@ public class WicketForgeColorSettingsPage implements ColorSettingsPage {
 
     @Override
     @Nonnull
-    public String getDisplayName() {
-        return "Wicket";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Wicket");
     }
 
     @Override
     @Nonnull
     public AttributesDescriptor[] getAttributeDescriptors() {
         return ATTRIBUTESDESC;
-    }
-
-    @Override
-    @Nonnull
-    public ColorDescriptor[] getColorDescriptors() {
-        return ColorDescriptor.EMPTY_ARRAY;
     }
 
     @Override
