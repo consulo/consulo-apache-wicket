@@ -17,6 +17,7 @@ package wicketforge.action;
 
 import consulo.language.psi.PsiDirectory;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
 import wicketforge.action.ui.CreatePageDialog;
 import wicketforge.templates.WicketTemplates;
@@ -29,28 +30,28 @@ import java.util.function.Consumer;
 public class CreateWicketPageAction extends CreateWicketAction {
 
     protected CreateWicketPageAction() {
-        super("Wicket Page", "Create a new Wicket Page");
+        super(LocalizeValue.localizeTODO("Wicket Page"), LocalizeValue.localizeTODO("Create a new Wicket Page"));
     }
 
     @Override
     protected void invokeDialog(Project project, PsiDirectory directory, Consumer<PsiElement[]> consumer) {
         ActionRunnableImpl actionRunnable = new ActionRunnableImpl(project, directory, WicketTemplates.WICKET_PAGE_HTML);
-        CreatePageDialog dialog = new CreatePageDialog(project, actionRunnable, getCommandName(), directory);
+        CreatePageDialog dialog = new CreatePageDialog(project, actionRunnable, getCommandName().get(), directory);
         dialog.showAsync().doWhenDone(() -> consumer.accept(actionRunnable.getCreatedElements()));
     }
 
     @Override
-    protected String getErrorTitle() {
-        return "Cannot create Wicket Page";
+    protected LocalizeValue getErrorTitle() {
+        return LocalizeValue.localizeTODO("Cannot create Wicket Page");
     }
 
     @Override
-    protected String getCommandName() {
-        return "Create Wicket Page";
+    protected LocalizeValue getCommandName() {
+        return LocalizeValue.localizeTODO("Create Wicket Page");
     }
 
     @Override
-    protected String getActionName(PsiDirectory directory, String newName) {
-        return "Creating Wicket Page " + newName;
+    protected LocalizeValue getActionName(PsiDirectory directory, String newName) {
+        return LocalizeValue.localizeTODO("Creating Wicket Page " + newName);
     }
 }

@@ -24,6 +24,7 @@ import consulo.language.psi.SmartPointerManager;
 import consulo.language.psi.SmartPsiElementPointer;
 import consulo.language.psi.scope.GlobalSearchScope;
 import consulo.language.util.IncorrectOperationException;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
 import consulo.ui.ex.awt.Messages;
 import consulo.undoRedo.CommandProcessor;
@@ -41,8 +42,7 @@ import java.util.List;
  */
 abstract class CreateWicketAction extends CreateElementActionBase
 {
-
-    protected CreateWicketAction(String text, String description) {
+    protected CreateWicketAction(LocalizeValue text, LocalizeValue description) {
         super(text, description, Constants.WICKET_ICON);
     }
 
@@ -72,7 +72,7 @@ abstract class CreateWicketAction extends CreateElementActionBase
             try {
                 JavaDirectoryService.getInstance().checkCreateClass(psiDirectory, inputString);
             } catch (IncorrectOperationException e) {
-                Messages.showMessageDialog(project, filterMessage(e.getMessage()), getErrorTitle(), Messages.getErrorIcon());
+                Messages.showMessageDialog(project, filterMessage(e.getMessage()), getErrorTitle().get(), Messages.getErrorIcon());
                 return false;
             }
 
@@ -126,7 +126,7 @@ abstract class CreateWicketAction extends CreateElementActionBase
                 }
             };
 
-            CommandProcessor.getInstance().executeCommand(project, command, getCommandName(), null);
+            CommandProcessor.getInstance().executeCommand(project, command, getCommandName().get(), null);
 
             if (exception[0] != null) {
                 String errorMessage = filterMessage(exception[0].getMessage());
@@ -134,7 +134,7 @@ abstract class CreateWicketAction extends CreateElementActionBase
                     errorMessage = exception[0].toString();
                 }
 
-                Messages.showMessageDialog(project, errorMessage, getErrorTitle(), Messages.getErrorIcon());
+                Messages.showMessageDialog(project, errorMessage, getErrorTitle().get(), Messages.getErrorIcon());
             }
 
             return createdElements.length != 0;

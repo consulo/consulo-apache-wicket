@@ -17,6 +17,7 @@ package wicketforge.action;
 
 import consulo.language.psi.PsiDirectory;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
 import wicketforge.action.ui.CreatePanelDialog;
 import wicketforge.templates.WicketTemplates;
@@ -29,29 +30,29 @@ import java.util.function.Consumer;
 public class CreateWicketPanelAction extends CreateWicketAction {
 
     public CreateWicketPanelAction() {
-        super("Wicket Panel", "Create a new Wicket Panel");
+        super(LocalizeValue.localizeTODO("Wicket Panel"), LocalizeValue.localizeTODO("Create a new Wicket Panel"));
     }
 
     @Override
     protected void invokeDialog(Project project, PsiDirectory directory, Consumer<PsiElement[]> consumer) {
         ActionRunnableImpl actionRunnable = new ActionRunnableImpl(project, directory, WicketTemplates.WICKET_PANEL_HTML);
-        CreatePanelDialog dialog = new CreatePanelDialog(project, actionRunnable, getCommandName(), directory);
+        CreatePanelDialog dialog = new CreatePanelDialog(project, actionRunnable, getCommandName().get(), directory);
         dialog.show();
         consumer.accept(actionRunnable.getCreatedElements());
     }
 
     @Override
-    protected String getErrorTitle() {
-        return "Cannot create Wicket Panel";
+    protected LocalizeValue getErrorTitle() {
+        return LocalizeValue.localizeTODO("Cannot create Wicket Panel");
     }
 
     @Override
-    protected String getCommandName() {
-        return "Create Wicket Panel";
+    protected LocalizeValue getCommandName() {
+        return LocalizeValue.localizeTODO("Create Wicket Panel");
     }
 
     @Override
-    protected String getActionName(PsiDirectory directory, String newName) {
-        return "Creating Wicket Panel " + newName;
+    protected LocalizeValue getActionName(PsiDirectory directory, String newName) {
+        return LocalizeValue.localizeTODO("Creating Wicket Panel " + newName);
     }
 }
