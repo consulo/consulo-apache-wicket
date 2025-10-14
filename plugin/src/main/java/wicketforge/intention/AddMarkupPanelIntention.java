@@ -18,6 +18,7 @@ package wicketforge.intention;
 import com.intellij.java.language.psi.PsiClass;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.intention.IntentionMetaData;
+import consulo.localize.LocalizeValue;
 import wicketforge.search.MarkupIndex;
 import wicketforge.templates.WicketTemplates;
 import wicketforge.util.WicketFilenameUtil;
@@ -34,8 +35,8 @@ public class AddMarkupPanelIntention extends AddMarkupIntention {
 
     @Override
     @Nonnull
-    public String getText() {
-        return "Create Markup Panel";
+    public LocalizeValue getText() {
+        return LocalizeValue.localizeTODO("Create Markup Panel");
     }
 
     @Override

@@ -22,16 +22,15 @@ import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiReference;
+import consulo.localize.LocalizeValue;
 import consulo.xml.codeInspection.XmlSuppressableInspectionTool;
 import consulo.xml.psi.XmlElementVisitor;
 import consulo.xml.psi.xml.XmlAttribute;
 import consulo.xml.psi.xml.XmlAttributeValue;
-import org.jetbrains.annotations.Nls;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.NonNls;
 import wicketforge.Constants;
 import wicketforge.psi.references.MarkupWicketIdReference;
-
-import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class MarkupWicketIdInspection extends XmlSuppressableInspectionTool {
@@ -58,17 +57,15 @@ public class MarkupWicketIdInspection extends XmlSuppressableInspectionTool {
     }
 
     @Override
-    @Nls
     @Nonnull
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return Constants.INTENSION_INSPECTION_GROUPNAME;
     }
 
     @Override
-    @Nls
     @Nonnull
-    public String getDisplayName() {
-        return "Wicket HTML ID Inspection";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Wicket HTML ID Inspection");
     }
 
     @Override

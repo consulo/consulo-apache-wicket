@@ -27,6 +27,7 @@ import consulo.language.editor.inspection.ProblemHighlightType;
 import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiReference;
+import consulo.localize.LocalizeValue;
 import org.jetbrains.annotations.Nls;
 import wicketforge.Constants;
 import wicketforge.psi.references.ClassWicketIdReference;
@@ -63,15 +64,15 @@ public class ClassWicketIdInspection extends BaseJavaLocalInspectionTool {
     @Override
     @Nls
     @Nonnull
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return Constants.INTENSION_INSPECTION_GROUPNAME;
     }
 
     @Override
     @Nls
     @Nonnull
-    public String getDisplayName() {
-        return "Wicket Java ID Inspection";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Wicket Java ID Inspection");
     }
 
     @Override

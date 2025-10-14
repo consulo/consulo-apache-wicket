@@ -22,6 +22,7 @@ import consulo.language.editor.inspection.ProblemHighlightType;
 import consulo.language.editor.inspection.scheme.InspectionManager;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
 import consulo.util.lang.StringUtil;
 import consulo.xml.codeInspection.XmlSuppressableInspectionTool;
 import consulo.xml.psi.XmlRecursiveElementVisitor;
@@ -45,16 +46,14 @@ public class EmptySrcAttributeInspection extends XmlSuppressableInspectionTool {
     }
 
     @Override
-    @Nls
     @Nonnull
-    public String getDisplayName() {
-        return "Wicket Empty Src Attribute Inspection";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Wicket Empty Src Attribute Inspection");
     }
 
     @Override
-    @Nls
     @Nonnull
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return Constants.INTENSION_INSPECTION_GROUPNAME;
     }
 

@@ -18,6 +18,7 @@ package wicketforge.intention;
 import com.intellij.java.language.psi.PsiClass;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.intention.IntentionMetaData;
+import consulo.localize.LocalizeValue;
 import wicketforge.Constants;
 import wicketforge.search.PropertiesIndex;
 import wicketforge.templates.WicketTemplates;
@@ -35,8 +36,8 @@ public class AddPropertiesIntention extends AddMarkupIntention {
 
     @Override
     @Nonnull
-    public String getText() {
-        return "Create Properties File";
+    public LocalizeValue getText() {
+        return LocalizeValue.localizeTODO("Create Properties File");
     }
 
     @Override

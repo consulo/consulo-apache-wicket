@@ -16,6 +16,7 @@
 package wicketforge;
 
 import consulo.apache.wicket.icon.ApacheWicketIconGroup;
+import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
 import wicketforge.templates.WicketTemplates;
 
@@ -42,7 +43,7 @@ public interface Constants {
     public static final String WICKET_STRINGRESOURCEMODEL = "org.apache.wicket.model.StringResourceModel";
 
     // intension/inspection
-    public static final String INTENSION_INSPECTION_GROUPNAME = "Wicket";
+    public static final LocalizeValue INTENSION_INSPECTION_GROUPNAME = LocalizeValue.localizeTODO("Wicket");
 
     // fileTemplate properties
     public static final String PROP_WICKET_NS = "WICKET_NS";
