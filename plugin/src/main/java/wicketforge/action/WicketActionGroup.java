@@ -16,8 +16,8 @@
 package wicketforge.action;
 
 import com.intellij.java.language.psi.JavaDirectoryService;
-import consulo.ide.IdeView;
 import consulo.language.editor.LangDataKeys;
+import consulo.language.editor.util.IdeView;
 import consulo.language.psi.PsiDirectory;
 import consulo.module.Module;
 import consulo.module.content.ProjectFileIndex;
