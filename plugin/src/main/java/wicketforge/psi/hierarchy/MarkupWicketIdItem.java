@@ -17,9 +17,9 @@ package wicketforge.psi.hierarchy;
 
 import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
-import consulo.xml.psi.xml.XmlAttribute;
-import consulo.xml.psi.xml.XmlAttributeValue;
-import consulo.xml.psi.xml.XmlTag;
+import consulo.xml.language.psi.XmlAttribute;
+import consulo.xml.language.psi.XmlAttributeValue;
+import consulo.xml.language.psi.XmlTag;
 import wicketforge.Constants;
 
 import jakarta.annotation.Nonnull;

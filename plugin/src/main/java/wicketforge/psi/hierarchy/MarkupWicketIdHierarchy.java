@@ -16,10 +16,10 @@
 package wicketforge.psi.hierarchy;
 
 import consulo.language.psi.PsiElement;
-import consulo.xml.psi.XmlRecursiveElementVisitor;
-import consulo.xml.psi.xml.XmlAttribute;
-import consulo.xml.psi.xml.XmlAttributeValue;
-import consulo.xml.psi.xml.XmlFile;
+import consulo.xml.language.psi.XmlAttribute;
+import consulo.xml.language.psi.XmlAttributeValue;
+import consulo.xml.language.psi.XmlFile;
+import consulo.xml.language.psi.XmlRecursiveElementVisitor;
 import wicketforge.Constants;
 
 import jakarta.annotation.Nonnull;

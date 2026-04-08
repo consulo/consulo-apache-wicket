@@ -25,10 +25,9 @@ import consulo.language.psi.PsiFile;
 import consulo.localize.LocalizeValue;
 import consulo.util.lang.StringUtil;
 import consulo.xml.codeInspection.XmlSuppressableInspectionTool;
-import consulo.xml.psi.XmlRecursiveElementVisitor;
-import consulo.xml.psi.xml.XmlAttribute;
-import consulo.xml.psi.xml.XmlAttributeValue;
-import org.jetbrains.annotations.Nls;
+import consulo.xml.language.psi.XmlAttribute;
+import consulo.xml.language.psi.XmlAttributeValue;
+import consulo.xml.language.psi.XmlRecursiveElementVisitor;
 import wicketforge.Constants;
 
 import jakarta.annotation.Nonnull;

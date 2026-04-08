@@ -36,7 +36,7 @@ import consulo.ui.ex.action.DumbAwareAction;
 import consulo.ui.ex.action.Presentation;
 import consulo.ui.ex.awt.Messages;
 import consulo.xml.ide.highlighter.HtmlFileType;
-import consulo.xml.psi.xml.XmlFile;
+import consulo.xml.language.psi.XmlFile;
 import wicketforge.action.ui.ExtractPropertiesDialog;
 import wicketforge.search.ClassIndex;
 import wicketforge.util.WicketFileUtil;

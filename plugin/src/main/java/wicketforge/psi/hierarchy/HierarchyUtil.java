@@ -19,8 +19,8 @@ import com.intellij.java.language.psi.PsiClass;
 import com.intellij.java.language.psi.PsiExpression;
 import consulo.document.util.TextRange;
 import consulo.language.psi.PsiFile;
-import consulo.xml.psi.xml.XmlAttributeValue;
-import consulo.xml.psi.xml.XmlFile;
+import consulo.xml.language.psi.XmlAttributeValue;
+import consulo.xml.language.psi.XmlFile;
 import wicketforge.Constants;
 import wicketforge.util.WicketPsiUtil;
 

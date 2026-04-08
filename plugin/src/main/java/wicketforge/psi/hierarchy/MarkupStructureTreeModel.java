@@ -21,9 +21,9 @@ import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.util.PsiNavigateUtil;
 import consulo.navigation.ItemPresentation;
-import consulo.xml.psi.xml.XmlFile;
-import consulo.xml.psi.xml.XmlTag;
 
+import consulo.xml.language.psi.XmlFile;
+import consulo.xml.language.psi.XmlTag;
 import jakarta.annotation.Nonnull;
 import java.util.List;
 
