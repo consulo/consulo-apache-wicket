@@ -20,8 +20,8 @@ import consulo.language.Language;
 import consulo.language.psi.PsiReferenceContributor;
 import consulo.language.psi.PsiReferenceRegistrar;
 import consulo.xml.language.XMLLanguage;
-import consulo.xml.patterns.XmlAttributeValuePattern;
-import consulo.xml.patterns.XmlPatterns;
+import consulo.xml.language.psi.pattern.XmlAttributeValuePattern;
+import consulo.xml.language.psi.pattern.XmlPatterns;
 import wicketforge.Constants;
 import wicketforge.psi.references.MarkupWicketIdReferenceProvider;
 

@@ -28,8 +28,8 @@ import consulo.util.xml.fastReader.NanoXmlUtil;
 import consulo.util.xml.fastReader.XmlFileHeader;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.fileType.FileType;
-import consulo.xml.ide.highlighter.XmlFileType;
 
+import consulo.xml.language.XmlFileType;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.io.InputStream;

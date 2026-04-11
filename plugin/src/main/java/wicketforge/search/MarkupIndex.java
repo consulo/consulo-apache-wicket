@@ -17,11 +17,11 @@ package wicketforge.search;
 
 import com.intellij.java.language.psi.PsiClass;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.html.language.HtmlFileType;
 import consulo.index.io.ID;
 import consulo.language.psi.PsiFile;
 import consulo.project.Project;
 import consulo.virtualFileSystem.VirtualFile;
-import consulo.xml.ide.highlighter.HtmlFileType;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;

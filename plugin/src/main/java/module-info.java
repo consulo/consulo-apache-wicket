@@ -2,12 +2,13 @@
  * @author VISTALL
  * @since 08/05/2023
  */
-open module consulo.apache.wicket
-{
+open module consulo.apache.wicket {
     requires consulo.ide.api;
 
     requires consulo.java;
-    requires com.intellij.xml;
+    requires com.intellij.xml.api;
+    requires com.intellij.xml.editor.api;
+    requires com.intellij.xml.html.api;
     requires com.intellij.properties;
     requires consulo.util.xml.fast.reader;
 

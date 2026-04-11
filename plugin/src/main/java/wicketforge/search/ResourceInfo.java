@@ -18,6 +18,7 @@ package wicketforge.search;
 import com.intellij.lang.properties.PropertiesFileType;
 import consulo.apache.wicket.module.extension.WicketModuleExtension;
 import consulo.content.base.WebResourcesFolderTypeProvider;
+import consulo.html.language.HtmlFileType;
 import consulo.language.content.LanguageContentFolderScopes;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.stub.FileContent;
@@ -32,8 +33,7 @@ import consulo.util.lang.StringUtil;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.fileType.FileType;
 import consulo.virtualFileSystem.util.VirtualFileUtil;
-import consulo.xml.ide.highlighter.HtmlFileType;
-import consulo.xml.ide.highlighter.XmlFileType;
+import consulo.xml.language.XmlFileType;
 import wicketforge.util.FilenameConstants;
 import wicketforge.util.WicketFilenameUtil;
 
