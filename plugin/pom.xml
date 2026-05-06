@@ -49,7 +49,6 @@
                 <configuration>
                     <dependencies>
                         <dependency>consulo.java</dependency>
-                        <dependency>consulo.javaee</dependency>
                         <dependency>com.intellij.xml</dependency>
                         <dependency>com.intellij.properties</dependency>
                         <dependency>org.jetbrains.idea.maven</dependency>

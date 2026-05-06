@@ -5,7 +5,6 @@
 	<vendor>Minas Manthos</vendor>
 	<depends>com.intellij.properties</depends>
 	<depends>consulo.java</depends>
-	<depends>consulo.javaee</depends>
 
 	<tags>
 		<tag>web.framework</tag>
