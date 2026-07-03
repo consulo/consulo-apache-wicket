@@ -23,6 +23,7 @@ import consulo.module.Module;
 import consulo.module.content.ProjectFileIndex;
 import consulo.module.content.ProjectRootManager;
 import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.AnActionWithSyncUpdate;
 import consulo.ui.ex.action.DefaultActionGroup;
 import wicketforge.Constants;
 import wicketforge.facet.WicketForgeFacet;
@@ -30,8 +31,7 @@ import wicketforge.facet.WicketForgeFacet;
 /**
  * WicketActionGroup
  */
-public class WicketActionGroup extends DefaultActionGroup
-{
+public class WicketActionGroup extends DefaultActionGroup implements AnActionWithSyncUpdate {
     public WicketActionGroup() {
         super("WicketForge", true);
         getTemplatePresentation().setDescription("Wicket");

@@ -31,6 +31,7 @@ import consulo.language.util.ModuleUtilCore;
 import consulo.module.Module;
 import consulo.ui.ex.action.AnAction;
 import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.AnActionWithSyncUpdate;
 import consulo.ui.ex.awt.Messages;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.xml.language.psi.XmlFile;
@@ -47,8 +48,7 @@ import jakarta.annotation.Nullable;
 
 /**
  */
-public class ToggleAction extends AnAction
-{
+public class ToggleAction extends AnAction implements AnActionWithSyncUpdate {
     @Override
     public void update(AnActionEvent e) {
         final PsiFile psiFile = e.getData(LangDataKeys.PSI_FILE);

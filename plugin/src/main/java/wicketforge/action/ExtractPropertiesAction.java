@@ -33,6 +33,7 @@ import consulo.language.psi.PsiFile;
 import consulo.project.Project;
 import consulo.ui.annotation.RequiredUIAccess;
 import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.AnActionWithSyncUpdate;
 import consulo.ui.ex.action.DumbAwareAction;
 import consulo.ui.ex.action.Presentation;
 import consulo.ui.ex.awt.Messages;
@@ -48,7 +49,7 @@ import jakarta.annotation.Nullable;
 /**
  * Extract text from java/markup to a properties file.
  */
-public class ExtractPropertiesAction extends DumbAwareAction {
+public class ExtractPropertiesAction extends DumbAwareAction implements AnActionWithSyncUpdate {
 
     @RequiredUIAccess
     @Override
@@ -169,7 +170,6 @@ public class ExtractPropertiesAction extends DumbAwareAction {
         dialog.show();
     }
 
-    @RequiredUIAccess
     @Override
     public void update(@Nonnull AnActionEvent e) {
         Presentation presentation = e.getPresentation();

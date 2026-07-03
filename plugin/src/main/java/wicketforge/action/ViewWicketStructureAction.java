@@ -29,16 +29,15 @@ import consulo.language.psi.PsiFile;
 import consulo.project.Project;
 import consulo.ui.ex.action.AnAction;
 import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.AnActionWithSyncUpdate;
 import consulo.ui.ex.action.Presentation;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.xml.language.psi.XmlFile;
+import jakarta.annotation.Nonnull;
 import wicketforge.psi.hierarchy.ClassStructureTreeModel;
 import wicketforge.psi.hierarchy.MarkupStructureTreeModel;
 
-import jakarta.annotation.Nonnull;
-
-public class ViewWicketStructureAction extends AnAction
-{
+public class ViewWicketStructureAction extends AnAction implements AnActionWithSyncUpdate {
     @Override
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(Project.KEY);
@@ -64,9 +63,11 @@ public class ViewWicketStructureAction extends AnAction
         StructureViewModel viewModel;
         if (psiFile instanceof XmlFile) {
             viewModel = new MarkupStructureTreeModel((XmlFile) psiFile);
-        } else if (psiFile instanceof PsiJavaFile) {
+        }
+        else if (psiFile instanceof PsiJavaFile) {
             viewModel = new ClassStructureTreeModel((PsiJavaFile) psiFile);
-        } else {
+        }
+        else {
             return;
         }
         FileEditor fileEditor = e.getData(PlatformDataKeys.FILE_EDITOR);
