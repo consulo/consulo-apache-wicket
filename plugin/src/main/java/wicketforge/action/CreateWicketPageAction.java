@@ -19,6 +19,7 @@ import consulo.language.psi.PsiDirectory;
 import consulo.language.psi.PsiElement;
 import consulo.localize.LocalizeValue;
 import consulo.project.Project;
+import consulo.ui.annotation.RequiredUIAccess;
 import wicketforge.action.ui.CreatePageDialog;
 import wicketforge.templates.WicketTemplates;
 
@@ -34,10 +35,17 @@ public class CreateWicketPageAction extends CreateWicketAction {
     }
 
     @Override
+    @RequiredUIAccess
     protected void invokeDialog(Project project, PsiDirectory directory, Consumer<PsiElement[]> consumer) {
         ActionRunnableImpl actionRunnable = new ActionRunnableImpl(project, directory, WicketTemplates.WICKET_PAGE_HTML);
         CreatePageDialog dialog = new CreatePageDialog(project, actionRunnable, getCommandName().get(), directory);
-        dialog.showAsync().doWhenDone(() -> consumer.accept(actionRunnable.getCreatedElements()));
+        dialog.showAsync().whenComplete((v, t) -> {
+            if (t != null) {
+                return;
+            }
+
+            consumer.accept(actionRunnable.getCreatedElements());
+        });
     }
 
     @Override
