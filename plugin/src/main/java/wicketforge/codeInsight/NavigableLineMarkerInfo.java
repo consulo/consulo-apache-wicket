@@ -17,17 +17,18 @@ package wicketforge.codeInsight;
 
 import com.intellij.java.impl.codeInsight.daemon.impl.GutterIconTooltipHelper;
 import consulo.annotation.access.RequiredReadAction;
+import consulo.application.Application;
 import consulo.codeEditor.markup.GutterIconRenderer;
 import consulo.language.editor.Pass;
 import consulo.language.editor.gutter.LineMarkerInfo;
-import consulo.language.editor.ui.DefaultPsiElementCellRenderer;
-import consulo.language.editor.ui.PsiElementListNavigator;
+import consulo.language.editor.ui.navigation.PsiTargetNavigationService;
 import consulo.language.psi.NavigatablePsiElement;
 import consulo.language.psi.PsiElement;
 import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
-
 import jakarta.annotation.Nonnull;
+
+import java.util.List;
 
 class NavigableLineMarkerInfo {
     private NavigableLineMarkerInfo() {
@@ -35,6 +36,7 @@ class NavigableLineMarkerInfo {
 
     @RequiredReadAction
     public static LineMarkerInfo create(@Nonnull PsiElement element, @Nonnull final NavigatablePsiElement[] targets, @Nonnull Image icon) {
+        Application application = element.getApplication();
         return new LineMarkerInfo<>(
             element,
             element.getTextRange(),
@@ -45,8 +47,10 @@ class NavigableLineMarkerInfo {
                 "",
                 (methodName, className) -> LocalizeValue.of(className)
             ).toString(),
-            (e, elt) ->
-                PsiElementListNavigator.openTargets(e, targets, "Select Target", null, new DefaultPsiElementCellRenderer()),
+            (e, elt) -> application.getInstance(PsiTargetNavigationService.class)
+                .newNavigator(() -> List.of(targets))
+                .title(LocalizeValue.localizeTODO("Select Target"))
+                .navigate(e, element.getProject()),
             GutterIconRenderer.Alignment.LEFT
         );
     }
