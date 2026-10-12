@@ -15,6 +15,7 @@
  */
 package wicketforge.psi.hierarchy;
 
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
 import consulo.xml.language.psi.XmlAttribute;
@@ -47,7 +48,7 @@ public final class MarkupWicketIdItem implements ItemPresentation {
 
     void addChild(@Nonnull MarkupWicketIdItem child) {
         if (children == null) {
-            children = new ArrayList<MarkupWicketIdItem>();
+            children = new ArrayList<>();
         }
         children.add(child);
     }
@@ -75,8 +76,8 @@ public final class MarkupWicketIdItem implements ItemPresentation {
     /* ItemPresentation*/
 
     @Override
-    public String getPresentableText() {
-        return wicketId;
+    public LocalizeValue getPresentableText() {
+        return LocalizeValue.of(wicketId);
     }
 
     @Override
@@ -138,7 +139,7 @@ public final class MarkupWicketIdItem implements ItemPresentation {
                 return Constants.ICON_MARKUP_TEXTAREA;
             }
             if ("select".equals(name)) {
-                // generic icon for combobox and list because user dont have to set size attribute...
+                // generic icon for combobox and list because user doesn't have to set size attribute...
                 return Constants.ICON_MARKUP_SELECT;
             }
             if ("option".equals(name)) {

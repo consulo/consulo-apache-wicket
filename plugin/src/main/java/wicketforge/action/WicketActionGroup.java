@@ -16,12 +16,12 @@
 package wicketforge.action;
 
 import com.intellij.java.language.psi.JavaDirectoryService;
-import consulo.language.editor.LangDataKeys;
 import consulo.language.editor.util.IdeView;
 import consulo.language.psi.PsiDirectory;
 import consulo.module.Module;
 import consulo.module.content.ProjectFileIndex;
 import consulo.module.content.ProjectRootManager;
+import consulo.ui.annotation.RequiredUIAccess;
 import consulo.ui.ex.action.AnActionEvent;
 import consulo.ui.ex.action.AnActionWithSyncUpdate;
 import consulo.ui.ex.action.DefaultActionGroup;
@@ -39,14 +39,16 @@ public class WicketActionGroup extends DefaultActionGroup implements AnActionWit
     }
 
     @Override
+    @RequiredUIAccess
     public void update(AnActionEvent e) {
         e.getPresentation().setVisible(isUnderSourceRoots(e));
     }
 
+    @RequiredUIAccess
     private static boolean isUnderSourceRoots(final AnActionEvent e) {
         final IdeView view = e.getData(IdeView.KEY);
         if (view != null) {
-            final Module module = e.getData(LangDataKeys.MODULE);
+            final Module module = e.getData(Module.KEY);
             // let user create page/panel when we have a wicket-lib (so we can detect new facet)
             if (module != null && WicketForgeFacet.isLibraryPresent(module)) {
                 ProjectFileIndex projectFileIndex = ProjectRootManager.getInstance(module.getProject()).getFileIndex();
