@@ -19,7 +19,9 @@ import com.intellij.java.language.psi.PsiClass;
 import com.intellij.java.language.psi.PsiExpression;
 import com.intellij.java.language.psi.PsiJavaCodeReferenceElement;
 import com.intellij.java.language.psi.PsiNewExpression;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
 import wicketforge.Constants;
@@ -39,6 +41,7 @@ public final class ClassWicketIdNewComponentItem implements ItemPresentation
     }
 
     @Nullable
+    @RequiredReadAction
     static ClassWicketIdNewComponentItem create(@Nonnull PsiNewExpression newExpression) {
         ClassWicketIdNewComponentItem result = new ClassWicketIdNewComponentItem();
 
@@ -87,21 +90,24 @@ public final class ClassWicketIdNewComponentItem implements ItemPresentation
     }
 
     @Override
-    public String getPresentableText() {
-        return wicketId;
+    public LocalizeValue getPresentableText() {
+        return LocalizeValue.of(wicketId);
     }
 
     @Override
+    @RequiredReadAction
     public String getLocationString() {
         return /*"new " + */getBaseClassToCreate().getName()/* + "(...)"*/;
     }
 
     @Nullable
     @Override
+    @RequiredReadAction
     public Image getIcon() {
         return getIcon(baseClassToCreate);
     }
 
+    @RequiredReadAction
     private static Image getIcon(@Nullable PsiClass classToCreate) {
         // simply name check should be enough
         while (classToCreate != null) {

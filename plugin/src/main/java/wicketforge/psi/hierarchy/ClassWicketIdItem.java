@@ -15,6 +15,8 @@
  */
 package wicketforge.psi.hierarchy;
 
+import consulo.annotation.access.RequiredReadAction;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
 import consulo.util.collection.SmartList;
@@ -22,12 +24,12 @@ import wicketforge.Constants;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public final class ClassWicketIdItem implements ItemPresentation
-{
+public final class ClassWicketIdItem implements ItemPresentation {
     private String wicketId;
     private List<ClassWicketIdNewComponentItem> newComponentItems;
     private List<ClassWicketIdItem> children;
@@ -35,7 +37,7 @@ public final class ClassWicketIdItem implements ItemPresentation
 
     ClassWicketIdItem(@Nonnull String wicketId, @Nullable ClassWicketIdItem parent) {
         this.wicketId = wicketId;
-        this.newComponentItems = new SmartList<ClassWicketIdNewComponentItem>();
+        this.newComponentItems = new SmartList<>();
         if (parent != null) {
             this.parent = parent;
             parent.addChild(this);
@@ -60,7 +62,7 @@ public final class ClassWicketIdItem implements ItemPresentation
 
     private void addChild(@Nonnull ClassWicketIdItem child) {
         if (children == null) {
-            children = new ArrayList<ClassWicketIdItem>();
+            children = new ArrayList<>();
         }
         children.add(child);
     }
@@ -83,12 +85,14 @@ public final class ClassWicketIdItem implements ItemPresentation
     /* ItemPresentation */
 
     @Override
-    public String getPresentableText() {
-        return wicketId;
+    public LocalizeValue getPresentableText() {
+        return LocalizeValue.of(wicketId);
     }
 
     private String location;
+
     @Override
+    @RequiredReadAction
     public String getLocationString() {
         if (location == null) {
             StringBuilder sb = new StringBuilder();
@@ -105,6 +109,7 @@ public final class ClassWicketIdItem implements ItemPresentation
 
     @Override
     @Nullable
+    @RequiredReadAction
     public Image getIcon() {
         // we can have multiple ClassWicketIdNewComponentItem -> just show icon from first item...
         if (!newComponentItems.isEmpty()) {
